@@ -81,6 +81,13 @@
     # EDITOR = "emacs";
   };
 
+  programs.bash = {
+    enable = true;
+    bashrcExtra = ''
+      eval "$(navi widget bash)"
+    '';
+  };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
