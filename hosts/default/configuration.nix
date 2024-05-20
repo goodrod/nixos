@@ -14,6 +14,7 @@
 
   boot.initrd.luks.devices."luks-16014315-f533-43d4-9baa-7f3e06736ddf".device =
     "/dev/disk/by-uuid/16014315-f533-43d4-9baa-7f3e06736ddf";
+
   networking.hostName = "nixos"; # Define your hostname.
   networking.hosts = {
     "127.0.0.1" = [ "host.docker.internal" ];
@@ -142,6 +143,9 @@
     openssl
     flameshot
     dive
+    dotnet-sdk_8
+    linuxKernel.packages.linux_5_4.wireguard
+    wireguard-tools
     #podman-tui
     #podman-compose
     #gparted
@@ -162,15 +166,15 @@
 
   services.resolved = { enable = true; };
   virtualisation.docker = {
-     enable = true;
-     rootless = {
-       enable = true;
-       setSocketVariable = true;
-     };
-   };
-   virtualisation.docker.daemon.settings = {
-     data-root = "/home/goodrod/docker/";
-   };
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+  virtualisation.docker.daemon.settings = {
+    data-root = "/home/goodrod/docker/";
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
