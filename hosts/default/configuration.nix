@@ -19,6 +19,7 @@
   networking.hosts = {
     "127.0.0.1" = [ "host.docker.internal" ];
     "0.0.0.0" = [ "host.docker.internal" ];
+    "172.19.0.7" = [ "host.docker.internal" ];
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -112,8 +113,9 @@
 
   # Install firefox.
   programs.firefox.enable = false;
+  programs.dconf.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "obsidian" "slack" "rider" ];
+    builtins.elem (lib.getName pkg) [ "obsidian" "slack" "rider" "spotify" "postman" ];
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -134,7 +136,6 @@
     bitwarden
     openconnect
     nixfmt-classic
-    navi
     libnotify
     slack
     pavucontrol
@@ -146,6 +147,10 @@
     dotnet-sdk_8
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
+    xwallpaper
+    spotify
+    postman
+    okular
     #podman-tui
     #podman-compose
     #gparted
