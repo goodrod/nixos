@@ -1,10 +1,12 @@
 % denisoro/navi 
-# (edit/change)   Open cheat directory with nvim
+# (edit/change)  Open cheat directory with nvim
 nvim ~/git-repos/nixos/modules/navi/cheats/
 
-% first cheat we did it
+% docker
+# (start/up)    Take up docker compose file
+docker compose -f <compose-file> up -d
+$ compose-file: ls -C1 | grep -E "yml|yaml"% docker
 
-# print something
-echo "My name is <name>!"
-
-$ name: whoami
+# (stop/down)    Take down docker compose file
+docker compose -f <compose-file> down
+$ compose-file: ls -C1 | grep -E "yml|yaml"
