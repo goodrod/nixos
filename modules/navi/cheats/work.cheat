@@ -4,9 +4,22 @@ nvim ~/git-repos/nixos/modules/navi/cheats/
 
 % docker
 # (start/up)    Take up docker compose file
-docker compose -f <compose-file> up -d
+sudo docker compose -f <compose-file> up -d
 $ compose-file: ls -C1 | grep -E "yml|yaml"% docker
 
 # (stop/down)    Take down docker compose file
-docker compose -f <compose-file> down
+sudo docker compose -f <compose-file> down
 $ compose-file: ls -C1 | grep -E "yml|yaml"
+
+# (kill/purge)    Force kill and remove all containers
+sudo docker rm -f $(docker ps -aq)
+
+% nixos
+# (rebuild)    Rebuild nixos
+sudo nixos-rebuild switch --flake ~/git-repos/nixos#default
+
+# (edit/change)   Edit nixos home file
+nvim ~/git-repos/nixos/hosts/default/home.nix
+
+# (edit/change)   Edit nixos configuration.nix
+nvim ~/git-repos/nixos/hosts/default/configuration.nix
