@@ -11,7 +11,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
-    LESS = "--mouse --wheel-lines=3";
+    LESS = "-r --mouse --wheel-lines=3";
   };
   programs.bash = { enable = true; };
 
@@ -22,7 +22,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
-      core.pager = "less";
+      core.pager = "less -r";
     };
   };
 
