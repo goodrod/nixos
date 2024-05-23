@@ -6,12 +6,14 @@
 
   imports = [ ../../modules/default.nix ];
   modules.navi.enable = true;
+  modules.awesome.enable = true;
   home.packages = [ ];
 
-  home.sessionVariables = { EDITOR = "nvim"; };
-  programs.bash = {
-    enable = true;
+  home.sessionVariables = {
+    EDITOR = "nvim";
+    LESS = "--mouse --wheel-lines=3";
   };
+  programs.bash = { enable = true; };
 
   programs.git = {
     enable = true;
@@ -20,6 +22,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       safe.directory = "/etc/nixos";
+      core.pager = "less";
     };
   };
 
@@ -29,7 +32,6 @@
     cursorTheme.name = "Bibata-Modern-Ice";
     iconTheme.name = "GruvboxPlus";
   };
-
 
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;

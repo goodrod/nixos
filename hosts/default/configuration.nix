@@ -18,8 +18,6 @@
   networking.hostName = "nixos"; # Define your hostname.
   networking.hosts = {
     "127.0.0.1" = [ "host.docker.internal" ];
-    "0.0.0.0" = [ "host.docker.internal" ];
-    "172.19.0.7" = [ "host.docker.internal" ];
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -54,7 +52,6 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-
     windowManager.awesome = {
       enable = true;
       luaModules = with pkgs.luaPackages; [ luarocks luadbi-mysql ];
@@ -115,16 +112,20 @@
   programs.firefox.enable = false;
   programs.dconf.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "obsidian" "slack" "rider" "spotify" "postman" ];
+    builtins.elem (lib.getName pkg) [
+      "obsidian"
+      "slack"
+      "rider"
+      "spotify"
+      "postman"
+    ];
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #unstable.clamav
     #unstable.obsidian
     #unstable.keymapp
     wget
     neovim
-    awesome
     git
     docker-compose
     pkgs.xorg.xrandr
@@ -152,23 +153,8 @@
     postman
     okular
     nodejs
-    #podman-tui
-    #podman-compose
-    #gparted
   ];
   virtualisation.containers.enable = true;
-  #virtualisation = {
-  #  podman = {
-  #    dockerSocket.enable = true;
-  #    enable = true;
-
-  #    # Create a `docker` alias for podman, to use it as a drop-in replacement
-  #    dockerCompat = true;
-
-  #    # Required for containers under podman-compose to be able to talk to each other.
-  #    defaultNetwork.settings.dns_enabled = true;
-  #  };
-  #};
 
   services.resolved = { enable = true; };
   virtualisation.docker = {
