@@ -151,6 +151,7 @@
     spotify
     postman
     okular
+    nodejs
     #podman-tui
     #podman-compose
     #gparted
