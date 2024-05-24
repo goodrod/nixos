@@ -153,6 +153,7 @@
     postman
     okular
     nodejs
+    cryptsetup
   ];
   virtualisation.containers.enable = true;
 
