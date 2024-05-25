@@ -12,7 +12,7 @@ sudo docker compose -f <compose-file> down
 $ compose-file: ls -C1 | grep -E "yml|yaml"
 
 # (kill/purge)    Force kill and remove all containers
-sudo docker rm -f $(docker ps -aq)
+sudo docker rm -f $(sudo docker ps -aq)
 
 % nixos
 # (rebuild)    Rebuild nixos
