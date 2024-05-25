@@ -18,6 +18,8 @@
   networking.hostName = "nixos"; # Define your hostname.
   networking.hosts = {
     "127.0.0.1" = [ "host.docker.internal" ];
+    "0.0.0.0" = [ "host.docker.internal" ];
+    "127.19.0.7" = [ "host.docker.internal" ];
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
