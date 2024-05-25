@@ -5,5 +5,6 @@
     imports = [
       ./navi
       ./awesome
+      ./nixvim
     ];
 }
