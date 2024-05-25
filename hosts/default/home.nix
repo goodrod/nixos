@@ -1,10 +1,11 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   home.username = "goodrod";
   home.homeDirectory = "/home/goodrod";
 
-  imports = [ ../../modules/default.nix ];
+  imports =
+    [ ../../modules/default.nix inputs.nixvim.homeManagerModules.nixvim ];
   modules.navi.enable = true;
   modules.awesome.enable = true;
   home.packages = [ ];
@@ -24,6 +25,13 @@
       safe.directory = "/etc/nixos";
       core.pager = "less -r";
     };
+  };
+
+  programs.nixvim = {
+    enable = true;
+    extraPlugins = [ pkgs.vimPlugins.gruvbox ];
+    colorschemes.gruvbox.enable = true;
+    plugins.lightline.enable = true;
   };
 
   gtk = {
