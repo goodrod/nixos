@@ -1,0 +1,3 @@
+% nix/nixos
+# (clean/garbage collect) Remove old nixos builds
+nix-collect-garbage --delete-old
