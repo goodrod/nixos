@@ -1,0 +1,3 @@
+% nvim
+# (edit/change) Edit nixvim config
+nvim ~/git-repos/nixos/modules/nixvim/default.nix

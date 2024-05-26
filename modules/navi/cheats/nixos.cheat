@@ -1,3 +1,15 @@
 % nix/nixos
 # (clean/garbage collect) Remove old nixos builds
 nix-collect-garbage --delete-old
+
+# (rebuild)    Rebuild nixos
+sudo nixos-rebuild switch --flake ~/git-repos/nixos#default
+
+# (rebuild/test) Rebuild and test nixos
+sudo nixos-rebuild test --flake ~/git-repos/nixos#default
+
+# (edit/change)   Edit nixos home file
+nvim ~/git-repos/nixos/hosts/default/home.nix
+
+# (edit/change)   Edit nixos configuration.nix
+nvim ~/git-repos/nixos/hosts/default/configuration.nix

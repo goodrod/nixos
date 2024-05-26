@@ -13,13 +13,3 @@ $ compose-file: ls -C1 | grep -E "yml|yaml"
 
 # (kill/purge)    Force kill and remove all containers
 sudo docker rm -f $(sudo docker ps -aq)
-
-% nixos
-# (rebuild)    Rebuild nixos
-sudo nixos-rebuild switch --flake ~/git-repos/nixos#default
-
-# (edit/change)   Edit nixos home file
-nvim ~/git-repos/nixos/hosts/default/home.nix
-
-# (edit/change)   Edit nixos configuration.nix
-nvim ~/git-repos/nixos/hosts/default/configuration.nix
