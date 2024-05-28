@@ -13,7 +13,7 @@
       ];
 
       colorschemes.gruvbox.enable = true;
-      globals.mapleader = ",";
+      globals.mapleader = " ";
 
       keymaps = [
         {
@@ -40,6 +40,11 @@
           action = "<cmd>Telescope live_grep<CR>";
           key = "<leader>g";
         }
+	{
+	  mode = "n";
+          action = "<CMD>Oil<CR>";
+	  key = "-";
+	}
       ];
 
       opts = {
@@ -94,7 +99,7 @@
             };
 
             mapping = {
-              "<CR>" = "cmp.mapping.confirm({ select = true })";
+              "<CR>" = "cmp.mapping.confirm({ select = false })";
               "<Tab>" = ''
                 function(fallback)
 		  local luasnip = require("luasnip")
