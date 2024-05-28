@@ -1,0 +1,22 @@
+% docker
+# (start/up)    Take up docker compose file
+sudo docker compose -f <compose-file> up -d
+$ compose-file: ls -C1 | grep -E "yml|yaml"% docker
+
+# (stop/down)    Take down docker compose file
+sudo docker compose -f <compose-file> down
+$ compose-file: ls -C1 | grep -E "yml|yaml"
+
+# (kill/purge)    Force kill and remove all containers
+sudo docker rm -f $(sudo docker ps -aq)
+
+# (connect/enter) Enter docker container into bash shell
+sudo docker exec -it <container_id> <command>
+$ container_id: sudo docker ps --filter name=<container_name> --format "{{.ID}}"
+$ container_name: sudo docker ps --format "{{.Names}}"
+$ command: echo -e "bash\narangosh"
+
+# (build) Build a certain service based on a docker compose file
+sudo docker compose -f <compose-file> build <target>
+$ compose-file: ls -C1 | grep -E "yml|yaml"
+$ target: docker compose -f <compose-file> config --services

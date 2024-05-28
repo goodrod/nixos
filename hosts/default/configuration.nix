@@ -19,7 +19,8 @@
   networking.hosts = {
     "127.0.0.1" = [ "host.docker.internal" ];
     "0.0.0.0" = [ "host.docker.internal" ];
-    "127.19.0.7" = [ "host.docker.internal" ];
+    "127.19.0.1" = [ "host.docker.internal" ];
+    "127.19.0.13" = [ "host.docker.internal" ];
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -47,6 +48,15 @@
   services.displayManager = {
     sddm.enable = true;
     defaultSession = "none+awesome";
+  };
+
+  services.clamav = {
+    scanner = {
+      enable = true;
+      interval = "*-*-* 17:00:00";
+    };
+    updater.enable = true;
+    daemon.enable = true;
   };
 
   # Enable the X11 windowing system.
@@ -103,18 +113,17 @@
   programs.dconf.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
-      "obsidian"
       "slack"
       "rider"
       "spotify"
       "postman"
+      "keymapp"
     ];
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    #unstable.clamav
-    #unstable.obsidian
-    #unstable.keymapp
+    clamav
+    keymapp
     wget
     neovim
     git
@@ -164,7 +173,7 @@
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
 
   system.stateVersion = "23.11";
 
