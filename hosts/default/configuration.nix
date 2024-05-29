@@ -118,6 +118,7 @@
       "spotify"
       "postman"
       "keymapp"
+      "everdo"
     ];
 
   # List packages installed in system profile. To search, run:
@@ -155,6 +156,15 @@
     nodejs
     cryptsetup
   ];
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    dotnet-sdk_8
+    dotnet-sdk_7
+    # Add any missing dynamic libraries for unpackaged programs
+    # here, NOT in environment.systemPackages
+  ];
+
   virtualisation.containers.enable = true;
 
   services.resolved = { enable = true; };
@@ -174,7 +184,7 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.enable = false;
-
+  security.pki.certificateFiles = [ /home/goodrod/git-repos/Helios/misc/ca/ca/ca.pem ];
   system.stateVersion = "23.11";
 
 }
