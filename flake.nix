@@ -24,5 +24,12 @@
         inputs.home-manager.nixosModules.default
       ];
     };
+    nixosConfigurations.dabidew = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/dabidew/configuration.nix
+        inputs.home-manager.nixosModules.default
+      ];
+    };
   };
 }
