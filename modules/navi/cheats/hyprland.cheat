@@ -1,0 +1,3 @@
+% hyprland
+# (edit) Edit hyprland configuration
+nvim ~/.config/hypr/hyprland.conf
