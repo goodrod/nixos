@@ -4,7 +4,6 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-
   imports =
     [ ./hardware-configuration.nix inputs.home-manager.nixosModules.default ];
 
@@ -50,19 +49,47 @@
     daemon.enable = true;
   };
 
+  boot.plymouth = {
+    enable = true;
+    theme = "breeze";
+  };
+
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
 
-  programs.waybar.enable = true;
-  services.xserver.enable = true;
+  programs.waybar = { enable = true; };
+  fonts = {
+    fontconfig.enable = true;
+    packages = with pkgs; [ nerdfonts font-awesome ];
+  };
+
+  services.xserver = {
+    enable = true;
+    displayManager.setupCommands = ''
+      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-3 --mode 2560x1440 --rotate normal --rate 144 
+      ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-A-2 --off
+    '';
+  };
   services.displayManager = {
     defaultSession = "hyprland";
     sddm = {
       enable = true;
+      sugarCandyNix = {
+        enable = true; # This set SDDM's theme to "sddm-sugar-candy-nix".
+        settings = {
+          ScreenWidth = 2560;
+          ScreenHeight = 1440;
+          FormPosition = "left";
+          HaveFormBackground = true;
+          PartialBlur = true;
+          # ...
+        };
+      };
     };
   };
+
   environment.sessionVariables = {
     #WLR_NO_HARDWARE_CURSORS = "1";
     NIXOS_OZONE_WL = "1";
@@ -136,17 +163,13 @@
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    font-awesome_5
     clamav
     keymapp
     wget
     neovim
     git
     docker-compose
-    pkgs.xorg.xrandr
-    arandr
     alacritty
-    autorandr
     mlocate
     home-manager
     bitwarden
