@@ -9,6 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    sddm-sugar-candy-nix = {
+      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
+      # Optional, by default this flake follows nixpkgs-unstable.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
@@ -29,6 +35,9 @@
       modules = [
         ./hosts/dabidew/configuration.nix
         inputs.home-manager.nixosModules.default
+        inputs.sddm-sugar-candy-nix.nixosModules.default
+        { nixpkgs = { overlays = [ inputs.sddm-sugar-candy-nix.overlays.default ]; }; }
+
       ];
     };
   };

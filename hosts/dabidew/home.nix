@@ -8,6 +8,7 @@
     [ ../../modules/default.nix inputs.nixvim.homeManagerModules.nixvim ];
   modules.navi.enable = true;
   modules.awesome.enable = false;
+  modules.hyprland.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {

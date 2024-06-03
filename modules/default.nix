@@ -6,5 +6,6 @@
       ./navi
       ./awesome
       ./nixvim
+      ./hyprland
     ];
 }
