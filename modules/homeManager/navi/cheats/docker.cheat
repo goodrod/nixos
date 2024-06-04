@@ -1,22 +1,32 @@
 % docker
-# (start/up)    Take up docker compose file
-sudo docker compose -f <compose-file> up -d
-$ compose-file: ls -C1 | grep -E "yml|yaml"% docker
-
-# (stop/down)    Take down docker compose file
-sudo docker compose -f <compose-file> down
+$ container-name: sudo docker ps --format "{{.Names}}"
 $ compose-file: ls -C1 | grep -E "yml|yaml"
+$ container-id: sudo docker ps --filter name=<container-name> --format "{{.ID}}"
+$ compose-target: docker compose -f <compose-file> config --services
 
-# (kill/purge)    Force kill and remove all containers
+
+# (start/up)                    Take up docker compose file
+sudo docker compose -f <compose-file> up -d
+
+# (start/up)                    Take up one container from a docker compose file
+sudo docker compose -f <compose-file> up -d <compose-target>
+
+# (stop/down)                   Take one contaier down for docker compose file
+sudo docker compose -f <compose-file> down <compose-target>
+
+# (stop/down)                   Take all containers down for docker compose file
+sudo docker compose -f <compose-file> down
+
+# (kill/purge)                  Force kill and remove all containers
 sudo docker rm -f $(sudo docker ps -aq)
 
-# (connect/enter) Enter docker container into bash shell
-sudo docker exec -it <container_id> <command>
-$ container_id: sudo docker ps --filter name=<container_name> --format "{{.ID}}"
-$ container_name: sudo docker ps --format "{{.Names}}"
+# (connect/enter)               Enter docker container into bash shell
+sudo docker exec -it <container-id> <command>
 $ command: echo -e "bash\narangosh"
 
-# (build) Build a certain service based on a docker compose file
-sudo docker compose -f <compose-file> build <target>
-$ compose-file: ls -C1 | grep -E "yml|yaml"
-$ target: docker compose -f <compose-file> config --services
+# (build)                       Build a certain service based on a docker compose file
+sudo docker compose -f <compose-file> build <compose-target>
+
+# (read/view)                   View logs for certain pod
+sudo docker logs -f <container-name>
+

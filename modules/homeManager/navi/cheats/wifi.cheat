@@ -2,11 +2,11 @@
 $ connection: nmcli -g NAME connection show --active
 $ ssid: nmcli -g SSID device wifi list
 
-# (connect) Connect to new Wifi
+# (connect)                     Connect to new Wifi
 nmcli device wifi connect "<ssid>" --ask
 
-# (forget) Forget network
+# (forget)                      Forget network
 nmcli connection delete "<connection>"
 
-# (connect) Connect to new hidden Wifi
+# (connect)                     Connect to new hidden Wifi
 nmcli device wifi connect "<hidden-ssid>" --ask hidden yes private yes

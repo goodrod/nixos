@@ -5,8 +5,6 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
-
 -- Widget and layout library
 local wibox = require("wibox")
 
@@ -27,7 +25,6 @@ beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Init all modules (You can add/remove active modules here)
 require("modules.auto-start")
-require("modules.sloppy-focus")
 require("modules.set-wallpaper")
 
 -- Setup UI Elements
