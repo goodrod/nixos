@@ -1,0 +1,4 @@
+% file management
+# (find/search)                 Biggest files
+du -BG -a <dir> 2>/dev/null | sort -n -r | head -n <number-of-files>
+$ dir: echo "/"

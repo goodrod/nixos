@@ -17,10 +17,13 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.hosts = {
+    "192.168.0.90" = [ "host.docker.internal" ];
+    "127.19.0.13" = [ "host.docker.internal" ];
+    "127.19.0.1" = [ "host.docker.internal" ];
+    "127.18.0.1" = [ "host.docker.internal" ];
+    "127.17.0.1" = [ "host.docker.internal" ];
     "127.0.0.1" = [ "host.docker.internal" ];
     "0.0.0.0" = [ "host.docker.internal" ];
-    "127.19.0.1" = [ "host.docker.internal" ];
-    "127.19.0.13" = [ "host.docker.internal" ];
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -79,7 +82,7 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
+  services.locate.enable = true;
   # Enable sound with pipewire.
   sound.enable = true;
   security.rtkit.enable = true;
@@ -119,11 +122,13 @@
       "postman"
       "keymapp"
       "everdo"
+      "obsidian"
     ];
 
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
-    clamav
+    obsidian
+    activitywatch
     keymapp
     wget
     neovim
@@ -146,7 +151,7 @@
     openssl
     flameshot
     dive
-    dotnet-sdk_8
+    dotnet-sdk_7
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
     xwallpaper
@@ -159,8 +164,9 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    dotnet-sdk_8
     dotnet-sdk_7
+    aw-qt
+    bash
     # Add any missing dynamic libraries for unpackaged programs
     # here, NOT in environment.systemPackages
   ];

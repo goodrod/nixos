@@ -5,7 +5,7 @@
   home.homeDirectory = "/home/goodrod";
 
   imports = [
-    ../../homeManagerModules/default.nix
+    ../../modules/homeManager/default.nix
     inputs.nixvim.homeManagerModules.nixvim
   ];
   modules.navi.enable = true;
