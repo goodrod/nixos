@@ -5,7 +5,7 @@
 
 {
   imports =
-    [ ./hardware-configuration.nix inputs.home-manager.nixosModules.default ];
+    [ ./hardware-configuration.nix ];
 
   # Bootloader.
   boot.loader.grub = {
@@ -143,11 +143,6 @@
 
   users.extraGroups.docker.members = [ "dabidew" ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = { "dabidew" = import ./home.nix; };
-  };
-
   # Install firefox.
   programs.firefox.enable = false;
   programs.dconf.enable = true;
@@ -171,7 +166,6 @@
     docker-compose
     alacritty
     mlocate
-    home-manager
     bitwarden
     openconnect
     nixfmt-classic
