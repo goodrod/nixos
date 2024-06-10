@@ -5,7 +5,7 @@
   home.homeDirectory = "/home/dabidew";
 
   imports =
-    [ ../../homeManagerModules/default.nix inputs.nixvim.homeManagerModules.nixvim ];
+    [ ../../modules/homeManager inputs.nixvim.homeManagerModules.nixvim ];
   modules.navi.enable = true;
   modules.awesome.enable = false;
   modules.hyprland.enable = true;

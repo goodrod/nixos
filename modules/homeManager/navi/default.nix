@@ -4,19 +4,20 @@ let
   inherit (lib) mkOption mkEnableOption types mkIf;
   inherit (types) path str;
   option = config.modules.navi;
-in
-{
+in {
   options.modules.navi = {
-    enable = mkEnableOption "navi"; 
+    enable = mkEnableOption "navi";
     cheats-source-directory = mkOption {
       default = ./cheats;
       type = path;
-      description = "Path to the directory containing the cheat files to output to the directory specified in cheat-output-directory."; 
+      description =
+        "Path to the directory containing the cheat files to output to the directory specified in cheat-output-directory.";
     };
     cheats-output-directory = mkOption {
       default = ".local/share/navi/cheats";
       type = str;
-      description = "Path to the output directory where all cheat files located in the cheat-source-directory. Output is relative to your home directory."; 
+      description =
+        "Path to the output directory where all cheat files located in the cheat-source-directory. Output is relative to your home directory.";
     };
   };
 
@@ -27,9 +28,7 @@ in
       '';
     };
 
-    home.packages = with pkgs; [
-      navi
-    ];
+    home.packages = with pkgs; [ navi ];
 
     home.file."${option.cheats-output-directory}" = {
       source = "${option.cheats-source-directory}";
