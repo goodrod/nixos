@@ -23,25 +23,28 @@
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations = {
-      work = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/default/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
-      };
-
-      dabidew = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/dabidew/configuration.nix
-          inputs.sddm-sugar-candy-nix.nixosModules.default
-          { nixpkgs = { overlays = [ inputs.sddm-sugar-candy-nix.overlays.default ]; }; }
-        ];
-      };
+    nixosConfigurations.work = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/work/configuration.nix
+        inputs.home-manager.nixosModules.default
+      ];
     };
-    modules.home-manager.default = ./modules/home-manager;
-    modules.nixos.default = ./modules/nixos;
+    nixosConfigurations.private = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/private/configuration.nix
+        inputs.home-manager.nixosModules.default
+        inputs.sddm-sugar-candy-nix.nixosModules.default
+        {
+          nixpkgs = {
+            overlays = [ inputs.sddm-sugar-candy-nix.overlays.default ];
+          };
+        }
+
+      ];
+    };
+
+    modules.home-manager.default = ./modules/homeManager;
   };
 }

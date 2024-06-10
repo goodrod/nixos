@@ -4,8 +4,10 @@
   home.username = "goodrod";
   home.homeDirectory = "/home/goodrod";
 
-  imports =
-    [ ../../homeManagerModules/default.nix inputs.nixvim.homeManagerModules.nixvim ];
+  imports = [
+    ../../homeManagerModules/default.nix
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
   modules.navi.enable = true;
   modules.awesome.enable = true;
   home.packages = [ pkgs.ripgrep ];
