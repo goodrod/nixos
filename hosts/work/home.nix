@@ -5,11 +5,11 @@
   home.homeDirectory = "/home/goodrod";
 
   imports = [
-    ../../modules/homeManager/default.nix
+    inputs.homeManagerModules.default
     inputs.nixvim.homeManagerModules.nixvim
   ];
-  modules.navi.enable = true;
-  modules.awesome.enable = true;
+  module.navi.enable = true;
+  module.awesome.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {

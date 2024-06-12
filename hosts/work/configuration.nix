@@ -72,7 +72,7 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  servic5es.xserver = {
     xkb.layout = "se";
     xkb.variant = "nodeadkeys";
   };

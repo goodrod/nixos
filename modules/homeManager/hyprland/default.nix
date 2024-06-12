@@ -3,9 +3,9 @@
 let
   inherit (lib) mkOption mkEnableOption types mkIf;
   inherit (types) path str;
-  hyprlandConfig = config.modules.hyprland;
+  hyprlandConfig = config.module.hyprland;
 in {
-  options.modules.hyprland = {
+  options.module.hyprland = {
     enable = mkEnableOption "hyprland";
 
     config-source-directory = mkOption {

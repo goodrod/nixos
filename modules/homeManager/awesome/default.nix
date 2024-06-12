@@ -3,9 +3,9 @@
 let
   inherit (lib) mkOption mkEnableOption types mkIf;
   inherit (types) path str;
-  awesomeConfig = config.modules.awesome;
+  awesomeConfig = config.module.awesome;
 in {
-  options.modules.awesome = {
+  options.module.awesome = {
     enable = mkEnableOption "awesome";
 
     config-source-directory = mkOption {

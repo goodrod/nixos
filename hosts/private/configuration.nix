@@ -40,14 +40,7 @@
     LC_TIME = "sv_SE.UTF-8";
   };
 
-  services.clamav = {
-    scanner = {
-      enable = true;
-      interval = "*-*-* 17:00:00";
-    };
-    updater.enable = true;
-    daemon.enable = true;
-  };
+  module.clamav.enable = true;
 
   boot.plymouth = {
     enable = true;
@@ -107,7 +100,7 @@
         sha256_64bit = "sha256-k7cI3ZDlKp4mT46jMkLaIrc2YUx1lh1wj/J4SVSHWyk=";
         sha256_aarch64 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
         openSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
-        settingsSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
+        setting5sSha256 = "sha256-rtDxQjClJ+gyrCLvdZlT56YyHQ4sbaL+d5tL4L4VfkA=";
         persistencedSha256 = lib.fakeSha256;
       };
     };
