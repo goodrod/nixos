@@ -7,25 +7,17 @@
   imports =
     [ ./hardware-configuration.nix inputs.home-manager.nixosModules.default ];
 
-  # Bootloader.
-  boot.loader.grub = {
-    enable = true;
-    useOSProber = true;
-    device = "nodev";
-    efiSupport = true;
-  };
-  boot.loader.efi.canTouchEfiVariables = true;
 
+  # TODO network module
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Enable networking
   networking.networkmanager.enable = true;
+  services.resolved = { enable = true; };
 
-  # Set your time zone.
+  # TODO: location module
   time.timeZone = "Europe/Stockholm";
-
-  # Select internationalisation properties.
+  
+  console.keyMap = "sv-latin1";
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -42,24 +34,43 @@
 
   module.clamav.enable = true;
 
-  boot.plymouth = {
+  # TODO: Bootloader module.
+  boot.loader.grub = {
     enable = true;
-    theme = "breeze";
+    useOSProber = true;
+    device = "nodev";
+    efiSupport = true;
   };
+  boot.loader.efi.canTouchEfiVariables = true;
 
+  # TODO: wyprland module
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
   programs.waybar = { enable = true; };
+ 
+  environment.sessionVariables = {
+    #WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1";
+    HYPERLAND_LOG_WLR = "1";
+  };
+  
+  # TODO: Silent boot module
+  boot.plymouth = {
+    enable = true;
+    theme = "breeze";
+  };
+
   fonts = {
     fontconfig.enable = true;
     packages = with pkgs; [ nerdfonts font-awesome ];
   };
 
+  # TODO: Login moduleg
   services.xserver = {
-    enable = true;
-    displayManager.setupCommands = ''
+  enable = true;
+  displayManager.setupCommands = ''
       ${pkgs.xorg.xrandr}/bin/xrandr --output DP-3 --mode 2560x1440 --rotate normal --rate 144 
       ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-A-2 --off
     '';
@@ -82,15 +93,7 @@
     };
   };
 
-  environment.sessionVariables = {
-    #WLR_NO_HARDWARE_CURSORS = "1";
-    NIXOS_OZONE_WL = "1";
-    HYPERLAND_LOG_WLR = "1";
-  };
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
+  # TODO: Nvidia module
   hardware = {
     opengl.enable = true;
     nvidia = {
@@ -106,13 +109,7 @@
     };
   };
 
-  # Configure console keymap
-  console.keyMap = "sv-latin1";
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
+  # TODO: Sound module
   sound.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -122,7 +119,7 @@
     pulse.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # TODO: home manager module 
   users.users.dabidew = {
     isNormalUser = true;
     description = "David Lindskog Hedström";
@@ -132,15 +129,36 @@
         #  thunderbird
       ];
   };
-
-  users.extraGroups.docker.members = [ "dabidew" ];
-
+  
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = { "dabidew" = import ./home.nix; };
   };
 
-  # Install firefox.
+  # TODO: why do I need these?
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  services.printing.enable = true;
+
+  # TODO: Docker module
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
+  virtualisation.docker.daemon.settings = {
+    data-root = "/home/dabidew/docker/";
+  };
+  virtualisation.containers.enable = true;
+  users.extraGroups.docker.members = [ "dabidew" ];
+  
+  # TODO: dotnet module
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [ dotnet-sdk_8 dotnet-sdk_7 ];
+
+  # TODO: keep here?
   programs.firefox.enable = false;
   programs.dconf.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
@@ -153,7 +171,7 @@
       "everdo"
     ];
 
-  # List packages installed in system profile. To search, run:
+  # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
     clamav
     keymapp
@@ -191,28 +209,11 @@
     rofi-wayland
     nwg-displays
   ];
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ dotnet-sdk_8 dotnet-sdk_7 ];
-  virtualisation.containers.enable = true;
-
-  services.resolved = { enable = true; };
-  virtualisation.docker = {
-    enable = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
-  virtualisation.docker.daemon.settings = {
-    data-root = "/home/dabidew/docker/";
-  };
-
+ 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.enable = false;
   system.stateVersion = "23.11";
-
 }
