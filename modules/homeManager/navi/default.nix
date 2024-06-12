@@ -3,9 +3,9 @@
 let
   inherit (lib) mkOption mkEnableOption types mkIf;
   inherit (types) path str;
-  option = config.modules.navi;
+  option = config.module.navi;
 in {
-  options.modules.navi = {
+  options.module.navi = {
     enable = mkEnableOption "navi";
     cheats-source-directory = mkOption {
       default = ./cheats;

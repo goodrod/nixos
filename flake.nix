@@ -17,7 +17,6 @@
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -34,6 +33,7 @@
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/private/configuration.nix
+        ./modules/nixos
         inputs.home-manager.nixosModules.default
         inputs.sddm-sugar-candy-nix.nixosModules.default
         {
@@ -44,7 +44,6 @@
 
       ];
     };
-
-    modules.home-manager.default = ./modules/homeManager;
+    homeManagerModules.default = ./modules/homeManager;
   };
 }

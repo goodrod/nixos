@@ -1,15 +1,19 @@
 % nix/nixos
+$ flake-name: grep -E nixosConfiguration flake.nix | sed -E 's/.*nixosConfigurations.([A-Za-z]*).*/\1/'
+$ nixos-config-path: echo "~/git-repos/nixos"
+$ nixos-host: ls -C1 <nixos-config-path>/hosts/
+
 # (clean/garbage collect)       Remove old nixos builds
 sudo nix-collect-garbage --delete-old
 
-# (rebuild)                     Rebuild nixos
-sudo nixos-rebuild switch --flake ~/git-repos/nixos#default
+# (rebuild)                     Build nixos
+sudo nixos-rebuild switch --flake <nixos-config-path>#<flake-name>
 
-# (rebuild/test)                Rebuild and test nixos
-sudo nixos-rebuild test --flake ~/git-repos/nixos#default
+# (rebuild/test)                Test test build nixos
+sudo nixos-rebuild test --flake <nixos-config-path>#<flake-name>
 
 # (edit/change)                 Edit nixos home file
-nvim ~/git-repos/nixos/hosts/default/home.nix
+nvim <nixos-config-path>/hosts/<nixos-host>/home.nix
 
 # (edit/change)                 Edit nixos configuration.nix
-nvim ~/git-repos/nixos/hosts/default/configuration.nix
+nvim <nixos-config-path>/hosts/<nixos-host>/configuration.nix

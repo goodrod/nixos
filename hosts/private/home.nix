@@ -4,11 +4,13 @@
   home.username = "dabidew";
   home.homeDirectory = "/home/dabidew";
 
-  imports =
-    [ ../../modules/homeManager inputs.nixvim.homeManagerModules.nixvim ];
-  modules.navi.enable = true;
-  modules.awesome.enable = false;
-  modules.hyprland.enable = true;
+  imports = [
+    inputs.self.outputs.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
+  module.navi.enable = true;
+  module.awesome.enable = false;
+  module.hyprland.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {
