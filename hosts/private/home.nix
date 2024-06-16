@@ -11,6 +11,7 @@
   module.navi.enable = true;
   module.awesome.enable = false;
   module.hyprland.enable = true;
+  module.waybar.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {

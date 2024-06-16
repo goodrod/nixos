@@ -2,5 +2,5 @@
 
 {
   home.stateVersion = "23.11";
-  imports = [ ./navi ./awesome ./nixvim ./hyprland ];
+  imports = [ ./navi ./awesome ./nixvim ./hyprland ./waybar ];
 }

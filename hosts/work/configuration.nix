@@ -159,6 +159,7 @@
     postman
     okular
     nodejs
+    jsonfmt
     cryptsetup
   ];
 
