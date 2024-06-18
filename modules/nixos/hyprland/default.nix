@@ -19,6 +19,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [ wev wl-clipboard ];
     # Option definitions.
     # Define what other setting
     xdg.portal.extraPortals =
@@ -36,8 +37,9 @@ in {
     services.greetd = {
       enable = true;
       settings = {
-	default_session = {
-	  command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
+        default_session = {
+          command =
+            "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland";
           user = "greeter";
         };
       };
