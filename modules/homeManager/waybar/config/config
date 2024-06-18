@@ -11,7 +11,6 @@
     "memory",
     "cpu",
     "pulseaudio",
-    "network",
     "backlight",
     "custom/bat0",
     "custom/weather",
@@ -30,6 +29,7 @@
       "3": "",
       "4": "",
       "5": "",
+      "9": "",
       "urgent": "",
       "focused": "",
       "default": ""
@@ -78,7 +78,7 @@
     "spacing": 10
   },
   "clock": {
-    "timezone": "Europe/Paris",
+    "timezone": "Europe/Stockholm",
     "format": "{:%H:%M %Z} ",
     "format-alt": "{:%a, %b %d %C%y} ",
     "tooltip": false,
@@ -207,10 +207,10 @@
     "tooltip-format": "{status}"
   },
   "custom/weather": {
-    "format": "{}",
+    "format": "󰖐",
     "interval": 300,
     "return-type": "json",
-    "exec": "curl -s 'https://wttr.in/Linkoping?format=1' |jq --unbuffered --compact-output -M -R '{text:.}'",
+    "exec": "curl -s 'https://wttr.in/Linkoping?format=1' | jq --unbuffered --compact-output -M -R '{text:.}'",
     "exec-if": "ping wttr.in -c1",
     "on-click-right": "kitty --start-as fullscreen bash -ci ~/bin/wttr"
   }

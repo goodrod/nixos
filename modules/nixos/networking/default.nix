@@ -19,6 +19,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+
+    environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+
     # Option definitions.
     # Define what other settings, services and resources should be active.
     # Usually these depend on whether a user of this module chose to "enable" it
