@@ -24,17 +24,14 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
-    virtualisation.docker = {
-      enable = true;
-      rootless = {
-        enable = true;
-        setSocketVariable = true;
-      };
+    users.users.goodrod = {
+      isNormalUser = true;
+      description = "David Lindskog Hedström";
+      extraGroups = [ "networkmanager" "wheel" "docker" ];
     };
-    virtualisation.docker.daemon.settings = {
-      data-root = "/home/dabidew/docker/";
+    home-manager = {
+      extraSpecialArgs = { inherit inputs; };
+      users = { "goodrod" = import ./home.nix; };
     };
-    virtualisation.containers.enable = true;
-    users.extraGroups.docker.members = [ "dabidew" ];
   };
 }

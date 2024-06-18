@@ -2,7 +2,7 @@
 $ flake-name: grep -E nixosConfiguration <nixos-config-path>/flake.nix | sed -E 's/.*nixosConfigurations.([A-Za-z]*).*/\1/'
 $ nixos-config-path: echo "~/git-repos/nixos"
 $ nixos-host: ls -C1 <nixos-config-path>/hosts/
-$ flake-location: echo "nixos-config-path>/<flake-name>"
+$ flake-location: echo "<nixos-config-path>/<flake-name>"
 $ home-manager-module-path: echo "<nixos-config-path>/modules/homeManager"
 $ home-manager-template-path: echo "<home-manager-module-path>/templates"
 $ nixos-module-path: echo "<nixos-config-path>/modules/nixos"
@@ -23,14 +23,14 @@ nvim <nixos-config-path>/hosts/<nixos-host>/home.nix
 # (edit/change)                 Edit nixos configuration.nix
 nvim <nixos-config-path>/hosts/<nixos-host>/configuration.nix
 
-# (edit/change)                 Edit home manager modules
+# (edit/change)                 Edit home-modules
 nvim <home-manager-module-path> ; find <home-manager-module-path> | grep nix | xargs -I{} nixfmt {}
 
-# (edit/change)                 Edit nixos modules
+# (edit/change)                 Edit nixos-modules
 nvim <nixos-module-path> ; find <nixos-module-path> | grep nix | xargs -I{} nixfmt {}
 
 # (upgrade/update)              Upgrade nixos
-sudo nixos-rebuild --flake <flake-location> --update
+sudo nixos-rebuild switch --upgrade --flake <flake-location>
 
 # (create)                      Create a home manager module from template
 cp -r <template> <output> && sed -i "s/placeholder/<module-name>/g" <output>/default.nix

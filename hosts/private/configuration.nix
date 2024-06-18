@@ -5,22 +5,22 @@
 
 {
   imports =
-    [ ./hardware-configuration.nix inputs.home-manager.nixosModules.default ];
+    [ ./hardware-configuration.nix ];
 
-  module.defaults.enable = true;
-  module.location.enable = true;
-  module.clamav.enable = true;
+  module.networking.enable = true;
   module.boot-loader.enable = true;
+  module.location.enable = true;
+  module.sound.enable = true;
   module.silent-boot.enable = true;
+  module.clamav.enable = true;
+  services.printing.enable = true;
+  module.icon-fonts.enable = true;
+
   module.hyprland.enable = true;
   module.nvidia.enable = true;
-  module.sound.enable = true;
   module.docker.enable = true;
+  module.home-manager.enable = true;
   module.dotnet.enable = true;
-  module.networking.enable = true;
-  module.icon-fonts.enable = true;
-  services.printing.enable = true;
-
 
   # TODO: keep here?
   programs.firefox.enable = false;
@@ -38,6 +38,7 @@
   environment.systemPackages = with pkgs; [
     clamav
     keymapp
+    wlogout
     wget
     neovim
     git
