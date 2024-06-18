@@ -1,8 +1,8 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  home.username = "dabidew";
-  home.homeDirectory = "/home/dabidew";
+  home.username = "goodrod";
+  home.homeDirectory = "/home/goodrod";
 
   imports = [
     inputs.self.outputs.homeManagerModules.default
@@ -22,7 +22,7 @@
 
   programs.git = {
     enable = true;
-    userName = "dabidew";
+    userName = "goodrod";
     userEmail = "david.lindskog.hedstrom@pm.me";
     extraConfig = {
       init.defaultBranch = "main";
