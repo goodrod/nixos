@@ -37,7 +37,7 @@ in {
   config = mkIf option.enable {
     programs.bash = {
       bashrcExtra = ''
-        eval "$(navi widget bash)"
+        [ -n "$PS1" ] && eval "$(navi widget bash)"
       '';
     };
 
