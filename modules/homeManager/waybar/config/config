@@ -19,10 +19,11 @@
     "tray"
   ],
   "hyprland/workspaces": {
+    "on-click": "focusworkspaceoncurrentmonitor",
     "disable-scroll": true,
     "all-outputs": true,
     "show-special": true,
-    "format": "{name} {icon}",
+    "format": "{icon}",
     "format-icons": {
       "1": "",
       "2": "",

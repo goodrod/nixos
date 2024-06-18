@@ -4,8 +4,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  imports =
-    [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ];
 
   module.networking.enable = true;
   module.boot-loader.enable = true;
@@ -18,7 +17,7 @@
 
   module.hyprland.enable = true;
   module.nvidia.enable = true;
-  module.docker.enable = true;
+  module.docker.enable = false;
   module.home-manager.enable = true;
   module.dotnet.enable = true;
 
@@ -38,6 +37,7 @@
   environment.systemPackages = with pkgs; [
     clamav
     keymapp
+    wlr-randr
     wlogout
     wget
     neovim
@@ -64,7 +64,6 @@
     spotify
     postman
     okular
-    kitty
     nodejs
     cryptsetup
     ntfs3g
@@ -72,10 +71,9 @@
     libnotify
     rofi-wayland
     nwg-displays
-    dolphin
     jsonfmt
   ];
- 
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # networking.firewall.allowedTCPPorts = [ ... ];

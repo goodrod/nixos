@@ -24,9 +24,6 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above. 
     # Options for modules imported in "imports" can be set here.
-    boot.plymouth = {
-      enable = false;
-      theme = "breeze";
-    };
+    boot.plymouth = { enable = false; };
   };
 }
