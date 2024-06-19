@@ -2,3 +2,8 @@
 $ nixos-config-path: echo "~/git-repos/nixos"
 $ home-manager-module-path: echo "<nixos-config-path>/modules/homeManager"
 $ nixos-module-path: echo "<nixos-config-path>/modules/nixos"
+$ flake-name: grep -E nixosConfiguration <nixos-config-path>/flake.nix | sed -E 's/.*nixosConfigurations.([A-Za-z]*).*/\1/'
+$ nixos-host: ls -C1 <nixos-config-path>/hosts/
+$ flake-location: echo "<nixos-config-path>/<flake-name>"
+$ home-manager-template-path: echo "<home-manager-module-path>/templates"
+$ nixos-template-path: echo "<nixos-module-path>/templates"

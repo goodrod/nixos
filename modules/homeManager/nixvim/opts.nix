@@ -9,6 +9,7 @@
       };
 
       opts = {
+        scrolloff = 999;
         number = true;
         relativenumber = true;
         shiftwidth = 2;

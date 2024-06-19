@@ -1,12 +1,6 @@
 % nix/nixos
 @ constants
 
-$ flake-name: grep -E nixosConfiguration <nixos-config-path>/flake.nix | sed -E 's/.*nixosConfigurations.([A-Za-z]*).*/\1/'
-$ nixos-host: ls -C1 <nixos-config-path>/hosts/
-$ flake-location: echo "<nixos-config-path>/<flake-name>"
-$ home-manager-template-path: echo "<home-manager-module-path>/templates"
-$ nixos-template-path: echo "<nixos-module-path>/templates"
-
 # (clean/garbage collect)       Remove old nixos builds
 sudo nix-collect-garbage --delete-old
 
@@ -31,14 +25,17 @@ nvim <nixos-module-path> ; find <nixos-module-path> | grep nix | xargs -I{} nixf
 # (upgrade/update)              Upgrade nixos
 sudo nixos-rebuild switch --upgrade --flake <flake-location>
 
+# (create)                      Create a nixos module from template
+cp -r <template> <output> && sed -i "s/placeholder/<module-name>/g" <output>/default.nix
+$ template: echo "<nixos-template-path>/<template-name>"
+$ template-name: ls -C1 <nixos-template-path>
+$ output: echo "<nixos-module-path>/<module-name>"
+
+% nixos/home-manager
+@ constants
 # (create)                      Create a home manager module from template
 cp -r <template> <output> && sed -i "s/placeholder/<module-name>/g" <output>/default.nix
 $ template: echo "<home-manager-template-path>/<template-name>"
 $ template-name: ls -C1 <home-manager-template-path>
 $ output: echo "<home-manager-module-path>/<module-name>"
 
-# (create)                      Create a nixos module from template
-cp -r <template> <output> && sed -i "s/placeholder/<module-name>/g" <output>/default.nix
-$ template: echo "<nixos-template-path>/<template-name>"
-$ template-name: ls -C1 <nixos-template-path>
-$ output: echo "<nixos-module-path>/<module-name>"
