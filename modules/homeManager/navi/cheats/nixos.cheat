@@ -1,11 +1,10 @@
 % nix/nixos
+@ constants
+
 $ flake-name: grep -E nixosConfiguration <nixos-config-path>/flake.nix | sed -E 's/.*nixosConfigurations.([A-Za-z]*).*/\1/'
-$ nixos-config-path: echo "~/git-repos/nixos"
 $ nixos-host: ls -C1 <nixos-config-path>/hosts/
 $ flake-location: echo "<nixos-config-path>/<flake-name>"
-$ home-manager-module-path: echo "<nixos-config-path>/modules/homeManager"
 $ home-manager-template-path: echo "<home-manager-module-path>/templates"
-$ nixos-module-path: echo "<nixos-config-path>/modules/nixos"
 $ nixos-template-path: echo "<nixos-module-path>/templates"
 
 # (clean/garbage collect)       Remove old nixos builds

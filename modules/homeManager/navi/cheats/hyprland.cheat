@@ -1,3 +1,5 @@
 % hyprland
+@ constants
+
 # (edit)                        Edit hyprland configuration
-nvim ~/git-repos/nixos/modules/homeManager/hyprland/config/
+nvim <home-manager-module-path>/hyprland/config/
