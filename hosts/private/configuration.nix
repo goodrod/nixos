@@ -36,6 +36,7 @@
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
     clamav
+    fzf
     keymapp
     wlr-randr
     wlogout
