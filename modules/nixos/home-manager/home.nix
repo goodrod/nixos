@@ -12,6 +12,7 @@
   module.awesome.enable = false;
   module.hyprland.enable = true;
   module.waybar.enable = true;
+  module.alacritty.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {

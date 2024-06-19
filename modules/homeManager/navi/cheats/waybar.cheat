@@ -1,5 +1,5 @@
 % waybar
-@ contants 
+@ constants 
 
 # (edit/configure)              Edit config for waybar
 nvim <home-manager-module-path>/waybar/config/

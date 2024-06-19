@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [ ./opts.nix ./keymaps.nix ./plugins ];
+  imports = [ ./opts.nix ./keymaps ./plugins ];
 
   home.shellAliases.v = "nvim";
   programs.nixvim = {
