@@ -1,3 +1,5 @@
 % nvim
+@ constants
+
 # (edit/change)                 Edit nixvim config
-nvim ~/git-repos/nixos/modules/nixvim/default.nix
+nvim <home-manager-module-path>/nixvim/default.nix

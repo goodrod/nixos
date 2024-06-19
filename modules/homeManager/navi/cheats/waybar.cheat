@@ -1,4 +1,6 @@
 % waybar
+@ contants 
+
 # (edit/configure)              Edit config for waybar
-nvim ~/git-repos/nixos/modules/homeManager/waybar/config/
+nvim <home-manager-module-path>/waybar/config/
 

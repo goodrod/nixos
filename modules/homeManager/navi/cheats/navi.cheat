@@ -1,6 +1,8 @@
 % denisoro/navi
+@ constants
+
 # (edit/add)                    Edit navi cheats
-nvim ~/git-repos/nixos/modules/homeManager/navi/cheats/ ; find ~/git-repos/nixos/modules/homeManager/navi/cheats -type f -exec sed -i -E "s/# (\([^)                        ]*\))\s*/# \1                              /" {} \; && find ~/git-repos/nixos/modules/homeManager/navi/cheats -type f -exec sed -i -E "s/# (.{30})\s*(.*)/# \1\2/" {} \;
+nvim <home-manager-module-path>/navi/cheats/ ; find <home-manager-module-path>/navi/cheats -type f -exec sed -i -E "s/# (\([^)                        ]*\))\s*/# \1                              /" {} \; && find <home-manager-module-path>/navi/cheats -type f -exec sed -i -E "s/# (.{30})\s*(.*)/# \1\2/" {} \;
 
 # (edit)                        Edit navi configration
-nvim ~/git-repos/nixos/modules/homeManager/navi/config/
+nvim <home-manager-module-path>/navi/config/
