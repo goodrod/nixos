@@ -1,0 +1,4 @@
+% constants
+$ nixos-config-path: echo "~/git-repos/nixos"
+$ home-manager-module-path: echo "<nixos-config-path>/modules/homeManager"
+$ nixos-module-path: echo "<nixos-module-path>/modules/nixos"
