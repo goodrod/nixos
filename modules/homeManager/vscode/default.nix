@@ -4,18 +4,18 @@ let
   # Shorter name to access final settings a 
   # user of hello.nix module HAS ACTUALLY SET.
   # cfg is a typical convention.
-  cfg = config.module.silent-boot;
+  cfg = config.module.vscode;
 in {
   imports = [
     # Paths to other modules.
     # Compose this module out of smaller ones.
   ];
 
-  options.module.silent-boot = {
+  options.module.vscode = {
     # Option declarations.
     # Declare what settings a user of this module module can set.
     # Usually this includes a global "enable" option which defaults to false.
-    enable = mkEnableOption "silent-boot";
+    enable = mkEnableOption "vscode";
   };
 
   config = mkIf cfg.enable {
@@ -24,8 +24,15 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above. 
     # Options for modules imported in "imports" can be set here.
-    boot.plymouth = { enable = true;
-    theme = "breeze";
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [ "vscode" ];
+    programs.vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        dracula-theme.theme-dracula
+        vscodevim.vim
+        yzhang.markdown-all-in-one
+      ];
     };
   };
 }
