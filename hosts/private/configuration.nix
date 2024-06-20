@@ -37,6 +37,7 @@
   environment.systemPackages = with pkgs; [
     clamav
     fzf
+    icu
     keymapp
     wlr-randr
     wlogout
@@ -58,7 +59,6 @@
     openssl
     flameshot
     dive
-    dotnet-sdk_8
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
     xwallpaper
