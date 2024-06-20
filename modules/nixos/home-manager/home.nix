@@ -10,7 +10,11 @@
   ];
   module.navi.enable = true;
   module.awesome.enable = false;
-  module.hyprland.enable = true;
+  module.hyprland2 = {
+    enable = true;
+    monitors.middle.name = "DP-3";
+    monitors.right.name = "HDMI-A-2";
+  };
   module.waybar.enable = true;
   module.alacritty.enable = true;
   module.vscode.enable = true;
@@ -28,7 +32,6 @@
     userEmail = "david.lindskog.hedstrom@pm.me";
     extraConfig = {
       init.defaultBranch = "main";
-      safe.directory = "/etc/nixos";
       core.pager = "less -r";
     };
   };
