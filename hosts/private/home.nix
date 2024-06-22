@@ -1,13 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  home.username = "goodrod";
-  home.homeDirectory = "/home/goodrod";
-
-  imports = [
-    inputs.self.outputs.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
-  ];
   module.navi.enable = true;
   module.awesome.enable = false;
   module.hyprland2 = {
@@ -36,6 +29,6 @@
     };
   };
 
-  home.stateVersion = "23.11";
   programs.home-manager.enable = true;
+  home.stateVersion = "23.11";
 }

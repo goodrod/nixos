@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./tmux
     ./clamav
     ./boot-loader
     ./location
