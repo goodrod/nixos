@@ -5,7 +5,7 @@ let
   # user of hello.nix module HAS ACTUALLY SET.
   # cfg is a typical convention.
   inherit (lib) mkOption mkEnableOption types mkIf;
-  inherit (types) path str;
+  inherit (types) path str bool;
   option = config.module.hyprland2;
 in {
   imports = [
@@ -21,18 +21,26 @@ in {
 
     monitors = {
       left = {
+        enable = mkOption {
+          type = bool;
+          default = false;
+        };
         name = mkOption {
           type = str;
           description = "Left monitor";
-          default = "";
+          default = "eDP-1";
         };
         settings = mkOption {
           type = str;
-          description = "Settings for screen, e.g. 2560x1440@144,0x0,1.0";
-          default = "";
+          description = "Settings for monitor, e.g. 2560x1440@144,0x0,1.0";
+          default = "1920x1200@59.95,0x0,1.0";
         };
       };
       middle = {
+        enable = mkOption {
+          type = bool;
+          default = false;
+        };
         name = mkOption {
           type = str;
           description = "Middle monitor";
@@ -40,11 +48,15 @@ in {
         };
         settings = mkOption {
           type = str;
-          description = "Settings for screen, e.g. 2560x1440@144,0x0,1.0";
+          description = "Settings for monitor, e.g. 2560x1440@144,0x0,1.0";
           default = "2560x1440@144.0,0x0,1.0";
         };
       };
       right = {
+        enable = mkOption {
+          type = bool;
+          default = false;
+        };
         name = mkOption {
           type = str;
           description = "Right monitor";
@@ -52,7 +64,7 @@ in {
         };
         settings = mkOption {
           type = str;
-          description = "Settings for screen, e.g. 2560x1440@144,0x0,1.0";
+          description = "Settings for monitor, e.g. 2560x1440@144,0x0,1.0";
           default = "2560x1440@59.95,2560x0,1.0";
         };
       };
@@ -79,7 +91,6 @@ in {
         package = pkgs.flat-remix-gtk;
         name = "Flat-Remix-GTK-Grey-Darkest";
       };
-
       iconTheme = {
         package = pkgs.gnome.adwaita-icon-theme;
         name = "Adwaita";
@@ -97,9 +108,15 @@ in {
       systemd.enable = true;
       xwayland.enable = true;
       settings = {
-        monitor = [
-          "${option.monitors.middle.name},${option.monitors.middle.settings}"
-          "${option.monitors.right.name},${option.monitors.right.settings}"
+        monitor = mkMerge [
+          (mkIf (option.monitors.left.enable)
+            [ "${option.monitors.left.name},${option.monitors.left.settings}" ])
+          (mkIf (option.monitors.middle.enable) [
+            "${option.monitors.middle.name},${option.monitors.middle.settings}"
+          ])
+          (mkIf (option.monitors.right.enable) [
+            "${option.monitors.right.name},${option.monitors.right.settings}"
+          ])
         ];
         "$terminal" = "alacritty";
         "$menu" = "rofi -show drun";

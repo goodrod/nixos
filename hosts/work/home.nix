@@ -1,16 +1,28 @@
 { config, pkgs, lib, inputs, ... }:
 
 {
-  home.username = "goodrod";
-  home.homeDirectory = "/home/goodrod";
-
-  imports = [
-    inputs.homeManagerModules.default
-    inputs.nixvim.homeManagerModules.nixvim
-  ];
   module.navi.enable = true;
-  module.awesome.enable = true;
-  home.packages = [ pkgs.ripgrep ];
+  module.awesome.enable = false;
+  module.hyprland2 = {
+    enable = true;
+    monitors.left = {
+      enable = true;
+    };
+    monitors.middle = {
+      enable = true;
+      name = "DP-5";
+      settings = "2560x1440@99.95,1920x0,1.0";
+    };
+    monitors.right = {
+      enable = true;
+      name = "DP-6";
+      settings = "2560x1440@59.95,4480x0,1.0";
+    };
+  };
+  module.waybar.enable = true;
+  module.alacritty.enable = true;
+  module.vscode.enable = true;
+  home.packages = [ pkgs.ripgrp ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -24,18 +36,10 @@
     userEmail = "david.lindskog-hedstrom@helisoft.se";
     extraConfig = {
       init.defaultBranch = "main";
-      safe.directory = "/etc/nixos";
       core.pager = "less -r";
     };
   };
 
-  gtk = {
-    enable = true;
-    theme.name = "adw-gtk3";
-    cursorTheme.name = "Bibata-Modern-Ice";
-    iconTheme.name = "GruvboxPlus";
-  };
-
-  home.stateVersion = "23.11";
   programs.home-manager.enable = true;
+  home.stateVersion = "23.11";
 }

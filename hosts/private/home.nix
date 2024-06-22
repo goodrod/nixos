@@ -5,8 +5,14 @@
   module.awesome.enable = false;
   module.hyprland2 = {
     enable = true;
-    monitors.middle.name = "DP-3";
-    monitors.right.name = "HDMI-A-2";
+    monitors.middle = {
+      enable = true;
+      name = "DP-3";
+    };
+    monitors.right = {
+      enable = true;
+      name = "HDMI-A-2";
+    };
   };
   module.waybar.enable = true;
   module.alacritty.enable = true;
