@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 with lib;
 let
-  # shorter name to access final settings a 
+  # shorter name to access final settings a
   # user of hello.nix module has actually set.
   # option is a typical convention.
   option = config.module.home-manager;

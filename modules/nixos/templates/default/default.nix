@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 with lib;
 let
-  # Shorter name to access final settings a 
+  # Shorter name to access final settings a
   # user of hello.nix module HAS ACTUALLY SET.
   # cfg is a typical convention. But notice how
   # option makes much more sense.
@@ -23,7 +23,7 @@ in {
     # Option definitions.
     # Define what other settings, services and resources should be active.
     # Usually these depend on whether a user of this module chose to "enable" it
-    # using the "option" above. 
+    # using the "option" above.
     # Options for modules imported in "imports" can be set here.
   };
 }

@@ -1,5 +1,5 @@
 #!/bin/bash
-# 
+#
 # Author: Joachim Bauernberger <joachim.bauernberger@protonmail.com>
 #
 # ##
@@ -7,18 +7,18 @@
 # ##
 #
 # Description: This script doesn't work. The idea was to have a udev rule
-# that monitors the paths in /sys/class as below and run 
+# that monitors the paths in /sys/class as below and run
 # `pkill -HUP kbd_indicator` whenever there is a change in value
 # - however the leds subsystem does not cause an interrupt to be fired for
 # these events and so the udev rule never executes. An alternative for getting
 # the below to work is simply poll the path every second using sleep(1) but
 # that is pure overkill and poor use of systems resourcs.
-# Because you can't get notifications using poll(2)/select(2) in C on 
+# Because you can't get notifications using poll(2)/select(2) in C on
 # regular files ...
 # My second attempt was to write an inotify(7) program which monitors the path
-# - however as the inotify documentation says it does not work on 
+# - however as the inotify documentation says it does not work on
 # /proc and /sys/class or networked filesystems ...
-# 
+#
 # The actual (and only clean) solution would therefore be by using the
 # libxkbcommon code ...
 

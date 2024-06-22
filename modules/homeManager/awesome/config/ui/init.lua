@@ -19,7 +19,7 @@ function updateBarsVisibility()
       -- Make sure a panel does exist on this specific screen, otherwise return
       if s.top_panel == nil then
         return
-      end 
+      end
 
       -- These are the bars that are hidden when on any fullscreen mode (The awesomewm fullscreen mode and app fullscren modes like youtube)
       -- If you want bars to be invisible when you fullscreen an app, you can do so like so :
