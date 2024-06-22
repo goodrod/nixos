@@ -1,37 +1,65 @@
 { config, pkgs, lib, inputs, ... }:
 with lib;
 let
-  # Shorter name to access final settings a 
-  # user of hello.nix module HAS ACTUALLY SET.
-  # cfg is a typical convention.
-  cfg = config.module.home-manager;
+  # shorter name to access final settings a 
+  # user of hello.nix module has actually set.
+  # option is a typical convention.
+  option = config.module.home-manager;
+  inherit (types) str path;
 in {
   imports = [
-    # Paths to other modules.
-    # Compose this module out of smaller ones.
+    # paths to other modules.
+    # compose this module out of smaller ones.
   ];
 
   options.module.home-manager = {
-    # Option declarations.
-    # Declare what settings a user of this module module can set.
-    # Usually this includes a global "enable" option which defaults to false.
+    # option declarations.
+    # declare what settings a user of this module module can set.
+    # usually this includes a global "enable" option which defaults to false.
     enable = mkEnableOption "home-manager";
+    module-path = mkOption {
+      description = "path of home manager module to use.";
+      type = path;
+      default = ./home.nix;
+    };
+    username = mkOption {
+      description =
+        "username for account, assumes it is a single account system.";
+      type = str;
+      default = "goodrod";
+    };
+    name = mkOption {
+      description = "real name of user";
+      type = str;
+      default = "david lindskog hedström";
+    };
   };
 
-  config = mkIf cfg.enable {
-    # Option definitions.
-    # Define what other settings, services and resources should be active.
-    # Usually these depend on whether a user of this module chose to "enable" it
+  config = mkIf option.enable {
+    # option definitions.
+    # define what other settings, services and resources should be active.
+    # usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
-    # Options for modules imported in "imports" can be set here.
-    users.users.goodrod = {
+    # options for modules imported in "imports" can be set here.
+    users.users."${option.username}" = {
       isNormalUser = true;
-      description = "David Lindskog Hedström";
+      description = "${option.name}";
       extraGroups = [ "networkmanager" "wheel" "docker" ];
     };
     home-manager = {
       extraSpecialArgs = { inherit inputs; };
-      users = { "goodrod" = import ./home.nix; };
+      users = {
+        "${option.username}" = {
+          imports = [
+            "${option.module-path}"
+            inputs.self.outputs.homeManagerModules.default
+            inputs.nixvim.homeManagerModules.nixvim
+          ];
+          home.username = "${option.username}";
+          home.homeDirectory = "/home/${option.username}";
+          home.stateVersion = "23.11";
+        };
+      };
     };
   };
 }

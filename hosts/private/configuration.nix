@@ -14,11 +14,15 @@
   module.clamav.enable = true;
   services.printing.enable = true;
   module.icon-fonts.enable = true;
+  module.tmux.enable = true;
 
   module.hyprland.enable = true;
   module.nvidia.enable = true;
   module.docker.enable = false;
-  module.home-manager.enable = true;
+  module.home-manager = {
+    enable = true;
+    module-path = ./home.nix;
+  };
   module.dotnet.enable = true;
 
   # TODO: keep here?
