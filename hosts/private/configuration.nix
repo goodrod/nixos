@@ -14,7 +14,6 @@
   module.clamav.enable = true;
   services.printing.enable = true;
   module.icon-fonts.enable = true;
-  module.tmux.enable = true;
 
   module.hyprland.enable = true;
   module.nvidia.enable = true;

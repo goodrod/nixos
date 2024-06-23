@@ -21,30 +21,11 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.work = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/work/configuration.nix
-        ./modules/nixos
-        inputs.home-manager.nixosModules.default
-      ];
+  outputs = { self, nixpkgs, ... }@inputs:
+    let libx = import ./lib { inherit inputs; };
+    in {
+      nixosConfigurations = nixpkgs.lib.attrsets.genAttrs [ "work" "private" ]
+        (name: libx.mkHost { hostname = name; });
+      homeManagerModules.default = ./modules/homeManager;
     };
-    nixosConfigurations.private = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/private/configuration.nix
-        ./modules/nixos
-        inputs.home-manager.nixosModules.default
-        inputs.sddm-sugar-candy-nix.nixosModules.default
-        {
-          nixpkgs = {
-            overlays = [ inputs.sddm-sugar-candy-nix.overlays.default ];
-          };
-        }
-
-      ];
-    };
-    homeManagerModules.default = ./modules/homeManager;
-  };
 }
