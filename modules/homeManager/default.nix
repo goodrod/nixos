@@ -2,6 +2,15 @@
 
 {
   home.stateVersion = "23.11";
-  imports =
-    [ ./navi ./awesome ./nixvim ./waybar ./alacritty ./vscode ./hyprland2 ];
+  imports = [
+    ./default-home-dirs
+    ./navi
+    ./awesome
+    ./nixvim
+    ./waybar
+    ./alacritty
+    ./vscode
+    ./hyprland2
+    ./tmux
+  ];
 }

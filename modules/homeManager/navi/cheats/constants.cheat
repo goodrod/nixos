@@ -1,9 +1,9 @@
 % constants
-$ nixos-config-path: echo "~/git-repos/nixos"
+$ nixos-config-path: echo "~/nixos"
 $ home-manager-module-path: echo "<nixos-config-path>/modules/homeManager"
 $ nixos-module-path: echo "<nixos-config-path>/modules/nixos"
-$ flake-name: grep -E nixosConfiguration <nixos-config-path>/flake.nix | sed -E 's/.*nixosConfigurations.([A-Za-z]*).*/\1/'
-$ nixos-host: ls -C1 <nixos-config-path>/hosts/
-$ flake-location: echo "<nixos-config-path>/<flake-name>"
+$ current-nixos-host: cat /etc/nixos-hostname
+$ nixos-host: echo "<current-nixos-host>" && ls -C1 <nixos-config-path>/hosts | grep -v "^<current-nixos-host>$"
 $ home-manager-template-path: echo "<home-manager-module-path>/templates"
+$ flake-location: echo "<nixos-config-path>"
 $ nixos-template-path: echo "<nixos-module-path>/templates"
