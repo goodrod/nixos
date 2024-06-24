@@ -22,7 +22,7 @@
   module.waybar.enable = true;
   module.alacritty.enable = true;
   module.vscode.enable = true;
-  home.packages = [ pkgs.ripgrp ];
+  home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {
     EDITOR = "nvim";
