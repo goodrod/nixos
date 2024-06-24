@@ -18,7 +18,10 @@
   module.hyprland.enable = true;
   module.nvidia.enable = false;
   module.docker.enable = true;
-  module.home-manager.enable = true;
+  module.home-manager = {
+    enable = true;
+    module-path = ./home.nix;
+  };
   module.dotnet.enable = true;
 
   networking.hosts = {
