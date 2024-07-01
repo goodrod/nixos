@@ -24,7 +24,14 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
+
     programs.tmux.enable = true;
+    programs.tmux.secureSocket = false;
+    programs.bash = {
+      bashrcExtra = ''
+        bind '"\C-f": "tmux neww ~/bin/tmux-sessionizer\n"' 
+	'';
+    };
     programs.tmux.extraConfig = ''
       set -ga terminal-overrides ",screen-256color*:Tc"
       set-option -g default-terminal "screen-256color"
@@ -40,7 +47,7 @@ in {
 
       set-window-option -g mode-keys vi
       bind -T copy-mode-vi v send-keys -X begin-selection
-      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel 'wl-clip'
 
       # vim-like pane switching
       bind -r ^ last-window
@@ -50,7 +57,7 @@ in {
       bind -r ö select-pane -R
 
       # forget the find window.  That is for chumps
-      bind-key -r f run-shell "tmux neww ~/.local/bin/tmux-sessionizer"
+      bind-key -r f run-shell "tmux neww ~/bin/tmux-sessionizer"
     '';
     home.file."bin/tmux-sessionizer" = {
       executable = true;
