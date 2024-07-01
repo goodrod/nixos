@@ -3,7 +3,7 @@
 {
   module.navi.enable = true;
   module.awesome.enable = false;
-  module.hyprland2 = {
+  module.hyprland = {
     enable = true;
     monitors.left = {
       enable = true;

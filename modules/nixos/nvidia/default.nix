@@ -24,8 +24,14 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
+    nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      "nvidia-x11"
+      "nvidia-settings"
+   ];
+    services.xserver.videoDrivers = [ "nvidia" ];
     hardware = {
-      opengl.enable = true;
+      graphics.enable = true;
       nvidia = {
         modesetting.enable = true;
         package = config.boot.kernelPackages.nvidiaPackages.mkDriver {

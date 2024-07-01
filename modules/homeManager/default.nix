@@ -10,7 +10,7 @@
     ./waybar
     ./alacritty
     ./vscode
-    ./hyprland2
+    ./hyprland
     ./tmux
   ];
 }

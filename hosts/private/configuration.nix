@@ -23,9 +23,7 @@
     module-path = ./home.nix;
   };
   module.dotnet.enable = true;
-
-  # TODO: keep here?
-  programs.firefox.enable = false;
+  programs.firefox.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "slack"
@@ -34,11 +32,14 @@
       "postman"
       "keymapp"
       "everdo"
-    ];
+      "nvidia-x11"
+      "nvidia-settings"
+   ];
 
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
     clamav
+    everdo
     fzf
     icu
     keymapp
@@ -58,7 +59,6 @@
     slack
     pavucontrol
     jetbrains.rider
-    chromium
     openssl
     flameshot
     dive

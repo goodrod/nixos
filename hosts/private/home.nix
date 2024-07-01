@@ -3,15 +3,15 @@
 {
   module.navi.enable = true;
   module.awesome.enable = false;
-  module.hyprland2 = {
+  module.hyprland = {
     enable = true;
     monitors.middle = {
       enable = true;
-      name = "DP-3";
+      name = "DP-1";
     };
     monitors.right = {
       enable = true;
-      name = "HDMI-A-2";
+      name = "HDMI-A-1";
     };
   };
   module.waybar.enable = true;

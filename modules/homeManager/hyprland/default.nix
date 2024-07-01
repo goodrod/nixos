@@ -6,18 +6,18 @@ let
   # cfg is a typical convention.
   inherit (lib) mkOption mkEnableOption types mkIf;
   inherit (types) path str bool;
-  option = config.module.hyprland2;
+  option = config.module.hyprland;
 in {
   imports = [
     # Paths to other modules.
     # Compose this module out of smaller ones.
   ];
 
-  options.module.hyprland2 = {
+  options.module.hyprland = {
     # Option declarations.
     # Declare what settings a user of this module module can set.
     # Usually this includes a global "enable" option which defaults to false.
-    enable = mkEnableOption "hyprland2";
+    enable = mkEnableOption "hyprland";
 
     monitors = {
       left = {
@@ -128,11 +128,12 @@ in {
           "suppressevent maximize, class:.*"
           "workspace 1 silent,class:(pavucontrol)"
           "workspace 2 silent,title:(.*)(Spotify)(.*)"
+          "workspace 5 silent,class:(everdo)"
           "workspace 6 silent,class:(Slack)"
           "workspace 7 silent,class:(jetbrains-rider)"
           "workspace 7 silent,class:(code-url-handler)"
           "workspace 8 silent,class:(Alacritty)"
-          "workspace 9 silent,class:(chromium-browser)"
+          "workspace 9 silent,class:(firefox)"
         ];
         general = {
           gaps_in = 5;
@@ -142,7 +143,7 @@ in {
           "col.inactive_border" = "rgba(595959aa)";
           resize_on_border = false;
           allow_tearing = false;
-          layout = "dwindle";
+          layout = "master";
         };
 
         decoration = {
@@ -175,12 +176,7 @@ in {
           ];
         };
 
-        dwindle = {
-          pseudotile = true;
-          preserve_split = true;
-        };
-
-        master.new_is_master = true;
+        master = { new_status = "master"; };
 
         misc = {
           force_default_wallpaper = 0;
@@ -205,14 +201,18 @@ in {
         exec-once = [
           "hyprpaper &"
           "slack &"
-          "chromium https://www.office.com &"
+          "firefox https://www.office.com &"
           "rider &"
           "$terminal &"
           "spotify &"
           "nm-applet &"
+          "everdo &"
+          "firefox &"
         ];
         env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
         bind = [
+          "$mainMod, I, layoutmsg, removemaster"
+          "$mainMod, O, layoutmsg, addmaster"
           "$mainMod, space, exec, $terminal"
           "$mainMod, C, killactive,"
           "$mainMod, M, exit,"
@@ -225,6 +225,14 @@ in {
           "$mainMod, code:69, focusmonitor, $monitor-1"
           "$mainMod, code:70, focusmonitor, $monitor-2"
           "$mainMod, code:71, focusmonitor, $monitor-3"
+          "$mainMod SHIFT, left, movewindow, l"
+          "$mainMod SHIFT, right, movewindow, r"
+          "$mainMod SHIFT, up, movewindow, u"
+          "$mainMod SHIFT, down, movewindow, d"
+          "$mainMod SHIFT, J, movewindow, l"
+          "$mainMod SHIFT, code:47, movewindow, r"
+          "$mainMod SHIFT, L, movewindow, u"
+          "$mainMod SHIFT, K, movewindow, d"
           "$mainMod, left, movefocus, l"
           "$mainMod, right, movefocus, r"
           "$mainMod, up, movefocus, u"

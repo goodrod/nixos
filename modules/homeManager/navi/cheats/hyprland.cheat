@@ -2,4 +2,7 @@
 @ constants
 
 # (edit)                        Edit hyprland configuration
-nvim <home-manager-module-path>/hyprland/config/
+nvim <home-manager-module-path>/hyprland/default.nix
+
+# (get/list)                    List all active hyprland clients (windows)
+hyprctl clients
