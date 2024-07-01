@@ -34,7 +34,7 @@
       "everdo"
       "nvidia-x11"
       "nvidia-settings"
-   ];
+    ];
 
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [

@@ -95,6 +95,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.enable = false;
   security.pki.certificateFiles =
-   [ /home/goodrod/git-repos/Helios/misc/ca/ca/ca.pem ];
+    [ /home/goodrod/git-repos/Helios/misc/ca/ca/ca.pem ];
   system.stateVersion = "23.11";
 }

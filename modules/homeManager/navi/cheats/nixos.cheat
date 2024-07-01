@@ -25,6 +25,9 @@ nvim <nixos-module-path> ; find <nixos-module-path> | grep nix | xargs -I{} nixf
 # (upgrade/update)              Upgrade nixos
 nixos-rebuild switch --upgrade --flake <flake-location>
 
+# (format/reformat)             Format all nix files
+find <nixos-config-path> | grep nix | xargs -I{} nixfmt {}
+
 # (create)                      Create a new nixos module from template
 cp -r <template> <output> && sed -i "s/placeholder/<module-name>/g" <output>/default.nix && cd <nixos-config-path> && git add <output> && cd - && sed -i '/imports = \[/a\    .\/<module-name>' <nixos-module-path>/default.nix
 $ template: echo "<nixos-template-path>/<template-name>"
