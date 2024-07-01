@@ -29,8 +29,8 @@ in {
     programs.tmux.secureSocket = false;
     programs.bash = {
       bashrcExtra = ''
-        bind '"\C-f": "tmux neww ~/bin/tmux-sessionizer\n"' 
-	'';
+                bind '"\C-f": "tmux neww ~/bin/tmux-sessionizer\n"' 
+        	'';
     };
     programs.tmux.extraConfig = ''
       set -ga terminal-overrides ",screen-256color*:Tc"

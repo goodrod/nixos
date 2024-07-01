@@ -5,9 +5,7 @@
   module.awesome.enable = false;
   module.hyprland = {
     enable = true;
-    monitors.left = {
-      enable = true;
-    };
+    monitors.left = { enable = true; };
     monitors.middle = {
       enable = true;
       name = "DP-5";
