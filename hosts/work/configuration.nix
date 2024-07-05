@@ -23,6 +23,7 @@
     module-path = ./home.nix;
   };
   module.dotnet.enable = true;
+  module.virtual-box.enable = true;
 
   networking.hosts = {
     "192.168.0.90" = [ "host.docker.internal" ];
@@ -45,10 +46,13 @@
       "keymapp"
       "everdo"
       "vscode"
+      "Oracle_VM_VirtualBox_Extension_Pack"
     ];
 
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
+    xclip
+    everdo
     clamav
     fzf
     icu
