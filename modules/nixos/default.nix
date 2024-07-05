@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./virtual-box
     ./discord
     ./clamav
     ./boot-loader
