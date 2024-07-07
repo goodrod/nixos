@@ -28,7 +28,7 @@ in {
         name = mkOption {
           type = str;
           description = "Left monitor";
-          default = "eDP-1";
+          default = "";
         };
         settings = mkOption {
           type = str;
@@ -119,7 +119,7 @@ in {
           ])
         ];
         "$terminal" = "alacritty";
-        "$menu" = "rofi -show drun";
+        "$menu" = "wofi -show drun";
         "$monitor-1" = "${option.monitors.left.name}";
         "$monitor-2" = "${option.monitors.middle.name}";
         "$monitor-3" = "${option.monitors.right.name}";
@@ -199,6 +199,7 @@ in {
         gestures = { workspace_swipe = false; };
 
         exec-once = [
+          "dunst &"
           "hyprpaper &"
           "slack &"
           "firefox https://www.office.com &"

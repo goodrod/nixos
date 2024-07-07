@@ -3,6 +3,8 @@
 {
   home.stateVersion = "23.11";
   imports = [
+    ./wofi
+    ./dunst
     ./default-home-dirs
     ./navi
     ./awesome

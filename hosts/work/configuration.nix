@@ -62,6 +62,7 @@
     wget
     neovim
     git
+    slack
     docker-compose
     alacritty
     mlocate
@@ -70,7 +71,6 @@
     openconnect
     nixfmt-classic
     libnotify
-    slack
     pavucontrol
     jetbrains.rider
     chromium
@@ -88,7 +88,6 @@
     ntfs3g
     dunst
     libnotify
-    rofi-wayland
     nwg-displays
     jsonfmt
   ];

@@ -11,7 +11,6 @@
   module.location.enable = true;
   module.sound.enable = true;
   module.silent-boot.enable = true;
-  module.clamav.enable = true;
   services.printing.enable = true;
   module.icon-fonts.enable = true;
 
@@ -23,10 +22,16 @@
     module-path = ./home.nix;
   };
   module.dotnet.enable = true;
+  module.clamav = {
+    enable = true;
+    on-access = {
+      enable = true;
+      home-directories-to-scan = [ "Downloads" "work/projects/external" "personal/projects/external" ".mozilla" ];
+    };
+  };
   programs.firefox.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
-      "slack"
       "rider"
       "spotify"
       "postman"
@@ -40,6 +45,8 @@
   environment.systemPackages = with pkgs; [
     clamav
     everdo
+    papirus-icon-theme
+    gsimplecal
     fzf
     icu
     keymapp
@@ -56,7 +63,6 @@
     openconnect
     nixfmt-classic
     libnotify
-    slack
     pavucontrol
     jetbrains.rider
     openssl
@@ -71,9 +77,7 @@
     nodejs
     cryptsetup
     ntfs3g
-    dunst
     libnotify
-    rofi-wayland
     nwg-displays
     jsonfmt
   ];

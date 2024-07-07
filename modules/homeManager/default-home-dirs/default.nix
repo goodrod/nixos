@@ -10,12 +10,22 @@ in {
   };
 
   config = mkIf option.enable {
-    home.file."personal/projects/.keep" = {
+    home.file."personal/projects/internal/.keep" = {
       executable = false;
       recursive = true;
       text = "";
     };
-    home.file."work/projects/.keep" = {
+    home.file."personal/projects/external/.keep" = {
+      executable = false;
+      recursive = true;
+      text = "";
+    };
+    home.file."work/projects/external/.keep" = {
+      executable = false;
+      recursive = true;
+      text = "";
+    };
+    home.file."work/projects/internal/.keep" = {
       executable = false;
       recursive = true;
       text = "";

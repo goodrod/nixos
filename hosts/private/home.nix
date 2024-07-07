@@ -19,6 +19,8 @@
   module.vscode.enable = true;
   module.tmux.enable = true;
   module.default-home-dirs.enable = true;
+  module.dunst.enable = true;
+  module.wofi.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {

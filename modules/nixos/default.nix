@@ -5,6 +5,7 @@
     ./virtual-box
     ./discord
     ./clamav
+    ./discord
     ./boot-loader
     ./location
     ./silent-boot
