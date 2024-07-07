@@ -8,6 +8,7 @@
     "mpd"
   ],
   "modules-right": [
+    "disk",
     "temperature",
     "memory",
     "cpu",
@@ -33,9 +34,6 @@
       "9": "⁹",
       "default": ""
     }
-  },
-  "hyprland/mode": {
-    "format": "<span style=\"italic\">{}</span>"
   },
   "mpd": {
     "server": "127.0.0.1",
@@ -147,15 +145,6 @@
     "tooltip": false,
     "on-click-right": "alacritty --start-as normal bash -i bat"
   },
-  "network": {
-    "interface": "wlp5s0",
-    "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
-    "on-click-right": "alacritty --start-as normal bash -ci nmtui",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
-  },
   "custom/vpn": {
     "format": "vpn {icon}",
     "tooltip-format": "{icon}",
@@ -189,6 +178,12 @@
       ]
     },
     "on-click": "pwvucontrol"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "{specific_used:0.1f}/{specific_total:0.1f} GB ",
+    "unit": "GB"
+  },
   },
   "bluetooth": {
     "format": "{icon}",
