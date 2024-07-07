@@ -43,7 +43,7 @@
 
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
-    clamav
+    killall
     everdo
     papirus-icon-theme
     gsimplecal
