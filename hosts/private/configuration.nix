@@ -66,8 +66,8 @@
     pavucontrol
     jetbrains.rider
     openssl
-    flameshot
     dive
+    grimblast
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
     xwallpaper

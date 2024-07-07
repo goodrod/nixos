@@ -11,7 +11,6 @@
   module.location.enable = true;
   module.sound.enable = true;
   module.silent-boot.enable = true;
-  module.clamav.enable = true;
   services.printing.enable = true;
   module.icon-fonts.enable = true;
 
@@ -24,7 +23,13 @@
   };
   module.dotnet.enable = true;
   module.virtual-box.enable = true;
-
+  module.clamav = {
+    enable = true;
+    on-access = {
+      enable = true;
+      home-directories-to-scan = [ "Downloads" "work/projects/external" "personal/projects/external" ".mozilla" ];
+    };
+  };
   networking.hosts = {
     "192.168.0.90" = [ "host.docker.internal" ];
     "127.19.0.13" = [ "host.docker.internal" ];
@@ -35,7 +40,6 @@
     "0.0.0.0" = [ "host.docker.internal" ];
   };
 
-  # TODO: keep here?
   programs.firefox.enable = false;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
@@ -45,7 +49,6 @@
       "postman"
       "keymapp"
       "everdo"
-      "vscode"
       "Oracle_VM_VirtualBox_Extension_Pack"
     ];
 
@@ -53,7 +56,6 @@
   environment.systemPackages = with pkgs; [
     xclip
     everdo
-    clamav
     fzf
     icu
     keymapp
