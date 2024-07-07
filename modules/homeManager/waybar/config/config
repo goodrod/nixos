@@ -8,14 +8,13 @@
     "mpd"
   ],
   "modules-right": [
+    "temperature",
     "memory",
     "cpu",
     "pulseaudio",
-    "backlight",
-    "custom/bat0",
-    "custom/weather",
     "clock",
-    "tray"
+    "tray",
+    "nm-applet"
   ],
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -23,16 +22,15 @@
     "show-special": true,
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "4": "󰇈",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "urgent": "",
-      "focused": "",
+      "1": "¹",
+      "2": "²",
+      "3": "³",
+      "4": "⁴󰇈",
+      "5": "⁵",
+      "6": "⁶",
+      "7": "⁷",
+      "8": "⁸",
+      "9": "⁹",
       "default": ""
     }
   },
@@ -97,9 +95,11 @@
     "critical-threshold": 80,
     "format": "{temperatureC}°C {icon}",
     "format-icons": [
-      "",
+      "",
+      "",
       "",
-      ""
+      "",
+      ""
     ]
   },
   "backlight": {
@@ -188,14 +188,7 @@
         ""
       ]
     },
-    "on-click-right": "pavucontrol",
-    "on-click-middle": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-  },
-  "custom/kbd": {
-    "format": "{}",
-    "return-type": "json",
-    "exec": "$HOME/.config/waybar/modules/kbd_indicator"
+    "on-click": "pwvucontrol"
   },
   "bluetooth": {
     "format": "{icon}",
@@ -206,13 +199,5 @@
       "disabled": ""
     },
     "tooltip-format": "{status}"
-  },
-  "custom/weather": {
-    "format": "󰖐",
-    "interval": 300,
-    "return-type": "json",
-    "exec": "curl -s 'https://wttr.in/Linkoping?format=1' | jq --unbuffered --compact-output -M -R '{text:.}'",
-    "exec-if": "ping wttr.in -c1",
-    "on-click-right": "alacritty --start-as fullscreen bash -ci ~/bin/wttr"
   }
 }
