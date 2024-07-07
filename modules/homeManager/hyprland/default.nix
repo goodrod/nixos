@@ -117,6 +117,7 @@ in {
           (mkIf (option.monitors.right.enable) [
             "${option.monitors.right.name},${option.monitors.right.settings}"
           ])
+          ([ "Unknown-1,disable" ])
         ];
         "$terminal" = "alacritty";
         "$menu" = "wofi -show drun";
@@ -126,7 +127,7 @@ in {
         "$mainMod" = "SUPER";
         windowrulev2 = [
           "suppressevent maximize, class:.*"
-          "workspace 1 silent,class:(pavucontrol)"
+          "workspace 1 silent,class:(com.saivert.pwvucontrol)"
           "workspace 2 silent,title:(.*)(Spotify)(.*)"
           "workspace 5 silent,class:(everdo)"
           "workspace 6 silent,class:(Slack)"
@@ -134,6 +135,7 @@ in {
           "workspace 7 silent,class:(code-url-handler)"
           "workspace 8 silent,class:(Alacritty)"
           "workspace 9 silent,class:(firefox)"
+          "workspace 9 silent,class:(chromium)"
         ];
         general = {
           gaps_in = 5;
