@@ -16,7 +16,6 @@
   };
   module.waybar.enable = true;
   module.alacritty.enable = true;
-  module.vscode.enable = true;
   module.tmux.enable = true;
   module.default-home-dirs.enable = true;
   module.dunst.enable = true;
