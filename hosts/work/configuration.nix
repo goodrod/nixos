@@ -13,7 +13,6 @@
   module.silent-boot.enable = true;
   services.printing.enable = true;
   module.icon-fonts.enable = true;
-
   module.hyprland.enable = true;
   module.nvidia.enable = false;
   module.docker.enable = true;
@@ -92,6 +91,7 @@
     libnotify
     nwg-displays
     jsonfmt
+    killall
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

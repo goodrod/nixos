@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./ecryptfs
     ./virtual-box
     ./discord
     ./clamav
