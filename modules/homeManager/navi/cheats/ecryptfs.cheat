@@ -1,0 +1,9 @@
+% ecryptfs
+# (mount)                       Mount ecryptfs directories
+ecryptfs-mount-private
+
+# (unmount)                     Unmount ecryptfs directories
+ecryptfs-unmount-private
+
+# (create)                      Create private (encrypted) directory with ecryptfs
+cryptfs-setup-private --nopwcheck --noautomount
