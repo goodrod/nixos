@@ -32,9 +32,9 @@ in {
       };
     };
     virtualisation.docker.daemon.settings = {
-      data-root = "/home/dabidew/docker/";
+      data-root = "/home/goodrod/docker/";
     };
     virtualisation.containers.enable = true;
-    users.extraGroups.docker.members = [ "dabidew" ];
+    users.extraGroups.docker.members = [ "goodrod" ];
   };
 }

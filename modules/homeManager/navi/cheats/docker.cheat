@@ -5,11 +5,17 @@ $ container-id: sudo docker ps --filter name=<container-name> --format "{{.ID}}"
 $ compose-target: docker compose -f <compose-file> config --services
 
 
-# (start/up)                    Take up docker compose file
+# (start/up)                    Start (up) all containers from a docker compose file
 sudo docker compose -f <compose-file> up -d
 
-# (start/up)                    Take up one container from a docker compose file
-sudo docker compose -f <compose-file> up -d <compose-target>
+# (restart)                     Restart (up) all containers from a docker compose file
+sudo docker compose -f <compose-file> restart
+
+# (start/up)                    Start (up) one container from a docker compose file
+sudo docker compose -f <compose-file> up <compose-target> -d
+
+# (restart)                     Restart (up) one container from a docker compose file
+sudo docker compose -f <compose-file> restart <compose-target>
 
 # (stop/down)                   Take one contaier down for docker compose file
 sudo docker compose -f <compose-file> down <compose-target>
@@ -29,4 +35,3 @@ sudo docker compose -f <compose-file> build <compose-target>
 
 # (read/view)                   View logs for certain pod
 sudo docker logs -f <container-name>
-
