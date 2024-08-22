@@ -1,0 +1,9 @@
+% (work)
+# (checkout/release)            Checkout release branches for all repos in directory 
+for repo in *; do [ -d "$repo/.git" ] && git -C "$repo" fetch --quiet && if git -C "$repo" branch -r | grep -q "origin/release/1.0.0"; then git -C "$repo" checkout release/<release-version> --quiet && echo -e "\e[32mChecked out 'release/1.0.0' in $repo\e[0m" || echo -e "\e[31mFailed to checkout 'release/1.0.0' in $repo\e[0m"; else echo -e "\e[31m'release/1.0.0' branch not found in $repo\e[0m"; fi; done
+
+# (forward)                     Do some port forward that is needed to connect to the minikube
+ssh -N -L 8009:localhost:8001 Perseus@192.168.7.180
+
+# (connect)                     Connect to the docker stage as persues
+ssh 192.168.7.180 -l Perseus
