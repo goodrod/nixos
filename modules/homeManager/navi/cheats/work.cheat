@@ -1,9 +1,13 @@
 % (work)
 # (checkout/release)            Checkout release branches for all repos in directory 
-for repo in *; do [ -d "$repo/.git" ] && git -C "$repo" fetch --quiet && if git -C "$repo" branch -r | grep -q "origin/release/1.0.0"; then git -C "$repo" checkout release/<release-version> --quiet && echo -e "\e[32mChecked out 'release/1.0.0' in $repo\e[0m" || echo -e "\e[31mFailed to checkout 'release/1.0.0' in $repo\e[0m"; else echo -e "\e[31m'release/1.0.0' branch not found in $repo\e[0m"; fi; done
+for repo in *; do [ -d "$repo/.git" ] && git -C "$repo" fetch --quiet && if git -C "$repo" branch -r | grep -q "origin/release/<release-version>"; then git -C "$repo" checkout release/<release-version> --quiet && git -C "$repo" pull --quiet && echo -e "\e[32mChecked out 'release/<release-version>' in $repo\e[0m" || echo -e "\e[31mFailed to checkout 'release/<release-version>' in $repo\e[0m"; else echo -e "\e[31m'release/<release-version>' branch not found in $repo\e[0m"; fi; done
 
 # (forward)                     Do some port forward that is needed to connect to the minikube
 ssh -N -L 8009:localhost:8001 Perseus@192.168.7.180
 
 # (connect)                     Connect to the docker stage as persues
 ssh 192.168.7.180 -l Perseus
+
+# (create/release)              Create release branches
+for repo in */.git; do repo_dir=$(dirname "$repo"); cd "$repo_dir"; base_branch=$(git rev-parse --verify development &>/dev/null && echo development || (git rev-parse --verify main &>/dev/null && echo main || echo master)); release_branch="release/<release-version>"; echo "In repository '$repo_dir': Will create branch '$release_branch' from '$base_branch' and push it to origin."; read -p "Do you want to proceed? (y/n): " confirm; [[ $confirm == [yY] ]] && git checkout "$base_branch" && git checkout -b "$release_branch" && git push -u origin "$release_branch" && echo "Branch '$release_branch' created and pushed to remote in repository '$repo_dir'."; cd -; done
+

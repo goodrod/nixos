@@ -99,6 +99,10 @@
     nwg-displays
     jsonfmt
     killall
+    kubectl
+    k9s
+    kubectx
+    yamlfmt
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -108,7 +112,7 @@
   networking.firewall.enable = false;
   security.pki.certificates = [
     ''
-      Hercules
+      Hercules Certificate
       ==========================
       -----BEGIN CERTIFICATE-----
       MIIDQzCCAiugAwIBAgIUWNK9Z+wtwCATNUpBz3VQ0vqPpY8wDQYJKoZIhvcNAQEL
@@ -132,7 +136,7 @@
       -----END CERTIFICATE-----
     ''
     ''
-      Helios Test (misc)
+      Helios Test Certificate (misc)
       ==========================
       -----BEGIN CERTIFICATE-----
       MIIDKTCCAhGgAwIBAgIUAO1+mo/jz6QOmcZoZ6FOg1Rej7UwDQYJKoZIhvcNAQEL
@@ -155,7 +159,7 @@
       -----END CERTIFICATE-----
     ''
     ''
-      Helios Test (misc-main)
+      Helios Test Certificate (misc-main)
       ==========================
       -----BEGIN CERTIFICATE-----
       MIIDKTCCAhGgAwIBAgIUTUH2/BfPoJXLn7X3HPjl7+Gvhy8wDQYJKoZIhvcNAQEL
@@ -175,6 +179,29 @@
       AznZfD/vo5HLcfJYMcBAtQ6aka7SzdLfKCG02P4KYT8ESnkqagZxghbzcngZdFdi
       tQewoNBvZq4qQNvaLEzWlZP5lQKgXiHjDg1DyxuHjLfLHsDffBxTVwNPUnVdwhN3
       TXQ+cSprZtm36LMjskyGvgaG5Jj/zHsJlVwn5hmHFd1TDzwUa6TPmVVgys9+
+      -----END CERTIFICATE-----
+    ''
+    ''
+      Dotnet Developer Certificate
+      ==========================
+      -----BEGIN CERTIFICATE-----
+      MIIDDDCCAfSgAwIBAgIIIoQy+JtrBMIwDQYJKoZIhvcNAQELBQAwFDESMBAGA1UE
+      AxMJbG9jYWxob3N0MB4XDTI0MDUxNjIxMzQyOFoXDTI1MDUxNjIxMzQyOFowFDES
+      MBAGA1UEAxMJbG9jYWxob3N0MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+      AQEAk4UC+odMiTttneP7LgkLonYWxG1ZCuG1Zxp76jhIqpFSmFkE6kKYVywdqB8D
+      jRVvOal+qtiZIypYyR2QRo20ZO+FWoPwglUYrVZv6OGF3iAbgSY3mKXNDZsa24zx
+      p/j0d9RS4KooO/Bi1ZXBttHdE3fxDnP5b3bSKtb0cjtrmGcQoWyFGBI1xpgvHgQY
+      yiDy/g6MOfbnAhkKpFeVQQUPer1LBJvlaRpXYjxDa1ixt75aCoHmAWjuis0iD6NC
+      0eZzr6ZKaz7ZwdR3a0vO3VVsPY5BISoJZV1FgWYzoGA2ahtslyE82mcH0Uz2jIV8
+      qfal7dTV0RhsmBWlFLIJIUJ0LwIDAQABo2IwYDAMBgNVHRMBAf8EAjAAMA4GA1Ud
+      DwEB/wQEAwIFoDAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATAXBgNVHREBAf8EDTAL
+      gglsb2NhbGhvc3QwDwYKKwYBBAGCN1QBAQQBAjANBgkqhkiG9w0BAQsFAAOCAQEA
+      BzIErw64pOl8If5C5qeBC5mx+AC7EawztryOIpV48UoVSJPDfLaRV/3J33up0QWd
+      +I2zmdvTaVrtov6LWcrxY2VR1LGuhUc83ka4/qCIUBL5GZlSDzfQGOFqSL0cG5iO
+      OqN7w4vENO1tBpwPoHcdOcMaztLVGA9AfAzC5b9gAjwgmVncuIYiFqTcYtEXma3a
+      S8d+E7GABhd7uhhWCJ26CDrLQg2cdWgFeknCDLUC2tBWFUKi4FAy7qXLwTnd/RkX
+      bByJfkPq5tWThDSH+eMvX2bYlUwcqV7c6kiTUFW8mvhS1dxt5JEleo0QKdcitDd7
+      QEtlp7PHim45ZAyb7LUJfQ==
       -----END CERTIFICATE-----
     ''
   ];
