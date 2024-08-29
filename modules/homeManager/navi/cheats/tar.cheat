@@ -1,0 +1,3 @@
+% tar
+# (tar/pack)                    Tar all directories in current directory
+for dir in */; do tar -cvf "${dir%/}.tar" "$dir"; done
