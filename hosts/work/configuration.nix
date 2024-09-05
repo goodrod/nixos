@@ -56,7 +56,9 @@
 
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
-    jetbrains.idea-community-bin    
+    jetbrains.idea-community-bin
+    ansible
+    sshpass
     xclip
     keyutils
     nss_latest

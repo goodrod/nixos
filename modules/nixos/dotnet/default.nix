@@ -24,9 +24,9 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
-    environment.systemPackages = with pkgs; [ dotnet-sdk_7 ];
+    environment.systemPackages = with pkgs; [ dotnet-sdk_7 dotnet-sdk_8 ];
 
     programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = with pkgs; [ dotnet-sdk_7 icu ];
+    programs.nix-ld.libraries = with pkgs; [ dotnet-sdk_7 dotnet-sdk_8 icu ];
   };
 }
