@@ -24,7 +24,7 @@ sudo docker compose --env-file .env -f <compose-file> down <compose-target>
 sudo docker compose --env-file .env -f <compose-file> down
 
 # (kill/purge)                  Force kill and remove all containers
-sudo docker rm --env-file .env -f $(sudo docker ps -aq)
+sudo docker rm -f $(sudo docker ps -aq)
 
 # (connect/enter)               Enter docker container into bash shell
 sudo docker exec -it <container-id> <command>
@@ -32,6 +32,9 @@ $ command: echo -e "bash\narangosh"
 
 # (build)                       Build a certain service based on a docker compose file
 sudo docker compose --env-file .env -f <compose-file> build <compose-target>
+
+# (build)                       Build all services in docker compose file
+sudo docker compose --env-file .env -f <compose-file> build
 
 # (read/view)                   View logs for certain pod
 sudo docker logs -f <container-name>
