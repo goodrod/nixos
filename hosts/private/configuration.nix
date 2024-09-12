@@ -32,11 +32,11 @@
   programs.firefox.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
-      "rider"
       "spotify"
       "postman"
       "keymapp"
       "everdo"
+      "discord"
       "nvidia-x11"
       "nvidia-settings"
     ];
@@ -44,6 +44,7 @@
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
     killall
+    discord
     everdo
     papirus-icon-theme
     gsimplecal
@@ -64,7 +65,6 @@
     nixfmt-classic
     libnotify
     pavucontrol
-    jetbrains.rider
     openssl
     dive
     grimblast
@@ -78,7 +78,6 @@
     cryptsetup
     ntfs3g
     libnotify
-    nwg-displays
     jsonfmt
   ];
 
