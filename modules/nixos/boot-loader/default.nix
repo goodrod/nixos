@@ -29,6 +29,8 @@ in {
       useOSProber = true;
       device = "nodev";
       efiSupport = true;
+      default = "saved";
+
     };
     boot.loader.efi.canTouchEfiVariables = true;
   };
