@@ -3,6 +3,7 @@
 {
   home.stateVersion = "23.11";
   imports = [
+    ./hyprland-event-hooks
     ./wofi
     ./dunst
     ./default-home-dirs

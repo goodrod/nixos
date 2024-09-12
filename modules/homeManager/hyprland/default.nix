@@ -125,17 +125,23 @@ in {
         "$monitor-2" = "${option.monitors.middle.name}";
         "$monitor-3" = "${option.monitors.right.name}";
         "$mainMod" = "SUPER";
+
+        "$browserRegexp" = "firefox|Chrommium";
+        "$chatRegexp" = "discord|Slack";
+        "$terminalRegexp" = "Alacritty";
+        "$productivityRegexp" = "everdo";
+        "$musicRegexp" = ".*Spotify.*";
+        "$settingsRegexp" = "com.saivert.pwvucontrol";
+        "$programmingRegexp" = "code-url-handler|jetbrains-rider";
         windowrulev2 = [
           "suppressevent maximize, class:.*"
-          "workspace 1 silent,class:(com.saivert.pwvucontrol)"
-          "workspace 2 silent,title:(.*)(Spotify)(.*)"
-          "workspace 5 silent,class:(everdo)"
-          "workspace 6 silent,class:(Slack)"
-          "workspace 7 silent,class:(jetbrains-rider)"
-          "workspace 7 silent,class:(code-url-handler)"
-          "workspace 8 silent,class:(Alacritty)"
-          "workspace 9 silent,class:(firefox)"
-          "workspace 9 silent,class:(chromium)"
+          "workspace 1 silent,class:$settingsRegexp"
+          "workspace 2 silent,title:$musicRegexp"
+          "workspace 5 silent,class:$productivityRegexp"
+          "workspace 6 silent,class:$chatRegexp"
+          "workspace 7 silent,class:$programmingRegexp"
+          "workspace 8 silent,class:$terminalRegexp"
+          "workspace 9 silent,class:$browserRegexp"
         ];
         general = {
           gaps_in = 5;
@@ -220,7 +226,7 @@ in {
           "$mainMod, O, layoutmsg, addmaster"
           "$mainMod, space, exec, $terminal"
           "$mainMod, C, killactive,"
-          "$mainMod, M, exit,"
+          "$mainMod, escape, exit,"
           "$mainMod, F, exec, $fileManager"
           "$mainMod SHIFT, F, togglefloating,"
           "$mainMod, D, exec, $menu"

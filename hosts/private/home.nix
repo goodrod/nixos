@@ -14,6 +14,7 @@
       name = "HDMI-A-1";
     };
   };
+  module.hyprland-event-hooks.enable = true;
   module.waybar.enable = true;
   module.alacritty.enable = true;
   module.tmux.enable = true;
