@@ -2,7 +2,6 @@
 
 {
   imports = [ ./opts.nix ./keymaps ./plugins ];
-
   home.shellAliases.v = "nvim";
   programs.nixvim = {
     enable = true;

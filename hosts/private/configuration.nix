@@ -16,12 +16,10 @@
 
   module.hyprland.enable = true;
   module.nvidia.enable = true;
-  module.docker.enable = false;
   module.home-manager = {
     enable = true;
     module-path = ./home.nix;
   };
-  module.dotnet.enable = true;
   module.clamav = {
     enable = true;
     on-access = {
@@ -30,6 +28,7 @@
     };
   };
   programs.firefox.enable = true;
+
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "spotify"
@@ -43,48 +42,13 @@
 
   # list packages installed in system profile. to search, run:
   environment.systemPackages = with pkgs; [
-    killall
     discord
-    everdo
-    papirus-icon-theme
-    gsimplecal
-    fzf
-    icu
-    keymapp
-    wlr-randr
-    wlogout
-    wget
-    neovim
-    git
-    docker-compose
-    alacritty
-    mlocate
-    home-manager
-    bitwarden
-    openconnect
-    nixfmt-classic
-    libnotify
-    pavucontrol
-    openssl
-    dive
-    grimblast
-    linuxKernel.packages.linux_5_4.wireguard
-    wireguard-tools
-    xwallpaper
-    spotify
-    postman
-    okular
-    nodejs
-    cryptsetup
-    ntfs3g
-    libnotify
-    jsonfmt
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   system.stateVersion = "23.11";
 }

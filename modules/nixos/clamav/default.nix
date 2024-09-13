@@ -85,7 +85,6 @@ in {
 
     systemd.services.av-user-scan = {
       description = "scan normal user directories for suspect files";
-      after = [ "network-online.target" ];
       serviceConfig = {
         Type = "oneshot";
         ExecStart =
@@ -106,7 +105,6 @@ in {
 
     systemd.services.av-all-scan = {
       description = "scan all directories for suspect files";
-      after = [ "network-online.target" ];
       serviceConfig = {
         Type = "oneshot";
         ExecStart = ''
