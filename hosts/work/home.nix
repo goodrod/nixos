@@ -20,6 +20,7 @@
       settings = "2560x1440@59.95,4480x0,1.0";
     };
   };
+  module.hyprland-event-hooks.enable = true;
   module.waybar.enable = true;
   module.alacritty.enable = true;
   module.tmux.enable = true;
