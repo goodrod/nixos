@@ -19,7 +19,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [ wev wl-clipboard ];
+    environment.systemPackages = with pkgs; [ wev papirus-icon-theme ];
     # Option definitions.
     # Define what other setting
     xdg.portal.extraPortals =
