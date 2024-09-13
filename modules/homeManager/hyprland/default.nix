@@ -119,6 +119,7 @@ in {
           ])
           ([ "Unknown-1,disable" ])
         ];
+        debug.disable_logs = false;
         "$terminal" = "alacritty";
         "$menu" = "wofi -show drun";
         "$monitor-1" = "${option.monitors.left.name}";
@@ -153,6 +154,16 @@ in {
           allow_tearing = false;
           layout = "master";
         };
+
+	
+	render = {
+	  explicit_sync = 0;
+	  explicit_sync_kms = 0;
+	};
+
+	cursor = {
+	  no_hardware_cursors = true;
+	};
 
         decoration = {
           rounding = 10;
