@@ -231,7 +231,7 @@ in {
           "everdo &"
           "firefox &"
         ];
-        env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
+        env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" "AQ_NO_MODIFIERS,1" ];
         bind = [
           "$mainMod, I, layoutmsg, removemaster"
           "$mainMod, O, layoutmsg, addmaster"
