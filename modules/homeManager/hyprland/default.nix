@@ -33,7 +33,7 @@ in {
         settings = mkOption {
           type = str;
           description = "Settings for monitor, e.g. 2560x1440@144,0x0,1.0";
-          default = "1920x1200@59.95,0x0,1.0";
+          default = "preferred,0x0,1.0";
         };
       };
       middle = {
@@ -49,7 +49,7 @@ in {
         settings = mkOption {
           type = str;
           description = "Settings for monitor, e.g. 2560x1440@144,0x0,1.0";
-          default = "2560x1440@144.0,0x0,1.0";
+          default = "preferred,0x0,1.0";
         };
       };
       right = {
@@ -65,7 +65,7 @@ in {
         settings = mkOption {
           type = str;
           description = "Settings for monitor, e.g. 2560x1440@144,0x0,1.0";
-          default = "2560x1440@59.95,2560x0,1.0";
+          default = "preferred,2560x0,1.0";
         };
       };
     };
@@ -156,10 +156,10 @@ in {
         };
 
 	
-	render = {
-	  explicit_sync = 0;
-	  explicit_sync_kms = 0;
-	};
+	#render = {
+	# explicit_sync = 0;
+	#  explicit_sync_kms = 0;
+	#};
 
 	cursor = {
 	  no_hardware_cursors = true;

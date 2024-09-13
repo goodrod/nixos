@@ -12,12 +12,12 @@
     monitors.middle = {
       enable = true;
       name = "DP-5";
-      settings = "2560x1440@99.95,1920x0,1.0";
+      settings = "preferred,1920x0,1.0";
     };
     monitors.right = {
       enable = true;
       name = "DP-6";
-      settings = "2560x1440@59.95,4480x0,1.0";
+      settings = "preferred,4480x0,1.0";
     };
   };
   module.hyprland-event-hooks.enable = true;
