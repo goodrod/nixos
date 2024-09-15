@@ -231,7 +231,15 @@ in {
           "everdo &"
           "firefox &"
         ];
-        env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" "AQ_NO_MODIFIERS,1" ];
+        env = [
+	  "LIBVA_DRIVER_NAME,nvidia"
+	  "XDG_SESSION_TYPE,wayland"
+	  "GBM_BACKEND,nvidia-drm"
+	  "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+	  "XCURSOR_SIZE,24"
+	  "HYPRCURSOR_SIZE,24"
+	  "AQ_NO_MODIFIERS,1"
+	];
         bind = [
           "$mainMod, I, layoutmsg, removemaster"
           "$mainMod, O, layoutmsg, addmaster"

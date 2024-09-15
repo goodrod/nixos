@@ -9,16 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    sddm-sugar-candy-nix = {
-      url = "gitlab:Zhaith-Izaliel/sddm-sugar-candy-nix";
-      # Optional, by default this flake follows nixpkgs-unstable.
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

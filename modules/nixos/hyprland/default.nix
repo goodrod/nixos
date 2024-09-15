@@ -27,10 +27,10 @@ in {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     };
     programs.waybar.enable = true;
     environment.sessionVariables = {
-      #WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
       HYPERLAND_LOG_WLR = "1";
     };
