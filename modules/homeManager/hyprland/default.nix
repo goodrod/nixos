@@ -155,15 +155,12 @@ in {
           layout = "master";
         };
 
-	
-	#render = {
-	# explicit_sync = 0;
-	#  explicit_sync_kms = 0;
-	#};
+        #render = {
+        # explicit_sync = 0;
+        #  explicit_sync_kms = 0;
+        #};
 
-	cursor = {
-	  no_hardware_cursors = true;
-	};
+        cursor = { no_hardware_cursors = true; };
 
         decoration = {
           rounding = 10;
