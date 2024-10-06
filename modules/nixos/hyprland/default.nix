@@ -29,6 +29,8 @@ in {
       xwayland.enable = true;
       package =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
     programs.waybar.enable = true;
     environment.sessionVariables = {
@@ -47,7 +49,7 @@ in {
       };
     };
 
-    # this is a life saver.
+    # this is a life saver
     # literally no documentation about this anywhere.
     # might be good to write about this...
     # https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/

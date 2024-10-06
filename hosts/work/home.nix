@@ -27,6 +27,7 @@
   module.default-home-dirs.enable = true;
   module.dunst.enable = true;
   module.wofi.enable = true;
+  module.fuzzel.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {
