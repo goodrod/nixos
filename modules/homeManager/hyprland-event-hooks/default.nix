@@ -184,10 +184,11 @@ let
         extract_monitor_makes monitor_information monitor_makes
 
         echo "Generating arrangement options..."
+        printf "%s\n" "''${monitor_makes[@]}"
         options=$(permute "" monitor_makes[@])
 
         echo "Prompting user for arrangement..."
-        choice=$(echo -e "$options" | ${pkgs.wofi}/bin/wofi --dmenu --prompt="Select arrangement")
+        choice=$(printf "%s\n" "''${options[@]}"  | column -t -s '|' | ${pkgs.fuzzel}/bin/fuzzel --dmenu --prompt="Select arrangement >")
         echo "User selected arrangement: $choice"
 
         echo "Arranging monitors..."
