@@ -35,6 +35,7 @@ in {
       alacritty
       bitwarden
       everdo
+      fuzzel
       jsonfmt
       killall
       git
