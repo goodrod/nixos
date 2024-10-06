@@ -31,7 +31,7 @@
     };
   };
   module.helios-development.enable = true;
-  programs.firefox.enable = true;
+  programs.firefox.enable = false;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "slack"
@@ -62,6 +62,6 @@
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = true;
+  networking.firewall.enable = false;
   system.stateVersion = "23.11";
 }

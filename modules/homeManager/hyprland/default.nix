@@ -130,6 +130,8 @@ in {
       sourceFirst = true;
       systemd.enable = true;
       xwayland.enable = true;
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
       settings = {
         monitor = mkMerge [
           (mkIf (option.monitors.left.enable)
