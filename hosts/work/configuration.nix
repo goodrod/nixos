@@ -17,6 +17,7 @@
   module.nvidia.enable = false;
   module.docker.enable = true;
   module.ecryptfs.enable = true;
+  module.greetd.enable = true;
   module.home-manager = {
     enable = true;
     module-path = ./home.nix;

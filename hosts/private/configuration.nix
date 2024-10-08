@@ -20,6 +20,7 @@
     enable = true;
     module-path = ./home.nix;
   };
+  module.greetd.enable = true;
   module.clamav = {
     enable = true;
     on-access = {
