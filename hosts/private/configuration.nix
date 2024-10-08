@@ -40,12 +40,6 @@
       "nvidia-x11"
       "nvidia-settings"
     ];
-
-  # list packages installed in system profile. to search, run:
-  environment.systemPackages = with pkgs; [
-    discord
-  ];
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # networking.firewall.allowedTCPPorts = [ ... ];

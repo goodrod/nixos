@@ -19,6 +19,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     environment.systemPackages = with pkgs; [ papirus-icon-theme ];
     programs.waybar.enable = true;
     environment.sessionVariables = {
