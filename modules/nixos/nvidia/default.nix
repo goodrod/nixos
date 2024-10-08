@@ -23,7 +23,12 @@ in {
     # Define what other settings, services and resources should be active.
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
-    # Options for modules imported in "imports" can be set here.  
+    # Options for modules imported in "imports" can be set here.
+    boot.initrd.kernelModules =
+      [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+
+    environment.systemPackages = with pkgs; [ egl-wayland ];
+    boot.kernelParams = [ "nvidia-drm.modeset=1" "fbdev=1" ];
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware = {
       graphics.enable = true;

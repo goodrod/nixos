@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./greetd
     ./helios-development
     ./default-applications
     ./ecryptfs
