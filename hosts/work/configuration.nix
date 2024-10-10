@@ -23,7 +23,7 @@
     module-path = ./home.nix;
   };
   module.dotnet.enable = true;
-  module.virtual-box.enable = true;
+  module.virtual-box.enable = false;
   module.clamav = {
     enable = true;
     on-access = {
@@ -41,6 +41,7 @@
       "keymapp"
       "everdo"
       "Oracle_VM_VirtualBox_Extension_Pack"
+      "postman"
     ];
 
   # list packages installed in system profile. to search, run:
@@ -58,6 +59,7 @@
     k9s
     kubectx
     chromium
+    postman
   ];
 
 
