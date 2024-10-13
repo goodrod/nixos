@@ -154,7 +154,7 @@ in {
         "$mainMod" = "SUPER";
 
         "$browserRegexp" = "firefox|Chromium";
-        "$chatRegexp" = "discord|Slack";
+        "$chatRegexp" = "discord|vesktop|Slack";
         "$terminalRegexp" = "Alacritty";
         "$productivityRegexp" = "everdo";
         "$musicRegexp" = ".*Spotify.*";
@@ -260,6 +260,7 @@ in {
           "nm-applet &"
           "everdo &"
           "firefox &"
+          "vesktop &"
         ];
         env = [
           "LIBVA_DRIVER_NAME,nvidia"
@@ -301,6 +302,26 @@ in {
           "$mainMod, code:47, movefocus, r"
           "$mainMod, L, movefocus, u"
           "$mainMod, K, movefocus, d"
+          "$mainMod ALT, 1, togglespecialworkspace, special-1"
+          "$mainMod ALT, 2, togglespecialworkspace, special-2"
+          "$mainMod ALT, 3, togglespecialworkspace, special-3"
+          "$mainMod ALT, 4, togglespecialworkspace, special-4"
+          "$mainMod ALT, 5, togglespecialworkspace, special-5"
+          "$mainMod ALT, 6, togglespecialworkspace, special-6"
+          "$mainMod ALT, 7, togglespecialworkspace, special-7"
+          "$mainMod ALT, 8, togglespecialworkspace, special-8"
+          "$mainMod ALT, 9, togglespecialworkspace, special-9"
+          "$mainMod ALT, 0, togglespecialworkspace, special-0"
+          "$mainMod ALT SHIFT, 1, movetoworkspace, special-1"
+          "$mainMod ALT SHIFT, 2, movetoworkspace, special-2"
+          "$mainMod ALT SHIFT, 3, movetoworkspace, special-3"
+          "$mainMod ALT SHIFT, 4, movetoworkspace, special-4"
+          "$mainMod ALT SHIFT, 5, movetoworkspace, special-5"
+          "$mainMod ALT SHIFT, 6, movetoworkspace, special-6"
+          "$mainMod ALT SHIFT, 7, movetoworkspace, special-7"
+          "$mainMod ALT SHIFT, 8, movetoworkspace, special-8"
+          "$mainMod ALT SHIFT, 9, movetoworkspace, special-9"
+          "$mainMod ALT SHIFT, 0, movetoworkspace, special-0"
           "$mainMod, 1, focusworkspaceoncurrentmonitor, 1"
           "$mainMod, 2, focusworkspaceoncurrentmonitor, 2"
           "$mainMod, 3, focusworkspaceoncurrentmonitor, 3"

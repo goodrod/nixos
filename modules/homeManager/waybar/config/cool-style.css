@@ -20,34 +20,6 @@ tooltip {
     border-color: #11111b;
 }
 
-#workspaces button {
-    padding: 5px 15px 5px 5px;
-    color: #313244;
-    margin-right: 5px;
-}
-
-#workspaces button.active {
-    color: #a6adc8;
-}
-
-#workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
-    border-radius: 10px;
-}
-
-#workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
-    border-radius: 10px;
-}
-
-#workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 10px;
-}
-
 #window,
 #clock,
 #battery,
@@ -58,68 +30,78 @@ tooltip {
 #cpu,
 #memory,
 #temperature,
-#backlight,
-#disk {
+#disk,
+#custom-label,
+#workspaces{
     background: #1e1e2e;
     padding: 0px 10px;
     margin: 3px 0px;
     margin-top: 10px;
     margin-left: 3px;
-    border: 1px solid #181825;
+    border-radius: 10px;
+    border: 0.5px solid #3b3f42;
 }
 
-#tray {
-    border-radius: 10px;
-    margin-right: 10px;
+#disk,
+#temperature,
+#memory,
+#cpu,
+#pulseaudio,
+#clock,
+#network {
+    color: #7FBF7F;
+
+}
+
+#custom-label {
+    color: #88c0d0;
+    border-radius: 10px 0px 0px 10px;
+    border-right: none;
+    margin-left: 3px;
+    margin-right: 0px;
+    padding-left: 10px;
+    padding-right: 0px;
 }
 
 #workspaces {
-    background: #1e1e2e;
-    border-radius: 10px;
-    margin-left: 10px;
+    color: #e0e0e0;
+    border-radius: 0px 10px 10px 0px;
+    border-left: none;
+    margin-right: 3px;
+    margin-left: 0px;
+    min-width: 10px;
     padding-right: 0px;
-    padding-left: 5px;
-}
-
-#custom-updates {
-    color: #f5c2e7;
-    border-left: 0px;
-    border-right: 0px;
+    padding-left: 0px;
 }
 
 #window {
+    color: #4c8baf;
+}
+
+#workspaces button {
+    padding: 5px 15px 5px 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+    color: #d8cfc4
+    /*color: #636475;*/
+}
+
+#workspaces button.visible {
+    color: #d8b59f;
+}
+
+#workspaces button.active {
+    color: #f4a261;
+    border-color: #a39ec4;
+}
+
+#workspaces button.urgent {
+    color: @red;
     border-radius: 10px;
-    margin-left: 60px;
-    margin-right: 60px;
 }
 
-#clock {
-    color: #f9e2af;
+#workspaces button.hover {
+    background: #11111b;
+    color: #cdd6f4;
     border-radius: 10px;
-    margin-left: 10px;
-}
-
-#network {
-    color: #fab387;
-    border-left: 0px;
-    border-right: 0px;
-}
-
-#pulseaudio {
-    color: #89b4fa;
-    border-left: 0px;
-    border-right: 0px;
-}
-
-#battery {
-    color: #a6e3a1;
-    border-radius: 0 10px 10px 0;
-    margin-right: 10px;
-    border-left: 0px;
-}
-
-#backlight {
-    color: #cba6f7;
-    border-left: 0px;
-    border-right: 0px;
 }

@@ -1,5 +1,4 @@
 { config, pkgs, lib, ... }:
-
 let
   inherit (lib) mkOption mkEnableOption types mkIf;
   inherit (types) path str;
@@ -25,11 +24,198 @@ in {
 
   config = mkIf waybarConfig.enable {
     home.packages = with pkgs; [ waybar ];
-
     home.file."${waybarConfig.config-output-directory}" = {
       source = "${waybarConfig.config-source-directory}";
       executable = false;
       recursive = true;
+    };
+    programs.waybar.enable = true;
+    programs.waybar.settings = {
+      mainBar = {
+        position = "top";
+        modules-left = [
+          "custom/label#workspaces"
+          "hyprland/workspaces"
+          "custom/label#special-workspaces"
+          "hyprland/workspaces#special"
+        ];
+        modules-center = [ "hyprland/window" ];
+        modules-right =
+          [ "disk" "temperature" "memory" "cpu" "pulseaudio" "clock" "tray" ];
+        "custom/label#workspaces" = {
+          exec = "echo 'Workspaces:'";
+          interval = 3600;
+          return-type = "text";
+        };
+        "custom/label#special-workspaces" = {
+          exec = pkgs.writeShellScript "special-ws" ''
+                      [[ $(${pkgs.hyprland}/bin/hyprctl workspaces | grep -c 'special:') -gt 0 ]] && echo 'Special workspaces:' || echo 'No special workspaces';
+            	'';
+          interval = 5;
+          return-type = "text";
+        };
+        "hyprland/workspaces" = {
+          format = "{icon}";
+          disable-scroll = true;
+          all-outputs = true;
+          show-special = false;
+          move-to-monitor = true;
+	  persistent-workspaces = {
+	    "1" = [];
+	    "2" = [];
+	    "3" = [];
+	    "4" = [];
+	    "5" = [];
+	    "6" = [];
+	    "7" = [];
+	    "8" = [];
+	    "9" = [];
+	  };
+          format-icons = {
+            "1" = "¹";
+            "2" = "²";
+            "3" = "³ ";
+            "4" = "⁴";
+            "5" = "⁵";
+            "6" = "⁶";
+            "7" = "⁷";
+            "8" = "⁸";
+            "9" = "⁹";
+          };
+        };
+        "hyprland/workspaces#special" = {
+          disable-scroll = true;
+          all-outputs = true;
+          show-special = true;
+          format = "{name}";
+          move-to-monitor = true;
+          ignore-workspaces = [ "^[0-9]*$" ];
+        };
+        mpd = {
+          server = "127.0.0.1";
+          port = 6600;
+          tooltip = false;
+          exec-if = "pgrep mpd";
+          format =
+            "{stateIcon} {consumeIcon}{randomIcon}{artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ";
+          format-disconnected = "";
+          format-stopped = "";
+          unknown-tag = "N/A";
+          interval = 2;
+          max-length = 60;
+          consume-icons = { on = " "; };
+          random-icons = {
+            on = ''<span color="#f53c3c"></span> '';
+            off = " ";
+          };
+          repeat-icons = { on = " "; };
+          single-icons = { on = "1 "; };
+          state-icons = {
+            paused = "";
+            playing = "";
+          };
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "";
+            deactivated = "";
+          };
+        };
+        tray = { spacing = 10; };
+        clock = {
+          timezone = "Europe/Stockholm";
+          format = "{:%H:%M %Z} ";
+          format-alt = "{:%a; %b %d %C%y} ";
+          tooltip = false;
+          on-click-right = "gsimplecal";
+        };
+        cpu = {
+          format = "{usage}% ";
+          on-click = "alacritty -e bash -ci htop --sort-key PERCENT_CPU";
+        };
+        memory = {
+          format = "{}% ";
+          on-click = "alacritty -e bash -ci htop --sort-key PERCENT_MEM";
+        };
+        temperature = {
+          critical-threshold = 80;
+          format = "{temperatureC}°C {icon}";
+          format-icons = [ "" "" "" "" "" ];
+        };
+        backlight = {
+          format = "{percent}% {icon}";
+          format-icons = [ "" "" ];
+        };
+        battery = {
+          tooltip = false;
+          states = {
+            good = 95;
+            warning = 20;
+            critical = 15;
+          };
+          format = "{capacity}% {icon}";
+          format-charging = "{capacity}% ";
+          format-plugged = "{capacity}% ";
+          format-alt = "{time} {icon}";
+          format-icons = [ "" "" "" "" "" ];
+        };
+        "custom/bat0" = {
+          states = {
+            good = 95;
+            warning = 15;
+            critical = 10;
+          };
+          exec = "~/.config/waybar/modules/battery.py BAT0";
+          return-type = "json";
+          format = "{} {percentage}% {icon}";
+          format-icons = [ "" "" "" "" "" ];
+          tooltip = false;
+          on-click-right = "alacritty --start-as normal bash -i bat";
+        };
+        "custom/vpn" = {
+          format = "vpn {icon}";
+          tooltip-format = "{icon}";
+          exec = "~/.config/waybar/modules/vpn";
+          return-type = "json";
+          interval = 5;
+          format-icons = [ "" "" ];
+        };
+        pulseaudio = {
+          tooltip = false;
+          format = "{volume}% {icon} {format_source}";
+          format-bluetooth = "{volume}% {icon}  {format_source}";
+          format-bluetooth-muted = " {icon}  {format_source}";
+          format-muted = " {format_source}";
+          format-source = "{volume}% ";
+          format-source-muted = "";
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" "" ];
+          };
+          on-click = "pwvucontrol";
+        };
+        disk = {
+          interval = 30;
+          format = "{specific_used:0.1f}/{specific_total:0.1f} GB ";
+          unit = "GB";
+        };
+      };
+      bluetooth = {
+        format = "{icon}";
+        format-alt = "bluetooth: {status}";
+        interval = 30;
+        format-icons = {
+          enabled = "";
+          disabled = "";
+        };
+        tooltip-format = "{status}";
+      };
     };
   };
 }
