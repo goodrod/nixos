@@ -158,12 +158,14 @@ in {
         "$terminalRegexp" = "Alacritty";
         "$productivityRegexp" = "everdo";
         "$musicRegexp" = ".*Spotify.*";
+        "$gamingRegexp" = "steam";
         "$settingsRegexp" = "com.saivert.pwvucontrol";
         "$programmingRegexp" = "code-url-handler|jetbrains-rider";
         windowrulev2 = [
           "suppressevent maximize, class:.*"
           "tag +setting,class:$settingsRegexp"
           "tag +music,title:$musicRegexp"
+          "tag +gaming,class:$gamingRegexp"
           "tag +productivity,class:$productivityRegexp"
           "tag +chat,class:$chatRegexp"
           "tag +coding,class:$programmingRegexp"
@@ -171,6 +173,7 @@ in {
           "tag +browser,class:$browserRegexp"
           "workspace 1 silent,tag:setting"
           "workspace 2 silent,tag:music"
+          "workspace 3 silent,tag:gaming"
           "workspace 5 silent,tag:productivity"
           "workspace 6 silent,tag:chat"
           "workspace 7 silent,tag:coding"
@@ -312,7 +315,7 @@ in {
           "$mainMod ALT, 8, togglespecialworkspace, 8"
           "$mainMod ALT, 9, togglespecialworkspace, 9"
           "$mainMod ALT, 0, togglespecialworkspace, 0"
-	  "$mainMod ALT, C, exec, bash -c 'active_special_workspace=$(hyprctl monitors | grep -B4 \"focused: yes\" | grep -oP \"special:\\w+\") && hyprctl clients | grep -A 8 \"$active_special_workspace\" | grep -oP \"(?<=pid: )\\w+\" | xargs -I{} bash -c \"hyprctl dispatch closewindow pid:{}\"'"
+          "$mainMod ALT, C, exec, bash -c 'active_special_workspace=$(hyprctl monitors | grep -B4 \"focused: yes\" | grep -oP \"special:\\w+\") && hyprctl clients | grep -A 8 \"$active_special_workspace\" | grep -oP \"(?<=pid: )\\w+\" | xargs -I{} bash -c \"hyprctl dispatch closewindow pid:{}\"'"
           "$mainMod ALT SHIFT, 1, movetoworkspace, special:1"
           "$mainMod ALT SHIFT, 2, movetoworkspace, special:2"
           "$mainMod ALT SHIFT, 3, movetoworkspace, special:3"
