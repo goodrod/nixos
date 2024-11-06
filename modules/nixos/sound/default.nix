@@ -26,11 +26,9 @@ in {
     # Options for modules imported in "imports" can be set here.
     environment.systemPackages = with pkgs; [ pwvucontrol ];
     security.rtkit.enable = true;
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
+    hardware.pulseaudio.enable = true;
+    hardware.bluetooth.enable = true;
+    hardware.pulseaudio.extraConfig =
+      "\n      load-module module-switch-on-connect\n      load-module module-bluetooth-discover\n    ";
   };
 }
