@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./steam
     ./greetd
     ./helios-development
     ./default-applications

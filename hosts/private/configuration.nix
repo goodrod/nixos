@@ -16,6 +16,7 @@
   module.discord.enable = true;
   module.hyprland.enable = true;
   module.nvidia.enable = true;
+  module.steam.enable =  true;
   module.home-manager = {
     enable = true;
     module-path = ./home.nix;
@@ -39,7 +40,14 @@
       "discord"
       "nvidia-x11"
       "nvidia-settings"
+      "steam-original"
+      "steam"
     ];
+
+  environment.systemPackages = with pkgs; [
+    linuxKernel.packages.linux_5_4.wireguard
+    wireguard-tools
+  ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # networking.firewall.allowedTCPPorts = [ ... ];
