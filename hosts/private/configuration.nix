@@ -42,6 +42,8 @@
       "nvidia-settings"
       "steam-original"
       "steam"
+      "steam-unwrapped-1.0.0.81"
+      "steam-unwrapped"
     ];
 
   environment.systemPackages = with pkgs; [
