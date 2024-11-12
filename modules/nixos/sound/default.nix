@@ -24,11 +24,16 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
-    environment.systemPackages = with pkgs; [ pwvucontrol ];
-    security.rtkit.enable = true;
-    hardware.pulseaudio.enable = true;
-    hardware.bluetooth.enable = true;
-    hardware.pulseaudio.extraConfig =
-      "\n      load-module module-switch-on-connect\n      load-module module-bluetooth-discover\n    ";
+    environment.systemPackages = with pkgs; [ pulsemixer ];
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
+    hardware.bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+      settings = { Policy = { AutoEnable = "true"; }; };
+    };
   };
 }
