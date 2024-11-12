@@ -59,6 +59,8 @@ in {
       ntfs3g
       unzip
       openconnect
+      yq
+      jq
     ];
   };
 }

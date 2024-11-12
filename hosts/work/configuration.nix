@@ -23,7 +23,7 @@
     module-path = ./home.nix;
   };
   module.dotnet.enable = true;
-  module.virtual-box.enable = false;
+  module.virtual-box.enable = true;
   module.clamav = {
     enable = true;
     on-access = {
@@ -60,6 +60,8 @@
     kubectx
     chromium
     postman
+    bluetuith
+    bluez
   ];
 
 

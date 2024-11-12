@@ -60,17 +60,17 @@ in {
           all-outputs = true;
           show-special = false;
           move-to-monitor = true;
-	  persistent-workspaces = {
-	    "1" = [];
-	    "2" = [];
-	    "3" = [];
-	    "4" = [];
-	    "5" = [];
-	    "6" = [];
-	    "7" = [];
-	    "8" = [];
-	    "9" = [];
-	  };
+          persistent-workspaces = {
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
+            "6" = [ ];
+            "7" = [ ];
+            "8" = [ ];
+            "9" = [ ];
+          };
           format-icons = {
             "1" = "¹";
             "2" = "²";

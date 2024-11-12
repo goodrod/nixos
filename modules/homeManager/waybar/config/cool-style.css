@@ -82,16 +82,16 @@ tooltip {
     padding: 5px 15px 5px 5px;
     margin-left: 3px;
     margin-right: 3px;
-    color: #d8cfc4
+    color: #92897f;
     /*color: #636475;*/
 }
 
 #workspaces button.visible {
-    color: #d8b59f;
+    color: #e6845c;
 }
 
 #workspaces button.active {
-    color: #f4a261;
+    color: #ff652b;
     border-color: #a39ec4;
 }
 
