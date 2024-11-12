@@ -47,6 +47,7 @@
   environment.systemPackages = with pkgs; [
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
+    bluetuith
   ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
