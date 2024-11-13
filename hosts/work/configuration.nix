@@ -51,6 +51,7 @@
     keyutils
     nss_latest
     slack
+    pavucontrol
     jetbrains.rider
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools

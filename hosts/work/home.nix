@@ -17,7 +17,7 @@
     monitors.right = {
       enable = true;
       name = "DP-6";
-      settings = "preferred,4480x0,1.0";
+      settings = "1920x1080@60,4480x0,1.0";
     };
   };
   module.hyprland-event-hooks.enable = true;

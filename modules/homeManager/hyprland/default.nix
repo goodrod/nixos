@@ -101,7 +101,7 @@ in {
       };
     };
     home.pointerCursor = {
-      gtk.enable = true;
+      # gtk.enable = true;
       # x11.enable = true;
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
@@ -262,11 +262,11 @@ in {
           "vesktop &"
         ];
         env = [
-          "LIBVA_DRIVER_NAME,nvidia"
-          "XDG_SESSION_TYPE,wayland"
-          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          "XCURSOR_SIZE,24"
-          "HYPRCURSOR_SIZE,24"
+          #"LIBVA_DRIVER_NAME,nvidia"
+          #"XDG_SESSION_TYPE,wayland"
+          #"__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          #"XCURSOR_SIZE,24"
+          #"HYPRCURSOR_SIZE,24"
 	  "AQ_NO_MODIFIERS,1"
         ];
         bind = [
