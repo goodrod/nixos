@@ -202,11 +202,7 @@ in {
           rounding = 10;
           active_opacity = 1.0;
           inactive_opacity = 1.0;
-          drop_shadow = true;
-          shadow_range = 4;
-          shadow_render_power = 3;
 
-          "col.shadow" = "rgba(1a1a1aee)";
           blur = {
             enabled = true;
             size = 3;
@@ -271,6 +267,7 @@ in {
           "__GLX_VENDOR_LIBRARY_NAME,nvidia"
           "XCURSOR_SIZE,24"
           "HYPRCURSOR_SIZE,24"
+	  "AQ_NO_MODIFIERS,1"
         ];
         bind = [
           "$mainMod, I, layoutmsg, removemaster"
