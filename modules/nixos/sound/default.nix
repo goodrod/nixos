@@ -24,7 +24,7 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
-    environment.systemPackages = with pkgs; [ pulsemixer ];
+    environment.systemPackages = with pkgs; [ pulsemixer bluetuith ];
     services.pipewire = {
       enable = true;
       alsa.enable = true;

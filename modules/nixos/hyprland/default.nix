@@ -19,10 +19,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     environment.systemPackages = with pkgs; [ papirus-icon-theme ];
     programs.waybar.enable = true;
     programs.hyprland.enable = true;
+    hardware.opengl.driSupport32Bit = true;
+    programs.hyprland.package =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    programs.hyprland.portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
     environment.sessionVariables = {
       #WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
