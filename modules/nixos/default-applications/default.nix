@@ -59,6 +59,7 @@ in {
       ntfs3g
       unzip
       openconnect
+      traceroute
     ];
   };
 }

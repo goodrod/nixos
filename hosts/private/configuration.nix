@@ -22,6 +22,7 @@
     module-path = ./home.nix;
   };
   module.greetd.enable = true;
+  module.game-development.enable = true;
   module.clamav = {
     enable = true;
     on-access = {

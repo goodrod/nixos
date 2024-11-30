@@ -160,7 +160,7 @@ in {
         "$musicRegexp" = ".*Spotify.*";
         "$gamingRegexp" = "steam";
         "$settingsRegexp" = "com.saivert.pwvucontrol";
-        "$programmingRegexp" = "code-url-handler|jetbrains-rider";
+        "$programmingRegexp" = "code-url-handler|jetbrains-rider|Godot";
         windowrulev2 = [
           "suppressevent maximize, class:.*"
           "tag +setting,class:$settingsRegexp"
@@ -262,12 +262,11 @@ in {
           "vesktop &"
         ];
         env = [
-          #"LIBVA_DRIVER_NAME,nvidia"
-          #"XDG_SESSION_TYPE,wayland"
-          #"__GLX_VENDOR_LIBRARY_NAME,nvidia"
-          #"XCURSOR_SIZE,24"
-          #"HYPRCURSOR_SIZE,24"
-	  "AQ_NO_MODIFIERS,1"
+          "LIBVA_DRIVER_NAME,nvidia"
+          "XDG_SESSION_TYPE,wayland"
+          "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+          "XCURSOR_SIZE,24"
+          "HYPRCURSOR_SIZE,24"
         ];
         bind = [
           "$mainMod, I, layoutmsg, removemaster"
