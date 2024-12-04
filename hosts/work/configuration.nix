@@ -42,6 +42,7 @@
       "everdo"
       "Oracle_VM_VirtualBox_Extension_Pack"
       "postman"
+      "obsidian"
     ];
 
   # list packages installed in system profile. to search, run:
@@ -61,6 +62,7 @@
     kubectx
     chromium
     postman
+    obsidian
   ];
 
 

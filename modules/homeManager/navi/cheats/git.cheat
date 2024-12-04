@@ -1,0 +1,3 @@
+% (git)
+# (checkout/release)            Create and push tag to origin
+git tag <tag> ; git push origin <tag>
