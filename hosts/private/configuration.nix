@@ -45,6 +45,7 @@
       "steam"
       "steam-unwrapped-1.0.0.81"
       "steam-unwrapped"
+      "aseprite"
     ];
 
   environment.systemPackages = with pkgs; [
