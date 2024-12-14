@@ -22,8 +22,8 @@ nvim <home-manager-module-path> ; find <home-manager-module-path> | grep nix | x
 # (edit/change)                 Edit system modules
 nvim <nixos-module-path> ; find <nixos-module-path> | grep nix | xargs -I{} nixfmt {}
 
-# (upgrade/update)              Upgrade nixos
-nixos-rebuild switch --upgrade --flake <flake-location>
+# (upgrade/update)              Update flake
+nix flake update --flake <nixos-config-path>
 
 # (format/reformat)             Format all nix files
 find <nixos-config-path> | grep nix | xargs -I{} nixfmt {}
