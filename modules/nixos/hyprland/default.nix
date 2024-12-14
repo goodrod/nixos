@@ -22,7 +22,7 @@ in {
     environment.systemPackages = with pkgs; [ papirus-icon-theme ];
     programs.waybar.enable = true;
     programs.hyprland.enable = true;
-    hardware.opengl.driSupport32Bit = true;
+    hardware.graphics.enable32Bit = true;
     programs.hyprland.package =
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     programs.hyprland.portalPackage =
