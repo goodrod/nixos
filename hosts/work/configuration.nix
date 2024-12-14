@@ -50,6 +50,7 @@
     ansible
     sshpass
     keyutils
+    file
     nss_latest
     slack
     pavucontrol
@@ -63,6 +64,7 @@
     chromium
     postman
     obsidian
+    rpm
   ];
 
 
