@@ -26,7 +26,9 @@ in {
     # Options for modules imported in "imports" can be set here.
     fonts = {
       fontconfig.enable = true;
-      packages = with pkgs; [ nerdfonts font-awesome ];
+      packages = with pkgs;
+        [ font-awesome ] ++ builtins.filter lib.attrsets.isDerivation
+        (builtins.attrValues pkgs.nerd-fonts);
     };
   };
 }

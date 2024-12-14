@@ -7,6 +7,7 @@
         lightline.enable = true;
         bufferline.enable = true;
         telescope.enable = true;
+        web-devicons.enable = true;
         oil.enable = true;
         treesitter.enable = true;
         transparent.enable = true;
