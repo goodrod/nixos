@@ -11,6 +11,41 @@ ssh 192.168.7.180 -l Perseus
 # (create/release)              Create release branches
 for repo in */.git; do repo_dir=$(dirname "$repo"); cd "$repo_dir"; base_branch=$(git rev-parse --verify development &>/dev/null && echo development || (git rev-parse --verify main &>/dev/null && echo main || echo master)); release_branch="release/<release-version>"; echo "In repository '$repo_dir': Will create branch '$release_branch' from '$base_branch' and push it to origin."; read -p "Do you want to proceed? (y/n): " confirm; [[ $confirm == [yY] ]] && git checkout "$base_branch" && git checkout -b "$release_branch" && git push -u origin "$release_branch" && echo "Branch '$release_branch' created and pushed to remote in repository '$repo_dir'."; cd -; done
 
+# (summarize)                   Summarize git status of all repos in current directory
+changes_found=false
+for dir in */.git; do
+  repo="${dir%/.git}"
+  if [[ ! "$repo" =~ ^misc ]]; then
+    changes=$(cd "$repo" && git status --short)
+    if [[ -n "$changes" ]]; then
+      changes_found=true
+      echo -e "\033[1;34mRepository: $repo\033[0m"
+      echo -e "\033[1;33mUntracked:\033[0m"
+      echo "$changes" | grep '??' | sed 's/?? /\033[1;32m  &\033[0m/'
+      echo -e "\033[1;31mModified:\033[0m"
+      echo "$changes" | grep '^[ M]' | sed 's/^.[ ]*/  \033[1;31m&\033[0m/'
+      echo
+    fi
+  fi
+done
+
+if [[ "$changes_found" == false ]]; then
+  echo -e "\033[1;32mNo changes found in any repository.\033[0m"
+fi
+
+# (current/status)              Output current branch of all repos
+bold_white='\033[1;37m'
+blue='\033[1;34m'
+green='\033[0;32m'
+reset='\033[0m'
+printf "${bold_white}%-20s %-20s${reset}\n" "Repository" "Status"
+
+for repo in */.git; do
+  repo_name=$(basename "$(dirname "$repo")")
+  branch=$(git -C "$(dirname "$repo")" branch --show-current)
+  printf "${blue}%-20s ${green}Checked out %s${reset}\n" "$repo_name" "$branch"
+done
+
 # (checkout)                    Chechout branch in all repos
 COLOR_RESET='\033[0m'
 COLOR_REPO='\033[1;34m'
