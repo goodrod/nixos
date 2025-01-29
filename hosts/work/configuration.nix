@@ -65,6 +65,7 @@
     postman
     obsidian
     rpm
+    bruno
   ];
 
 
