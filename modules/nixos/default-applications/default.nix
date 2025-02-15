@@ -35,6 +35,7 @@ in {
       alacritty
       bitwarden
       everdo
+      blueman
       fuzzel
       jsonfmt
       killall

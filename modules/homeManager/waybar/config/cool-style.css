@@ -32,7 +32,9 @@ tooltip {
 #temperature,
 #disk,
 #custom-label,
-#workspaces{
+#workspaces
+#custom-bluetooth
+{
     background: #1e1e2e;
     padding: 0px 10px;
     margin: 3px 0px;
@@ -48,7 +50,9 @@ tooltip {
 #cpu,
 #pulseaudio,
 #clock,
-#network {
+#network
+#custom-bluetooth
+{
     color: #7FBF7F;
 
 }

@@ -9,9 +9,10 @@
       };
 
       opts = {
-        scrolloff = 999;
+        scrolloff = 20;
         number = true;
         relativenumber = true;
+        statuscolumn = "%l %r";
         shiftwidth = 2;
       };
     };

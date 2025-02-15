@@ -21,6 +21,7 @@
     enable = true;
     module-path = ./home.nix;
   };
+  programs.gamescope.enable = true;
   module.greetd.enable = true;
   module.game-development.enable = true;
   module.clamav = {
