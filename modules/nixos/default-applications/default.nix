@@ -66,6 +66,8 @@ in {
       atop
       spotify-player
       chatblade
+      slurp
+      swappy
     ];
   };
 }

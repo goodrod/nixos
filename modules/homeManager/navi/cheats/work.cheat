@@ -1,4 +1,20 @@
 % (work)
+# (pull/fastforward)            Pull latest version of current branch on each repo in directory
+for dir in */.git; do
+  repo="${dir%/.git}"
+  if [[ ! "$repo" =~ ^misc ]]; then
+    cd "$repo" || continue
+    current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+    # Pull latest changes (fast forward only) on the current branch
+    echo -e "\033[1;34mPulling latest changes for $repo on branch $current_branch\033[0m"
+    git pull --ff-only origin "$current_branch"
+
+    cd - > /dev/null
+  fi
+done
+
+
 # (tag/push)                    Tag and push all repos that are on a certain branch
 
 read -p "Enter branch name to check: " branch_name
@@ -61,33 +77,38 @@ ssh 192.168.7.180 -l Perseus
 for repo in */.git; do repo_dir=$(dirname "$repo"); cd "$repo_dir"; base_branch=$(git rev-parse --verify development &>/dev/null && echo development || (git rev-parse --verify main &>/dev/null && echo main || echo master)); release_branch="release/<release-version>"; echo "In repository '$repo_dir': Will create branch '$release_branch' from '$base_branch' and push it to origin."; read -p "Do you want to proceed? (y/n): " confirm; [[ $confirm == [yY] ]] && git checkout "$base_branch" && git checkout -b "$release_branch" && git push -u origin "$release_branch" && echo "Branch '$release_branch' created and pushed to remote in repository '$repo_dir'."; cd -; done
 
 # (push/wip)                    Commit changes with a "WIP" message and push to the current    Commit changes with a "WIP" message and push to the current feature branch
+
+# (commit & push WIP) Commit changes with a "WIP" message and push to the current feature branch
 for dir in */.git; do
   repo="${dir%/.git}"
-
+  
   # Ensure that the directory exists and is a valid git repo
   if [[ -d "$repo" && -d "$dir" && ! "$repo" =~ ^misc ]]; then
     changes=$(cd "$repo" && git status --short)
     if [[ -n "$changes" ]]; then
       echo -e "\033[1;34mRepository: $repo\033[0m"
-
+      
       # Commit changes with WIP message
+      cd "$repo"
       git add .
       git commit -m "WIP"
-
+      
       # Check the current branch
       current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-      # Notify if branch doesn't startwith "feature/"
+      # Skip non-feature branches
       if [[ "$current_branch" != feature/* ]]; then
         echo -e "\033[1;33mCurrent branch '$current_branch' is not a feature branch, skipping push.\033[0m"
-      else
-        # Push to current branch
-        git push origin "$current_branch"
-        echo -e "\033[1;32mCommitted and pushed to branch: $current_branch\033[0m"
+        cd -  # go back to parent directory toprocess the next repo
+        continue
       fi
-      # cd back to the parent directory to process next repository
-      cd ..
+
+      # Push to current branch
+      git push origin "$current_branch"
+      
+      echo -e "\033[1;32mCommitted and pushed to branch: $current_branch\033[0m"
       echo
+      cd -  # go back to parent directory
     fi
   fi
 done
