@@ -7,6 +7,15 @@ let
   inherit (lib) mkOption mkEnableOption types mkIf;
   inherit (types) path str bool;
   option = config.module.hyprland;
+  toggleWindowScript = pkgs.writeScript "toggle-window.sh" ''
+    #!/usr/bin/env bash
+    pgrep fuzzel && pkill fuzzel && exit 0
+    if hyprctl clients | grep -q "toggle-window"; then
+        hyprctl dispatch closewindow class:toggle-window
+    else
+        alacritty --class=toggle-window -e $1
+    fi
+  '';
 in {
   imports = [
     # Paths to other modules.
@@ -162,7 +171,7 @@ in {
         "$settingsRegexp" = "com.saivert.pwvucontrol";
         "$programmingRegexp" = "code-url-handler|jetbrains-rider|Godot";
         windowrulev2 = [
-          "suppressevent maximize, class:.*"
+          "suppressevent maximize center, class:.*"
           "tag +setting,class:$settingsRegexp"
           "tag +music,title:$musicRegexp"
           "tag +gaming,class:$gamingRegexp"
@@ -179,6 +188,12 @@ in {
           "workspace 7 silent,tag:coding"
           "workspace 8 silent,tag:term"
           "workspace 9 silent,tag:browser"
+          "stayfocused,class:toggle-window"
+          "float,class:toggle-window"
+          "stayfocused,class:toggle-window"
+          "pin,class:toggle-window"
+          "size 50% 50%,class:toggle-window"
+
         ];
         general = {
           gaps_in = 5;
@@ -277,7 +292,9 @@ in {
           "$mainMod, escape, exit,"
           "$mainMod, F, exec, $fileManager"
           "$mainMod SHIFT, F, togglefloating,"
-          "$mainMod, D, exec, $menu"
+	  "$mainMod, D, exec, pgrep $menu && pkill $menu || $menu"
+          "$mainMod, B, exec, ${toggleWindowScript} bluetuith"
+          "$mainMod, S, exec, ${toggleWindowScript} pulsemixer"
           "$mainMod ALT, D, exec, bash -c '$menu --launch-prefix=\"hyprctl dispatch exec [workspace unset] -- \"'"
           "$mainMod, P, pseudo, # dwindle"
           "$mainMod, H, togglesplit, # dwindle"

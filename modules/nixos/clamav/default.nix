@@ -73,46 +73,5 @@ in {
         PrivateNetwork = "yes";
       };
     };
-
-    systemd.timers.av-user-scan = {
-      description = "scan normal user directories for suspect files";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "weekly";
-        Unit = "av-user-scan.service";
-      };
-    };
-
-    systemd.services.av-user-scan = {
-      description = "scan normal user directories for suspect files";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart =
-          "${pkgs.systemd}/bin/systemd-cat --identifier=av-scan ${pkgs.clamav}/bin/clamdscan --quiet --recursive --fdpass ${
-            toString all-user-folders
-          }";
-      };
-    };
-
-    systemd.timers.av-all-scan = {
-      description = "scan all directories for suspect files";
-      wantedBy = [ "timers.target" ];
-      timerConfig = {
-        OnCalendar = "monthly";
-        Unit = "av-all-scan.service";
-      };
-    };
-
-    systemd.services.av-all-scan = {
-      description = "scan all directories for suspect files";
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = ''
-          ${pkgs.systemd}/bin/systemd-cat --identifier=av-scan ${pkgs.clamav}/bin/clamdscan --quiet --recursive --fdpass ${
-            toString all-system-folders
-          }
-        '';
-      };
-    };
   };
 }

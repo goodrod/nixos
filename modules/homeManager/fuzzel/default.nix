@@ -49,7 +49,7 @@ in {
           selection-text = "#ff8c00ff"; # Selected text matches prompt
           selection-match = "#00ff00ff"; # Match color in selected text
           counter = "#93a1a1ff"; # Counter color
-          border = "#1e1e2eff"; # Border color
+          border = "#1e1e2eff"; # Border col r
         };
       };
     };

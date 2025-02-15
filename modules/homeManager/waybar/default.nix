@@ -125,8 +125,7 @@ in {
         tray = { spacing = 10; };
         clock = {
           timezone = "Europe/Stockholm";
-          format = "{:%H:%M %Z} ";
-          format-alt = "{:%a; %b %d %C%y} ";
+          format = "{:%H:%M %Z   - %a %b %d }";
           tooltip = false;
           on-click-right = "gsimplecal";
         };
@@ -148,7 +147,7 @@ in {
           format-icons = [ "" "" ];
         };
         battery = {
-          tooltip = false;
+          tooltip = true;
           states = {
             good = 95;
             warning = 20;
@@ -159,27 +158,6 @@ in {
           format-plugged = "{capacity}% ";
           format-alt = "{time} {icon}";
           format-icons = [ "" "" "" "" "" ];
-        };
-        "custom/bat0" = {
-          states = {
-            good = 95;
-            warning = 15;
-            critical = 10;
-          };
-          exec = "~/.config/waybar/modules/battery.py BAT0";
-          return-type = "json";
-          format = "{} {percentage}% {icon}";
-          format-icons = [ "" "" "" "" "" ];
-          tooltip = false;
-          on-click-right = "alacritty --start-as normal bash -i bat";
-        };
-        "custom/vpn" = {
-          format = "vpn {icon}";
-          tooltip-format = "{icon}";
-          exec = "~/.config/waybar/modules/vpn";
-          return-type = "json";
-          interval = 5;
-          format-icons = [ "" "" ];
         };
         pulseaudio = {
           tooltip = false;
@@ -205,16 +183,6 @@ in {
           format = "{specific_used:0.1f}/{specific_total:0.1f} GB ";
           unit = "GB";
         };
-      };
-      bluetooth = {
-        format = "{icon}";
-        format-alt = "bluetooth: {status}";
-        interval = 30;
-        format-icons = {
-          enabled = "";
-          disabled = "";
-        };
-        tooltip-format = "{status}";
       };
     };
   };
