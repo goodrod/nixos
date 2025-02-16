@@ -30,6 +30,7 @@ in {
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
 
+    services.spotifyd.enable = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     environment.systemPackages = with pkgs; [
       alacritty
@@ -61,6 +62,10 @@ in {
       unzip
       openconnect
       traceroute
+      htop
+      atop
+      spotify-player
+      chatblade
     ];
   };
 }

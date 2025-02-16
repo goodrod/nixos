@@ -29,7 +29,8 @@ in {
       settings = {
         main = {
           font = "Hack Nerd Font:size=12"; # Monospaced font
-          width = 80; # Width option
+          width = 137; # Width option
+          lines = 38;
           horizontal-pad = 20; # Horizontal padding
           vertical-pad = 8; # Vertical padding
           inner-pad = 5; # Inner padding

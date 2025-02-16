@@ -16,6 +16,15 @@ let
         alacritty --class=toggle-window -e $1
     fi
   '';
+  toggleMenu = pkgs.writeScript "toggle-menu.sh" ''
+    #!/usr/bin/env bash
+    pgrep fuzzel && pkill fuzzel && exit 0
+    if hyprctl clients | grep -q "toggle-window"; then
+        hyprctl dispatch closewindow class:toggle-window
+    else
+        fuzzel
+    fi
+  '';
 in {
   imports = [
     # Paths to other modules.
@@ -188,11 +197,9 @@ in {
           "workspace 7 silent,tag:coding"
           "workspace 8 silent,tag:term"
           "workspace 9 silent,tag:browser"
-          "stayfocused,class:toggle-window"
           "float,class:toggle-window"
-          "stayfocused,class:toggle-window"
           "pin,class:toggle-window"
-          "size 50% 50%,class:toggle-window"
+          "size 75% 75%,class:toggle-window"
 
         ];
         general = {
@@ -289,12 +296,16 @@ in {
           "$mainMod, space, exec, $terminal"
           "$mainMod ALT, space, exec, [workspace unset] $terminal"
           "$mainMod, C, killactive,"
-          "$mainMod, escape, exit,"
+          "$mainMod, F12, exit,"
           "$mainMod, F, exec, $fileManager"
           "$mainMod SHIFT, F, togglefloating,"
-	  "$mainMod, D, exec, pgrep $menu && pkill $menu || $menu"
+          "$mainMod, D, exec, ${toggleMenu}"
+          "$mainMod, escape, exec, ${toggleWindowScript} :;"
           "$mainMod, B, exec, ${toggleWindowScript} bluetuith"
-          "$mainMod, S, exec, ${toggleWindowScript} pulsemixer"
+          "$mainMod, s, exec, ${toggleWindowScript} spotify_player"
+          "$mainMod, V, exec, ${toggleWindowScript} pulsemixer"
+          "$mainMod, P, exec, ${toggleWindowScript} htop"
+          "$mainMod, H, exec, ${toggleWindowScript} chatgpt"
           "$mainMod ALT, D, exec, bash -c '$menu --launch-prefix=\"hyprctl dispatch exec [workspace unset] -- \"'"
           "$mainMod, P, pseudo, # dwindle"
           "$mainMod, H, togglesplit, # dwindle"
