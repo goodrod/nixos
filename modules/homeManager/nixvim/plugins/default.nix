@@ -10,5 +10,6 @@
     ./harpoon.nix
     ./nvim-comment.nix
     ./misc.nix
+    ./chatgpt.nix
   ];
 }

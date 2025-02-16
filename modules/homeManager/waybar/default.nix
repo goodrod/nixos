@@ -40,8 +40,16 @@ in {
           "hyprland/workspaces#special"
         ];
         modules-center = [ "hyprland/window" ];
-        modules-right =
-          [ "battery" "disk" "temperature" "memory" "cpu" "pulseaudio" "clock" "tray" ];
+        modules-right = [
+          "battery"
+          "disk"
+          "temperature"
+          "memory"
+          "cpu"
+          "pulseaudio"
+          "clock"
+          "tray"
+        ];
         "custom/label#workspaces" = {
           exec = "echo 'Workspaces:'";
           interval = 3600;
