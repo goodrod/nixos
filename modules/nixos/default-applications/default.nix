@@ -42,7 +42,6 @@ in {
       killall
       git
       wget
-      grimblast
       fzf
       wlogout
       home-manager
@@ -68,6 +67,7 @@ in {
       chatblade
       slurp
       swappy
+      grim
     ];
   };
 }
