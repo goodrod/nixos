@@ -13,12 +13,12 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     gp-nvim-plugin = {
       url = "github:Robitx/gp.nvim";
       flake = false;
     };
-    
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 

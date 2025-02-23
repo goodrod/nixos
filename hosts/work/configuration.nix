@@ -28,7 +28,12 @@
     enable = true;
     on-access = {
       enable = true;
-      home-directories-to-scan = [ "Downloads" "work/projects/external" "personal/projects/external" ".mozilla" ];
+      home-directories-to-scan = [
+        "Downloads"
+        "work/projects/external"
+        "personal/projects/external"
+        ".mozilla"
+      ];
     };
   };
   module.helios-development.enable = true;
@@ -67,7 +72,6 @@
     rpm
     bruno
   ];
-
 
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

@@ -16,7 +16,7 @@
   module.discord.enable = true;
   module.hyprland.enable = true;
   module.nvidia.enable = true;
-  module.steam.enable =  true;
+  module.steam.enable = true;
   module.home-manager = {
     enable = true;
     module-path = ./home.nix;
@@ -28,7 +28,12 @@
     enable = true;
     on-access = {
       enable = true;
-      home-directories-to-scan = [ "Downloads" "work/projects/external" "personal/projects/external" ".mozilla" ];
+      home-directories-to-scan = [
+        "Downloads"
+        "work/projects/external"
+        "personal/projects/external"
+        ".mozilla"
+      ];
     };
   };
   programs.firefox.enable = true;

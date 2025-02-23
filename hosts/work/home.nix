@@ -5,7 +5,7 @@
   module.awesome.enable = false;
   module.hyprland = {
     enable = true;
-    monitors.left = { 
+    monitors.left = {
       name = "eDP-1";
       enable = true;
     };
