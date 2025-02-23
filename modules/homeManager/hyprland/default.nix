@@ -281,7 +281,7 @@ in {
           "nm-applet &"
           "everdo &"
           "firefox &"
-          "vesktop &"
+          "discord &"
         ];
         env = [
           "LIBVA_DRIVER_NAME,nvidia"
