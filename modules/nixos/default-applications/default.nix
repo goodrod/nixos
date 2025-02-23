@@ -64,7 +64,7 @@ in {
       htop
       atop
       spotify-player
-      chatblade
+      chatgpt-cli
       slurp
       swappy
       grim

@@ -45,6 +45,11 @@
           action = "<cmd>Telescope git_files<CR>";
           key = "<C-p>";
         }
+	{
+          mode = "v";
+	  action = ":<C-u>'<,'>GpRewrite<cr>";
+          key = "<C-h>";
+        }
         {
           mode = "n";
           action = "<cmd>UndotreeToggle<CR>";
