@@ -17,13 +17,12 @@
     overlays = [
       (final: prev: {
         vimPlugins = prev.vimPlugins // {
-	  gp-nvim = prev.vimUtils.buildVimPlugin {
-	    name = "gp-nvim";
-	    src = inputs.gp-nvim-plugin;
-	  };
-	};
-      }
-      )
+          gp-nvim = prev.vimUtils.buildVimPlugin {
+            name = "gp-nvim";
+            src = inputs.gp-nvim-plugin;
+          };
+        };
+      })
     ];
   };
 }
