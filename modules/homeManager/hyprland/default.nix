@@ -306,6 +306,7 @@ in {
           "$mainMod, V, exec, ${toggleWindowScript} pulsemixer"
           "$mainMod, P, exec, ${toggleWindowScript} htop"
           "$mainMod, H, exec, ${toggleWindowScript} chatgpt"
+          ''$mainMod, F7, exec, grim -g "$(slurp)" - | swappy -f -''
           "$mainMod ALT, D, exec, bash -c '$menu --launch-prefix=\"hyprctl dispatch exec [workspace unset] -- \"'"
           "$mainMod, P, pseudo, # dwindle"
           "$mainMod, H, togglesplit, # dwindle"

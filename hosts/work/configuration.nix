@@ -73,6 +73,28 @@
     bruno
   ];
 
+  security.pki.certificates = [''
+    -----BEGIN CERTIFICATE-----
+        MIIDaTCCAlGgAwIBAgIBETANBgkqhkiG9w0BAQsFADA4MRowGAYDVQQKDBFIZXJj
+        dWxlcyBIZWxpc29mdDEaMBgGA1UEAwwRSGVyY3VsZXMgSGVsaXNvZnQwHhcNMjQw
+        NTAzMTEwODMyWhcNMjUwNTAzMTEwODMyWjAjMSEwHwYDVQQDDBhwb3J0YWwuaGVs
+        aXNvZnQuaW50ZXJuYWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC8
+        9Rx3FFcVCqae/zrMeuy5bE9nGszPTVO1x+AVXhurv2EzxJBLwZmVeKGnCBRxRIcB
+        wOIsyDtL1O/DXZ4t8BcZ40ErKGM2LESuUn71IOtsDJPm8OF2Ky7NdbPKWVADI36q
+        CddzEQOUaGl4sdAVdrqgrA89AzUle2b+zDfvglYhiZj19LfxVhQZ9J+iSOEanmOX
+        eMgpYavM9MaKt/YJNwXKjx+ZWDX1NvFkOZgYlJnWwb9yKHvcf22rsWhXwbzETCcE
+        1zqQpiX+glMyicV5KQrvmMpMVaXOnhTBvv5zr4wKgVZTzaG9h7/BVD0tCekpm+Zz
+        CHcZgbh4PeOczQcjwhIlAgMBAAGjgZIwgY8wCQYDVR0TBAIwADAOBgNVHQ8BAf8E
+        BAMCBaAwMgYDVR0RBCswKYIYcG9ydGFsLmhlbGlzb2Z0LmludGVybmFsgg0xOTIu
+        MTY4LjcuMTgwMB0GA1UdDgQWBBQ/+SgQSYhpd7ufaIWxktrWqE1pojAfBgNVHSME
+        GDAWgBRjo5VDMX3HMJ+jLENHAUdkXH/4mTANBgkqhkiG9w0BAQsFAAOCAQEAhSHt
+        tA15V/KYn75oezTQKOpX/FyMEtYZnYXVG1d27zXYX8scohhO87qhaxREyotRwLWw
+        rovWd3P2HYVkMUcF/JjJMGI/SQ8xQ55Ayat/CD8TywUp8mUgmEKEl7KpQSArPubf
+        v2agNW+sfo+YB0QCnEs2m6Y68JHRMIdam3aBzcnLi71nqEzunA+eIhr7vo+Z1Amn
+        khtW3MaVo4LPJY4ovrGDQfsMiPMlayxfC3Qa/etOy+VYOKwGB8KNeZMAQ5dTh8ct
+        cBtvz+iAiVCS+LjEZbU5XyMah0uWQ1axoVhetRP4kWGb592l2Z1KFWLHBnyP0G62
+        +XX+wlQ2bjZIRoVRIA==
+        -----END CERTIFICATE-----''];
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.enable = false;
