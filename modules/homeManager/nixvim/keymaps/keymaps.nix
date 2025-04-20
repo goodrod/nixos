@@ -27,6 +27,51 @@
           action = "l";
         }
         {
+          mode = "";
+          key = "<C-j>";
+          action = "<C-w>h";
+        }
+        {
+          mode = "";
+          key = "<C-k>";
+          action = "<C-w>j";
+        }
+        {
+          mode = "";
+          key = "<C-l>";
+          action = "<C-w>k";
+        }
+        {
+          mode = "";
+          key = "<C-ö>";
+          action = "<C-w>l";
+        }
+        {
+          mode = "";
+          key = "<C-n>";
+          action = ":new<CR>";
+        }
+        {
+          mode = "";
+          key = "<A-j>";
+          action = ":tabprevious<CR>";
+        }
+        {
+          mode = "";
+          key = "<A-ö>";
+          action = ":tabnext<CR>";
+        }
+        {
+          mode = "";
+          key = "<A-n>";
+          action = ":tabnew<CR>";
+        }
+        {
+          mode = "";
+          key = "<A-c>";
+          action = ":tabclose<CR>";
+        }
+        {
           action = "<cmd>Telescope live_grep<CR>";
           key = "<leader>gf";
         }
