@@ -37,7 +37,7 @@
     };
   };
   module.helios-development.enable = true;
-  programs.firefox.enable = false;
+  programs.firefox.enable = true;
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "slack"
