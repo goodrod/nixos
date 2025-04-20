@@ -11,5 +11,6 @@
     ./nvim-comment.nix
     ./misc.nix
     ./chatgpt.nix
+    ./which-key.nix
   ];
 }

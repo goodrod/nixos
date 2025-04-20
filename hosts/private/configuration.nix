@@ -23,7 +23,7 @@
   };
   programs.gamescope.enable = true;
   module.greetd.enable = true;
-  module.game-development.enable = true;
+  module.game-development.enable = false;
   module.clamav = {
     enable = true;
     on-access = {

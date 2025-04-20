@@ -25,7 +25,7 @@
   outputs = { self, nixpkgs, ... }@inputs:
     let libx = import ./lib { inherit inputs; };
     in {
-      nixosConfigurations = nixpkgs.lib.attrsets.genAttrs [ "work" "private" ]
+      nixosConfigurations = nixpkgs.lib.attrsets.genAttrs [ "work" "private" "private-2" ]
         (name: libx.mkHost { hostname = name; });
       homeManagerModules.default = ./modules/homeManager;
     };
