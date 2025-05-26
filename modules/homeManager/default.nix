@@ -10,7 +10,7 @@
     ./default-home-dirs
     ./navi
     ./awesome
-    ./nixvim
+    ./neovim
     ./waybar
     ./alacritty
     ./vscode

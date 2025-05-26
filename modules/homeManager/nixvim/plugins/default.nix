@@ -12,5 +12,7 @@
     ./misc.nix
     ./chatgpt.nix
     ./which-key.nix
+    ./preview.nix
+    ./telescope.nix
   ];
 }

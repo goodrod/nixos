@@ -535,13 +535,30 @@
         "type": "github"
       }
     },
+    "preview-nvim-plugin": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1744980855,
+        "narHash": "sha256-oY/vjythAKaOjlLNTil0uooDrhW2dakvpCpgnRsCLGc=",
+        "owner": "itaranto",
+        "repo": "preview.nvim",
+        "rev": "b97da7fb9444701afb30f0949a35bdf01a8c5c28",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "itaranto",
+        "repo": "preview.nvim",
+        "type": "gitlab"
+      }
+    },
     "root": {
       "inputs": {
         "gp-nvim-plugin": "gp-nvim-plugin",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "preview-nvim-plugin": "preview-nvim-plugin"
       }
     },
     "systems": {

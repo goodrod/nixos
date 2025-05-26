@@ -13,6 +13,7 @@
         transparent.enable = true;
         undotree.enable = true;
         fugitive.enable = true;
+        snacks.enable = true;
       };
     };
   };
