@@ -4,7 +4,7 @@
   imports = [ ./opts.nix ./keymaps ./plugins ];
   home.shellAliases.v = "nvim";
   programs.nixvim = {
-    enable = true;
+    enable = false;
     defaultEditor = true;
 
     viAlias = true;
@@ -20,6 +20,10 @@
           gp-nvim = prev.vimUtils.buildVimPlugin {
             name = "gp-nvim";
             src = inputs.gp-nvim-plugin;
+          };
+          preview-nvim = prev.vimUtils.buildVimPlugin {
+            name = "preview-nvim";
+            src = inputs.preview-nvim-plugin;
           };
         };
       })

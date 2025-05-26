@@ -33,6 +33,7 @@ in {
     services.spotifyd.enable = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     environment.systemPackages = with pkgs; [
+      plantuml
       alacritty
       bitwarden
       everdo

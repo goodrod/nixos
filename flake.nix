@@ -14,6 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    preview-nvim-plugin = {
+      url = "gitlab:itaranto/preview.nvim";
+      flake = false;
+    };
     gp-nvim-plugin = {
       url = "github:Robitx/gp.nvim";
       flake = false;
