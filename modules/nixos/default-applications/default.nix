@@ -71,6 +71,7 @@ in {
       swappy
       grim
       jq
+      vivaldi
     ];
   };
 }

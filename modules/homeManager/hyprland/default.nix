@@ -211,7 +211,7 @@ in {
         "$monitor-3" = "${option.monitors.right.name}";
         "$mainMod" = "SUPER";
 
-        "$browserRegexp" = "firefox|Chromium";
+        "$browserRegexp" = "firefox|Chromium|Vivaldi-stable";
         "$chatRegexp" = "discord|vesktop|Slack";
         "$terminalRegexp" = "Alacritty";
         "$productivityRegexp" = "everdo";

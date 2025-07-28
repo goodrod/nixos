@@ -52,6 +52,7 @@
       "steam-unwrapped-1.0.0.81"
       "steam-unwrapped"
       "aseprite"
+      "vivaldi"
     ];
 
   environment.systemPackages = with pkgs; [

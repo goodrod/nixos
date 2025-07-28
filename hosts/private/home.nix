@@ -21,7 +21,7 @@
       "spotify &"
       "nm-applet &"
       "everdo &"
-      "firefox &"
+      "vivaldi &"
       "discord &"
     ];
   };

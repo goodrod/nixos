@@ -23,15 +23,15 @@
       "dunst &"
       "hyprpaper &"
       "slack &"
-      "firefox https://www.office.com &"
-      "chromium https://teams.microsoft.com/v2/ &"
-      "chromium https://outlook.office.com/mail/ &"
+      "vivaldi --app=https://www.office.com &"
+      "vivaldi --app=https://teams.microsoft.com/v2/ &"
+      "vivaldi --app=https://outlook.office.com/mail/ &"
       "rider &"
       "$terminal &"
       "spotify &"
       "nm-applet &"
       "everdo &"
-      "firefox &"
+      "vivaldi &"
     ];
   };
   module.hyprland-event-hooks.enable = true;
