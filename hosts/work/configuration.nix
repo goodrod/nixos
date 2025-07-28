@@ -63,7 +63,9 @@
     nss_latest
     slack
     pavucontrol
-    jetbrains.rider
+    (jetbrains.rider.override {
+      jdk = pkgs.openjdk21;
+    })
     linuxKernel.packages.linux_5_4.wireguard
     wireguard-tools
     nodejs

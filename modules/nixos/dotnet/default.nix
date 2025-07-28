@@ -26,9 +26,6 @@ in {
     # Options for modules imported in "imports" can be set here.
     environment.systemPackages = with pkgs; [ 
       dotnet-sdk_8
-      (jetbrains.rider.override {
-       jdk = pkgs.openjdk21;
-      })
     ];
 
     programs.nix-ld.enable = true;
