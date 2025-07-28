@@ -69,6 +69,7 @@ in {
       slurp
       swappy
       grim
+      jq
     ];
   };
 }

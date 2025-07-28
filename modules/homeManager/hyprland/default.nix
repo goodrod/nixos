@@ -5,7 +5,7 @@ let
   # user of hello.nix module HAS ACTUALLY SET.
   # cfg is a typical convention.
   inherit (lib) mkOption mkEnableOption types mkIf;
-  inherit (types) path str bool;
+  inherit (types) path str bool listOf;
   option = config.module.hyprland;
   toggleWindowScript = pkgs.writeScript "toggle-window.sh" ''
     #!/usr/bin/env bash
@@ -13,7 +13,7 @@ let
     if hyprctl clients | grep -q "toggle-window"; then
         hyprctl dispatch closewindow class:toggle-window
     else
-        alacritty --class=toggle-window -e $1
+        alacritty --class=toggle-window -e bash -c "$@"
     fi
   '';
   toggleMenu = pkgs.writeScript "toggle-menu.sh" ''
@@ -24,6 +24,42 @@ let
     else
         fuzzel
     fi
+  '';
+  parseHotkeysScript = pkgs.writeScript "parseHotkeys.sh" ''
+    #!/usr/bin/env bash
+
+    hyprctl binds -j | jq -r '
+      .[] |
+      .description as $desc |
+      .key as $key |
+      .modmask as $mask |
+      .dispatcher as $dispatcher |
+      .arg as $arg |
+
+      (
+        (if $desc == "" then "<no description>" else $desc end) as $dsc |
+        (
+          (
+            (
+              (if ($mask / 1) % 2    >= 1 then ["Shift"] else [] end) +
+              (if ($mask / 2) % 2    >= 1 then ["Lock"]  else [] end) +
+              (if ($mask / 4) % 2    >= 1 then ["Mod1"]  else [] end) +
+              (if ($mask / 8) % 2    >= 1 then ["Ctrl"]  else [] end) +
+              (if ($mask / 16) % 2   >= 1 then ["Mod3"]  else [] end) +
+              (if ($mask / 32) % 2   >= 1 then ["Mod5"]  else [] end) +
+              (if ($mask / 64) % 2   >= 1 then ["Super"]  else [] end)
+            ) | join("+")
+          ) + (if $key != "" then "+" + $key else "" end) as $hotkey |
+
+          [$dsc, $hotkey, ($dispatcher + " " + $arg)]
+        )
+      ) | @tsv
+    ' | awk -F'\t' '{
+      desc = sprintf("%-50s", $1)
+      key  = sprintf("%-25s", $2)
+      cmd  = (length($3) > 50) ? substr($3, 1, 47) "..." : $3
+      printf "%s    %s    %s\n", desc, key, cmd
+    }'
   '';
 in {
   imports = [
@@ -36,7 +72,10 @@ in {
     # Declare what settings a user of this module module can set.
     # Usually this includes a global "enable" option which defaults to false.
     enable = mkEnableOption "hyprland";
-
+    startup-commands = mkOption {
+      type = listOf str;
+      default = [ ];
+    };
     monitors = {
       left = {
         enable = mkOption {
@@ -150,8 +189,8 @@ in {
       xwayland.enable = true;
       package =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-
       settings = {
+        exec-once = option.startup-commands;
         monitor = mkMerge [
           (mkIf (option.monitors.left.enable)
             [ "${option.monitors.left.name},${option.monitors.left.settings}" ])
@@ -163,6 +202,7 @@ in {
           ])
           ([ "Unknown-1,disable" ])
         ];
+        ecosystem.no_update_news = true;
         debug.disable_logs = false;
         "$terminal" = "alacritty";
         "$menu" = "fuzzel";
@@ -268,21 +308,6 @@ in {
         # https://wiki.hyprland.org/Configuring/Variables/#gestures
         gestures = { workspace_swipe = false; };
 
-        exec-once = [
-          "dunst &"
-          "hyprpaper &"
-          "slack &"
-          "firefox https://www.office.com &"
-          "chromium https://teams.microsoft.com/v2/ &"
-          "chromium https://outlook.office.com/mail/ &"
-          "rider &"
-          "$terminal &"
-          "spotify &"
-          "nm-applet &"
-          "everdo &"
-          "firefox &"
-          "discord &"
-        ];
         env = [
           "LIBVA_DRIVER_NAME,nvidia"
           "XDG_SESSION_TYPE,wayland"
@@ -290,107 +315,89 @@ in {
           "XCURSOR_SIZE,24"
           "HYPRCURSOR_SIZE,24"
         ];
-        bind = [
-          "$mainMod, I, layoutmsg, removemaster"
-          "$mainMod, O, layoutmsg, addmaster"
-          "$mainMod, space, exec, $terminal"
-          "$mainMod ALT, space, exec, [workspace unset] $terminal"
-          "$mainMod, C, killactive,"
-          "$mainMod, F12, exit,"
-          "$mainMod, F, exec, $fileManager"
-          "$mainMod SHIFT, F, togglefloating,"
-          "$mainMod, D, exec, ${toggleMenu}"
-          "$mainMod, escape, exec, ${toggleWindowScript} :;"
-          "$mainMod, B, exec, ${toggleWindowScript} bluetuith"
-          "$mainMod, s, exec, ${toggleWindowScript} spotify_player"
-          "$mainMod, V, exec, ${toggleWindowScript} pulsemixer"
-          "$mainMod, P, exec, ${toggleWindowScript} htop"
-          "$mainMod, H, exec, ${toggleWindowScript} chatgpt"
-          ''$mainMod, F7, exec, grim -g "$(slurp)" - | swappy -f -''
-          "$mainMod ALT, D, exec, bash -c '$menu --launch-prefix=\"hyprctl dispatch exec [workspace unset] -- \"'"
-          "$mainMod, P, pseudo, # dwindle"
-          "$mainMod, H, togglesplit, # dwindle"
-          "$mainMod, A, fullscreen, 2"
-          "$mainMod, code:69, focusmonitor, $monitor-1"
-          "$mainMod, code:70, focusmonitor, $monitor-2"
-          "$mainMod, code:71, focusmonitor, $monitor-3"
-          "$mainMod SHIFT, left, movewindow, l"
-          "$mainMod SHIFT, right, movewindow, r"
-          "$mainMod SHIFT, up, movewindow, u"
-          "$mainMod SHIFT, down, movewindow, d"
-          "$mainMod SHIFT, J, movewindow, l"
-          "$mainMod SHIFT, code:47, movewindow, r"
-          "$mainMod SHIFT, L, movewindow, u"
-          "$mainMod SHIFT, K, movewindow, d"
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
-          "$mainMod, J, movefocus, l"
-          "$mainMod, code:47, movefocus, r"
-          "$mainMod, L, movefocus, u"
-          "$mainMod, K, movefocus, d"
-          "$mainMod ALT, 1, togglespecialworkspace, 1"
-          "$mainMod ALT, 2, togglespecialworkspace, 2"
-          "$mainMod ALT, 3, togglespecialworkspace, 3"
-          "$mainMod ALT, 4, togglespecialworkspace, 4"
-          "$mainMod ALT, 5, togglespecialworkspace, 5"
-          "$mainMod ALT, 6, togglespecialworkspace, 6"
-          "$mainMod ALT, 7, togglespecialworkspace, 7"
-          "$mainMod ALT, 8, togglespecialworkspace, 8"
-          "$mainMod ALT, 9, togglespecialworkspace, 9"
-          "$mainMod ALT, 0, togglespecialworkspace, 0"
-          "$mainMod ALT SHIFT, 1, movetoworkspace, special:1"
-          "$mainMod ALT SHIFT, 2, movetoworkspace, special:2"
-          "$mainMod ALT SHIFT, 3, movetoworkspace, special:3"
-          "$mainMod ALT SHIFT, 4, movetoworkspace, special:4"
-          "$mainMod ALT SHIFT, 5, movetoworkspace, special:5"
-          "$mainMod ALT SHIFT, 6, movetoworkspace, special:6"
-          "$mainMod ALT SHIFT, 7, movetoworkspace, special:7"
-          "$mainMod ALT SHIFT, 8, movetoworkspace, special:8"
-          "$mainMod ALT SHIFT, 9, movetoworkspace, special:9"
-          "$mainMod ALT SHIFT, 0, movetoworkspace, special:0"
-          "$mainMod, 1, focusworkspaceoncurrentmonitor, 1"
-          "$mainMod, 2, focusworkspaceoncurrentmonitor, 2"
-          "$mainMod, 3, focusworkspaceoncurrentmonitor, 3"
-          "$mainMod, 4, focusworkspaceoncurrentmonitor, 4"
-          "$mainMod, 5, focusworkspaceoncurrentmonitor, 5"
-          "$mainMod, 6, focusworkspaceoncurrentmonitor, 6"
-          "$mainMod, 7, focusworkspaceoncurrentmonitor, 7"
-          "$mainMod, 8, focusworkspaceoncurrentmonitor, 8"
-          "$mainMod, 9, focusworkspaceoncurrentmonitor, 9"
-          "$mainMod, 0, focusworkspaceoncurrentmonitor, 10"
-          "$mainMod SHIFT, 1, movetoworkspacesilent, 1"
-          "$mainMod SHIFT, 2, movetoworkspacesilent, 2"
-          "$mainMod SHIFT, 3, movetoworkspacesilent, 3"
-          "$mainMod SHIFT, 4, movetoworkspacesilent, 4"
-          "$mainMod SHIFT, 5, movetoworkspacesilent, 5"
-          "$mainMod SHIFT, 6, movetoworkspacesilent, 6"
-          "$mainMod SHIFT, 7, movetoworkspacesilent, 7"
-          "$mainMod SHIFT, 8, movetoworkspacesilent, 8"
-          "$mainMod SHIFT, 9, movetoworkspacesilent, 9"
-          "$mainMod SHIFT, 0, movetoworkspacesilent, 10"
-          "$mainMod CTRL, 1, focusworkspaceoncurrentmonitor, 12"
-          "$mainMod CTRL, 2, focusworkspaceoncurrentmonitor, 22"
-          "$mainMod CTRL, 3, focusworkspaceoncurrentmonitor, 32"
-          "$mainMod CTRL, 4, focusworkspaceoncurrentmonitor, 42"
-          "$mainMod CTRL, 5, focusworkspaceoncurrentmonitor, 52"
-          "$mainMod CTRL, 6, focusworkspaceoncurrentmonitor, 62"
-          "$mainMod CTRL, 7, focusworkspaceoncurrentmonitor, 72"
-          "$mainMod CTRL, 8, focusworkspaceoncurrentmonitor, 82"
-          "$mainMod CTRL, 9, focusworkspaceoncurrentmonitor, 92"
-          "$mainMod CTRL, 0, focusworkspaceoncurrentmonitor, 102"
-          "$mainMod CTRL SHIFT, 1, movetoworkspacesilent, 12"
-          "$mainMod CTRL SHIFT, 2, movetoworkspacesilent, 22"
-          "$mainMod CTRL SHIFT, 3, movetoworkspacesilent, 32"
-          "$mainMod CTRL SHIFT, 4, movetoworkspacesilent, 42"
-          "$mainMod CTRL SHIFT, 5, movetoworkspacesilent, 52"
-          "$mainMod CTRL SHIFT, 6, movetoworkspacesilent, 62"
-          "$mainMod CTRL SHIFT, 7, movetoworkspacesilent, 72"
-          "$mainMod CTRL SHIFT, 8, movetoworkspacesilent, 82"
-          "$mainMod CTRL SHIFT, 9, movetoworkspacesilent, 92"
-          "$mainMod CTRL SHIFT, 0, movetoworkspacesilent, 102"
-          "$mainMod ALT, C, exec, bash -c 'active_special_workspace=$(hyprctl monitors | grep -B4 \"focused: yes\" | grep -oP \"special:\\w+\") && hyprctl clients | grep -A 8 \"$active_special_workspace\" | grep -oP \"(?<=pid: )\\w+\" | xargs -I{} bash -c \"hyprctl dispatch closewindow pid:{}\"'"
+        bindd = [
+          "$mainMod, I, Remove master, layoutmsg, removemaster"
+          "$mainMod, O, Add master, layoutmsg, addmaster"
+          "$mainMod, space, Launch terminal, exec, $terminal"
+          "$mainMod ALT, space, Execute command, exec, [workspace unset] $terminal"
+          "$mainMod, C, Kill active window, killactive,"
+          "$mainMod, F12, Exit Hyprland, exit,"
+          "$mainMod, F, Open file manager, exec, $fileManager"
+          "$mainMod SHIFT, F, Toggle floating, togglefloating,"
+          "$mainMod, D, Toggle menu, exec, ${toggleMenu}"
+          "$mainMod, escape, Toggle window, exec, ${toggleWindowScript} :;"
+          "$mainMod, B, Toggle Bluetooth, exec, ${toggleWindowScript} bluetuith"
+          "$mainMod, s, Toggle Spotify player, exec, ${toggleWindowScript} spotify_player"
+          "$mainMod, V, Toggle Pulse audio mixer, exec, ${toggleWindowScript} pulsemixer"
+          "$mainMod, P, Toggle htop, exec, ${toggleWindowScript} htop"
+          "$mainMod, G, Toggle ChatGPT, exec, ${toggleWindowScript} chatgpt"
+          ''$mainMod, H, Toggle window, exec, ${toggleWindowScript} "${parseHotkeysScript} | fzf"''
+          "$mainMod, F7, Take screenshot, exec, grim -g"
+          "$mainMod ALT, D, Execute command, exec, bash -c"
+          "$mainMod, P, Toggle pseudo mode, pseudo, # dwindle"
+          "$mainMod, A, Toggle fullscreen, fullscreen, 2"
+          "$mainMod, code:69, Focus monitor $monitor-1, focusmonitor, $monitor-1"
+          "$mainMod, code:70, Focus monitor $monitor-2, focusmonitor, $monitor-2"
+          "$mainMod, code:71, Focus monitor $monitor-3, focusmonitor, $monitor-3"
+          "$mainMod SHIFT, left, Move window l, movewindow, l"
+          "$mainMod SHIFT, right, Move window r, movewindow, r"
+          "$mainMod SHIFT, up, Move window u, movewindow, u"
+          "$mainMod SHIFT, down, Move window d, movewindow, d"
+          "$mainMod, left, Move focus l, movefocus, l"
+          "$mainMod, right, Move focus r, movefocus, r"
+          "$mainMod, up, Move focus u, movefocus, u"
+          "$mainMod, down, Move focus d, movefocus, d"
+          "$mainMod ALT, 1, Toggle special WS 1, togglespecialworkspace, 1"
+          "$mainMod ALT, 2, Toggle special WS 2, togglespecialworkspace, 2"
+          "$mainMod ALT, 3, Toggle special WS 3, togglespecialworkspace, 3"
+          "$mainMod ALT, 4, Toggle special WS 4, togglespecialworkspace, 4"
+          "$mainMod ALT, 5, Toggle special WS 5, togglespecialworkspace, 5"
+          "$mainMod ALT, 6, Toggle special WS 6, togglespecialworkspace, 6"
+          "$mainMod ALT, 7, Toggle special WS 7, togglespecialworkspace, 7"
+          "$mainMod ALT, 8, Toggle special WS 8, togglespecialworkspace, 8"
+          "$mainMod ALT, 9, Toggle special WS 9, togglespecialworkspace, 9"
+          "$mainMod ALT, 0, Toggle special WS 0, togglespecialworkspace, 0"
+          "$mainMod ALT SHIFT, 1, Move to WS special:1, movetoworkspace, special:1"
+          "$mainMod ALT SHIFT, 2, Move to WS special:2, movetoworkspace, special:2"
+          "$mainMod ALT SHIFT, 3, Move to WS special:3, movetoworkspace, special:3"
+          "$mainMod ALT SHIFT, 4, Move to WS special:4, movetoworkspace, special:4"
+          "$mainMod ALT SHIFT, 5, Move to WS special:5, movetoworkspace, special:5"
+          "$mainMod ALT SHIFT, 6, Move to WS special:6, movetoworkspace, special:6"
+          "$mainMod ALT SHIFT, 7, Move to WS special:7, movetoworkspace, special:7"
+          "$mainMod ALT SHIFT, 8, Move to WS special:8, movetoworkspace, special:8"
+          "$mainMod ALT SHIFT, 9, Move to WS special:9, movetoworkspace, special:9"
+          "$mainMod ALT SHIFT, 0, Move to WS special:0, movetoworkspace, special:0"
+          "$mainMod, 1, Focus WS 1 on current monitor, focusworkspaceoncurrentmonitor, 1"
+          "$mainMod, 2, Focus WS 2 on current monitor, focusworkspaceoncurrentmonitor, 2"
+          "$mainMod, 3, Focus WS 3 on current monitor, focusworkspaceoncurrentmonitor, 3"
+          "$mainMod, 4, Focus WS 4 on current monitor, focusworkspaceoncurrentmonitor, 4"
+          "$mainMod, 5, Focus WS 5 on current monitor, focusworkspaceoncurrentmonitor, 5"
+          "$mainMod, 6, Focus WS 6 on current monitor, focusworkspaceoncurrentmonitor, 6"
+          "$mainMod, 7, Focus WS 7 on current monitor, focusworkspaceoncurrentmonitor, 7"
+          "$mainMod, 8, Focus WS 8 on current monitor, focusworkspaceoncurrentmonitor, 8"
+          "$mainMod, 9, Focus WS 9 on current monitor, focusworkspaceoncurrentmonitor, 9"
+          "$mainMod, 0, Focus WS 10 on current monitor, focusworkspaceoncurrentmonitor, 10"
+          "$mainMod SHIFT, 1, Move to WS 1, movetoworkspacesilent, 1"
+          "$mainMod SHIFT, 2, Move to WS 2, movetoworkspacesilent, 2"
+          "$mainMod SHIFT, 3, Move to WS 3, movetoworkspacesilent, 3"
+          "$mainMod SHIFT, 4, Move to WS 4, movetoworkspacesilent, 4"
+          "$mainMod SHIFT, 5, Move to WS 5, movetoworkspacesilent, 5"
+          "$mainMod SHIFT, 6, Move to WS 6, movetoworkspacesilent, 6"
+          "$mainMod SHIFT, 7, Move to WS 7, movetoworkspacesilent, 7"
+          "$mainMod SHIFT, 8, Move to WS 8, movetoworkspacesilent, 8"
+          "$mainMod SHIFT, 9, Move to WS 9, movetoworkspacesilent, 9"
+          "$mainMod SHIFT, 0, Move to WS 10, movetoworkspacesilent, 10"
+          "$mainMod CTRL, 1, Focus WS 12 on current monitor, focusworkspaceoncurrentmonitor, 12"
+          "$mainMod CTRL, 2, Focus WS 22 on current monitor, focusworkspaceoncurrentmonitor, 22"
+          "$mainMod CTRL, 3, Focus WS 32 on current monitor, focusworkspaceoncurrentmonitor, 32"
+          "$mainMod CTRL, 4, Focus WS 42 on current monitor, focusworkspaceoncurrentmonitor, 42"
+          "$mainMod CTRL, 5, Focus WS 52 on current monitor, focusworkspaceoncurrentmonitor, 52"
+          "$mainMod CTRL, 6, Focus WS 62 on current monitor, focusworkspaceoncurrentmonitor, 62"
+          "$mainMod CTRL, 7, Focus WS 72 on current monitor, focusworkspaceoncurrentmonitor, 72"
+          "$mainMod CTRL, 8, Focus WS 82 on current monitor, focusworkspaceoncurrentmonitor, 82"
+          "$mainMod CTRL, 9, Focus WS 92 on current monitor, focusworkspaceoncurrentmonitor, 92"
+          "$mainMod CTRL, 0, Focus WS 102 on current monitor, focusworkspaceoncurrentmonitor, 102"
+          "$mainMod CTRL, C, Execute command, exec, bash -c"
         ];
         bindm = [
           "$mainMod, mouse:272, movewindow"

@@ -13,6 +13,17 @@
       enable = true;
       name = "HDMI-A-1";
     };
+    startup-commands = [
+      "dunst &"
+      "hyprpaper &"
+      "rider &"
+      "$terminal &"
+      "spotify &"
+      "nm-applet &"
+      "everdo &"
+      "firefox &"
+      "discord &"
+    ];
   };
   module.hyprland-event-hooks.enable = true;
   module.waybar.enable = true;

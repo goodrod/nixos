@@ -19,6 +19,20 @@
       name = "DP-6";
       settings = "1920x1080@60,4480x0,1.0";
     };
+    startup-commands = [
+      "dunst &"
+      "hyprpaper &"
+      "slack &"
+      "firefox https://www.office.com &"
+      "chromium https://teams.microsoft.com/v2/ &"
+      "chromium https://outlook.office.com/mail/ &"
+      "rider &"
+      "$terminal &"
+      "spotify &"
+      "nm-applet &"
+      "everdo &"
+      "firefox &"
+    ];
   };
   module.hyprland-event-hooks.enable = true;
   module.waybar.enable = true;
