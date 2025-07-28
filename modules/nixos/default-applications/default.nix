@@ -36,6 +36,7 @@ in {
       plantuml
       alacritty
       bitwarden
+      jq
       everdo
       blueman
       fuzzel

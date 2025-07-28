@@ -112,9 +112,8 @@ ssh 192.168.7.180 -l Perseus
 # (create/release)              Create release branches
 for repo in */.git; do repo_dir=$(dirname "$repo"); cd "$repo_dir"; base_branch=$(git rev-parse --verify development &>/dev/null && echo development || (git rev-parse --verify main &>/dev/null && echo main || echo master)); release_branch="release/<release-version>"; echo "In repository '$repo_dir': Will create branch '$release_branch' from '$base_branch' and push it to origin."; read -p "Do you want to proceed? (y/n): " confirm; [[ $confirm == [yY] ]] && git checkout "$base_branch" && git checkout -b "$release_branch" && git push -u origin "$release_branch" && echo "Branch '$release_branch' created and pushed to remote in repository '$repo_dir'."; cd -; done
 
-# (push/wip)                    Commit changes with a "WIP" message and push to the current    Commit changes with a "WIP" message and push to the current feature branch
 
-# (commit & push WIP) Commit changes with a "WIP" message and push to the current feature branch
+# (commit/push/WIP)             Commit changes with a "WIP" message and push to the current feature branch
 for dir in */.git; do
   repo="${dir%/.git}"
   
@@ -133,7 +132,7 @@ for dir in */.git; do
       current_branch=$(git rev-parse --abbrev-ref HEAD)
 
       # Skip non-feature branches
-      if [[ "$current_branch" != feature/* ]]; then
+      if [[ "$current_branch" != feature/* && "$current_branch" != bugfix/* && "$current_branch" != hotfix/* ]]; then
         echo -e "\033[1;33mCurrent branch '$current_branch' is not a feature branch, skipping push.\033[0m"
         cd -  # go back to parent directory toprocess the next repo
         continue
