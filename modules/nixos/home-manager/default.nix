@@ -52,8 +52,8 @@ in {
         "${option.username}" = {
           imports = [
             "${option.module-path}"
-            inputs.self.outputs.homeManagerModules.default
-            inputs.nixvim.homeManagerModules.nixvim
+            inputs.self.outputs.homeModules.default
+            inputs.nixvim.homeModules.nixvim
           ];
           home.username = "${option.username}";
           home.homeDirectory = "/home/${option.username}";

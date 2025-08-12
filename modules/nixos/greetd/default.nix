@@ -32,7 +32,7 @@ in {
       settings = {
         default_session = {
           command =
-            "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd Hyprland 2&>/dev/null";
+            "${pkgs.tuigreet}/bin/tuigreet --time --cmd Hyprland &> /dev/null";
           user = "greeter";
         };
       };
