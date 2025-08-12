@@ -332,8 +332,10 @@ in {
           "$mainMod, V, Toggle Pulse audio mixer, exec, ${toggleWindowScript} pulsemixer"
           "$mainMod, P, Toggle htop, exec, ${toggleWindowScript} htop"
           "$mainMod, G, Toggle ChatGPT, exec, ${toggleWindowScript} chatgpt"
-          ''$mainMod, H, Toggle window, exec, ${toggleWindowScript} "${parseHotkeysScript} | fzf"''
-          "$mainMod, F7, Take screenshot, exec, grim -g \"$(slurp)\" - | swappy -f -"
+          ''
+            $mainMod, H, Toggle window, exec, ${toggleWindowScript} "${parseHotkeysScript} | fzf"''
+          ''
+            $mainMod, F7, Take screenshot, exec, grim -g "$(slurp)" - | swappy -f -''
           "$mainMod ALT, D, Execute command, exec, bash -c"
           "$mainMod, P, Toggle pseudo mode, pseudo, # dwindle"
           "$mainMod, A, Toggle fullscreen, fullscreen, 2"
