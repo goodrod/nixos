@@ -250,6 +250,49 @@ in {
           "size 75% 75%,class:toggle-window"
 
         ];
+
+        group = {
+          groupbar = {
+            enabled = true;
+            height = 16;
+            font_size = 9;
+            font_family = "JetBrains Mono";
+            font_weight_active = "bold";
+            font_weight_inactive = "normal";
+
+            render_titles = true;
+            text_offset = 0;
+            text_color = "0xffe6e6e6";
+            text_color_inactive = "0x99c8d0d8";
+            text_color_locked_active =
+              "0xffffffff"; # white text for locked active
+            text_color_locked_inactive = "0x99c8d0d8";
+
+            gradients = true;
+            rounding = 6;
+            gradient_rounding = 6;
+            round_only_edges = true;
+            gradient_round_only_edges = true;
+
+            indicator_gap = 2;
+            indicator_height = 3;
+            gaps_in = 3;
+            gaps_out = 3;
+            keep_upper_gap = true;
+
+            scrolling = true;
+            stacked = false;
+
+            # palette
+            "col.active" =
+              "rgba(3a7bd5dd) rgba(2850a7dd) 90deg"; # softer indigo-blue
+            "col.inactive" = "rgba(2a3b4f55) rgba(22304155) 90deg"; # muted fade
+            "col.locked_active" =
+              "rgba(f4a261dd) rgba(e68f3cdd) 90deg"; # warm accent
+            "col.locked_inactive" = "rgba(f4a26155) rgba(e68f3c55) 90deg";
+          };
+        };
+
         general = {
           gaps_in = 5;
           gaps_out = 20;
