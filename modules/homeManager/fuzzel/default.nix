@@ -54,5 +54,26 @@ in {
         };
       };
     };
+    xdg.desktopEntries.teams = {
+      name = "Microsoft Teams";
+      comment = "Microsoft Teams via Vivaldi";
+      exec = ''
+        ${pkgs.chromium}/bin/chromium-browser --app=https://teams.microsoft.com
+      '';
+      icon = "teams";
+      terminal = false;
+      categories = [ "Network" "Office" ];
+    };
+
+    xdg.desktopEntries.outlook = {
+      name = "Outlook";
+      comment = "Microsoft Outlook via Vivaldi";
+      exec = ''
+        ${pkgs.chromium}/bin/chromium-browser --app=https://outlook.office.com/mail
+      '';
+      icon = "outlook";
+      terminal = false;
+      categories = [ "Network" "Office" ];
+    };
   };
 }

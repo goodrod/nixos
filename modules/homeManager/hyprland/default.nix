@@ -211,8 +211,8 @@ in {
         "$monitor-3" = "${option.monitors.right.name}";
         "$mainMod" = "SUPER";
 
-        "$browserRegexp" = "firefox|Chromium|Vivaldi-stable";
-        "$chatRegexp" = "discord|vesktop|Slack";
+        "$browserRegexp" = "firefox|Chromium|Vivaldi-stable|Mullvad Browser";
+        "$chatRegexp" = "discord|vesktop|Slack|.*teams.*|.*outlook.*";
         "$terminalRegexp" = "Alacritty";
         "$productivityRegexp" = "everdo";
         "$musicRegexp" = ".*Spotify.*";
@@ -224,11 +224,12 @@ in {
           "tag +setting,class:$settingsRegexp"
           "tag +music,title:$musicRegexp"
           "tag +gaming,class:$gamingRegexp"
+          "tag +browser,class:$browserRegexp"
           "tag +productivity,class:$productivityRegexp"
           "tag +chat,class:$chatRegexp"
+          "tag +chat,initialTitle:$chatRegexp"
           "tag +coding,class:$programmingRegexp"
           "tag +term,class:$terminalRegexp"
-          "tag +browser,class:$browserRegexp"
           "workspace 1 silent,tag:setting"
           "group set always,tag:setting"
           "workspace 2 silent,tag:music"
@@ -250,7 +251,7 @@ in {
           "size 75% 75%,class:toggle-window"
 
         ];
-
+        ecosystem = { no_donation_nag = true; };
         group = {
           groupbar = {
             enabled = true;

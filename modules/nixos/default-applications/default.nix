@@ -72,6 +72,7 @@ in {
       grim
       jq
       vivaldi
+      mullvad-browser
     ];
   };
 }
