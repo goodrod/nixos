@@ -381,3 +381,36 @@ fi
 
 # (edit/add)                    Edit Consultancy-Toolbox
 nvim ~/Consultants-Toolbox/
+
+# (fetch)                       Fetch everything from remote for all repos in dir
+for dir in */.git; do
+  repo="${dir%/.git}"
+  if [[ ! "$repo" =~ ^misc ]]; then
+    cd "$repo" || continue
+    echo -e "\033[1;34mFetching all remotes for $repo\033[0m"
+    git fetch --all --prune
+    cd - > /dev/null
+  fi
+done
+
+# (remove/delete)               Delete branch in all repos
+read -rp "Branch to delete locally in all repos: " branch_to_delete
+
+if [[ -z "$branch_to_delete" ]]; then
+  echo "No branch specified. Exiting."
+  exit 1
+fi
+
+for dir in */.git; do
+  repo="${dir%/.git}"
+  if [[ ! "$repo" =~ ^misc ]]; then
+    cd "$repo" || continue
+    if git show-ref --verify --quiet "refs/heads/$branch_to_delete"; then
+      echo -e "\033[1;31mDeleting branch $branch_to_delete in $repo\033[0m"
+      git branch -D "$branch_to_delete"
+    else
+      echo -e "\033[0;33mBranch $branch_to_delete not found in $repo\033[0m"
+    fi
+    cd - > /dev/null
+  fi
+done

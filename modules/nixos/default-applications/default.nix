@@ -73,6 +73,7 @@ in {
       jq
       vivaldi
       mullvad-browser
+      tree
     ];
   };
 }

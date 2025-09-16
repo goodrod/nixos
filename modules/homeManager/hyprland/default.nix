@@ -220,6 +220,10 @@ in {
         "$settingsRegexp" = "com.saivert.pwvucontrol";
         "$programmingRegexp" = "code-url-handler|jetbrains-rider|Godot";
         windowrulev2 = [
+          "tag +jb, class:^jetbrains-.+$,floating:1"
+          "stayfocused, tag:jb"
+          "noinitialfocus, tag:jb"
+          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
           "suppressevent maximize center, class:.*"
           "tag +setting,class:$settingsRegexp"
           "tag +music,title:$musicRegexp"
