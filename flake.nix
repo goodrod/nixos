@@ -23,13 +23,19 @@
       flake = false;
     };
 
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
     let libx = import ./lib { inherit inputs; };
     in {
-      nixosConfigurations = nixpkgs.lib.attrsets.genAttrs [ "work" "private" "private-2" ]
+      nixosConfigurations =
+        nixpkgs.lib.attrsets.genAttrs [ "work" "private" "private-2" ]
         (name: libx.mkHost { hostname = name; });
       homeModules.default = ./modules/homeManager;
     };

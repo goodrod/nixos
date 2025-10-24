@@ -5,7 +5,6 @@
 
 {
   imports = [ ./hardware-configuration.nix ];
-
   module.networking.enable = true;
   module.boot-loader.enable = true;
   module.location.enable = true;
@@ -55,11 +54,7 @@
       "vivaldi"
     ];
 
-  environment.systemPackages = with pkgs; [
-    linuxKernel.packages.linux_5_4.wireguard
-    wireguard-tools
-    bluetuith
-  ];
+  environment.systemPackages = with pkgs; [ wireguard-tools bluetuith ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # networking.firewall.allowedTCPPorts = [ ... ];
