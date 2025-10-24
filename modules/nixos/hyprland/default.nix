@@ -21,6 +21,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ papirus-icon-theme ];
     programs.waybar.enable = true;
+    programs.hyprland.withUWSM = true;
     programs.hyprland.enable = true;
     hardware.graphics.enable32Bit = true;
     programs.hyprland.package =

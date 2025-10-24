@@ -362,9 +362,6 @@ in {
           touchpad = { natural_scroll = false; };
         };
 
-        # https://wiki.hyprland.org/Configuring/Variables/#gestures
-        gestures = { workspace_swipe = false; };
-
         env = [
           "LIBVA_DRIVER_NAME,nvidia"
           "XDG_SESSION_TYPE,wayland"

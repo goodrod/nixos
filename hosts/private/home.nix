@@ -43,8 +43,12 @@
 
   programs.git = {
     enable = true;
-    userName = "goodrod";
-    userEmail = "david.lindskog.hedstrom@pm.me";
+    settings = {
+      user = {
+        name = "goodrod";
+        email = "david.lindskog.hedstrom@pm.me";
+      };
+    };
     extraConfig = {
       init.defaultBranch = "main";
       core.pager = "less -r";
