@@ -181,7 +181,7 @@ in {
         size = 11;
       };
     };
-
+    home.packages = [ inputs.hyprlauncher.packages.${pkgs.system}.default ];
     wayland.windowManager.hyprland = {
       enable = true;
       sourceFirst = true;
@@ -211,7 +211,7 @@ in {
         "$monitor-3" = "${option.monitors.right.name}";
         "$mainMod" = "SUPER";
 
-        "$browserRegexp" = "firefox|Chromium|Vivaldi-stable|Mullvad Browser";
+        "$browserRegexp" = "firefox|Chromium|vivaldi-stable|Mullvad Browser";
         "$chatRegexp" = "discord|vesktop|Slack|.*teams.*|.*outlook.*";
         "$terminalRegexp" = "Alacritty";
         "$productivityRegexp" = "everdo";
@@ -378,6 +378,8 @@ in {
           "$mainMod SHIFT, Tab, Change group active, changegroupactive, b"
           "$mainMod CTRL, Tab, Toggle lock on active group, lockactivegroup, toggle"
           "$mainMod, C, Kill active window, killactive,"
+          "$mainMod, L, Move out of group, moveoutofgroup,"
+          "$mainMod, J, Move into group, moveintogroup, r"
           "$mainMod, F12, Exit Hyprland, exit,"
           "$mainMod, F, Open file manager, exec, $fileManager"
           "$mainMod SHIFT, F, Toggle floating, togglefloating,"
