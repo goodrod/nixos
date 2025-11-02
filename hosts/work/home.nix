@@ -22,9 +22,9 @@
       "dunst &"
       "hyprpaper &"
       "slack &"
-      "vivaldi --app=https://www.office.com &"
-      "vivaldi --app=https://teams.microsoft.com/v2/ &"
-      "vivaldi --app=https://outlook.office.com/mail/ &"
+      "chromium-browser --app=https://www.office.com &"
+      "chromium-browser --app=https://teams.microsoft.com/v2/ &"
+      "chromium-browser --app=https://outlook.office.com/mail/ &"
       "rider &"
       "$terminal &"
       "spotify &"
@@ -49,9 +49,11 @@
 
   programs.git = {
     enable = true;
-    userName = "goodrod";
-    userEmail = "david.lindskog-hedstrom@helisoft.se";
-    extraConfig = {
+    user = {
+      name = "goodrod";
+      email = "david.lindskog-hedstrom@helisoft.se";
+    },
+    settings = {
       init.defaultBranch = "main";
       core.pager = "less -r";
     };
