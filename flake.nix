@@ -18,17 +18,22 @@
       url = "gitlab:itaranto/preview.nvim";
       flake = false;
     };
+
     gp-nvim-plugin = {
       url = "github:Robitx/gp.nvim";
       flake = false;
     };
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hyprlauncher = {
+      url = "github:hyprwm/hyprlauncher";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

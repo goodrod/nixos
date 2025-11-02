@@ -21,14 +21,15 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ papirus-icon-theme ];
     programs.waybar.enable = true;
-    programs.hyprland.withUWSM = true;
-    programs.hyprland.enable = true;
+    programs.hyprland = {
+      enable = true;
+      withUWSM = true;
+      package =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
     hardware.graphics.enable32Bit = true;
-    programs.hyprland.package =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    programs.hyprland.portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-
     environment.sessionVariables = {
       #WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";

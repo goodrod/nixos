@@ -2,7 +2,6 @@
 
 {
   module.navi.enable = true;
-  module.awesome.enable = false;
   module.hyprland = {
     enable = true;
     monitors.left = {
@@ -34,10 +33,8 @@
       "vivaldi &"
     ];
   };
-  module.hyprland-event-hooks.enable = true;
   module.waybar.enable = true;
   module.alacritty.enable = true;
-  module.tmux.enable = true;
   module.default-home-dirs.enable = true;
   module.dunst.enable = true;
   module.wofi.enable = true;
