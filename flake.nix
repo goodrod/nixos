@@ -34,6 +34,7 @@
     hyprlauncher = {
       url = "github:hyprwm/hyprlauncher";
     };
+    
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

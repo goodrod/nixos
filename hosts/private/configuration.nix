@@ -21,6 +21,7 @@
     module-path = ./home.nix;
   };
   programs.gamescope.enable = true;
+  programs.niri.enable = true;
   module.greetd.enable = true;
   module.game-development.enable = true;
   module.clamav = {
