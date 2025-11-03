@@ -35,7 +35,7 @@ in {
     environment.systemPackages = with pkgs; [
       plantuml
       alacritty
-      bitwarden
+      bitwarden-desktop
       jq
       everdo
       blueman

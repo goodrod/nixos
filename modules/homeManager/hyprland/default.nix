@@ -181,7 +181,7 @@ in {
         size = 11;
       };
     };
-    home.packages = [ inputs.hyprlauncher.packages.${pkgs.system}.default ];
+    home.packages = [ inputs.hyprlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default ];
     wayland.windowManager.hyprland = {
       enable = true;
       sourceFirst = true;
