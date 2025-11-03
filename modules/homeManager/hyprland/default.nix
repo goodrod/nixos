@@ -309,10 +309,9 @@ in {
           layout = "master";
         };
 
-        #render = {
-        # explicit_sync = 0;
-        #  explicit_sync_kms = 0;
-        #};
+        master = {
+          orientation = "left";
+        };
 
         cursor = { no_hardware_cursors = true; };
 
@@ -378,8 +377,8 @@ in {
           "$mainMod SHIFT, Tab, Change group active, changegroupactive, b"
           "$mainMod CTRL, Tab, Toggle lock on active group, lockactivegroup, toggle"
           "$mainMod, C, Kill active window, killactive,"
-          "$mainMod, L, Move out of group, moveoutofgroup,"
-          "$mainMod, J, Move into group, moveintogroup, r"
+          "$mainMod, L, Make window leave group, exec, hyprctl dispatch moveoutofgroup; hyprctl dispatch movefocus r"
+          "$mainMod, J, Make window to the right join groiup, exec, hyprctl dispatch movefocus r; hyprctl dispatch moveintogroup l; hyprctl dispatch focuswindow previous"
           "$mainMod, F12, Exit Hyprland, exit,"
           "$mainMod, F, Open file manager, exec, $fileManager"
           "$mainMod SHIFT, F, Toggle floating, togglefloating,"

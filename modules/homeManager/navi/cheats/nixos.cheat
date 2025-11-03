@@ -13,6 +13,9 @@ sudo nixos-rebuild test --flake <nixos-config-path>#<current-nixos-host>
 # (edit/change)                 Edit home configuration
 nvim <nixos-config-path>/hosts/<nixos-host>/home.nix
 
+# (edit/change)                 Edit flake
+nvim <nixos-config-path>/flake.nix
+
 # (edit/change)                 Edit system configuration
 nvim <nixos-config-path>/hosts/<nixos-host>/configuration.nix
 
