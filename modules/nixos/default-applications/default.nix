@@ -30,7 +30,7 @@ in {
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
 
-    services.spotifyd.enable = true;
+    services.spotifyd.enable = false;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     environment.systemPackages = with pkgs; [
       plantuml
