@@ -22,7 +22,6 @@
       "dunst &"
       "hyprpaper &"
       "slack &"
-      "chromium-browser --app=https://www.office.com &"
       "chromium-browser --app=https://teams.microsoft.com/v2/ &"
       "chromium-browser --app=https://outlook.office.com/mail/ &"
       "rider &"
@@ -46,14 +45,13 @@
     LESS = "-r --mouse --wheel-lines=3";
   };
   programs.bash = { enable = true; };
-
   programs.git = {
     enable = true;
-    user = {
-      name = "goodrod";
-      email = "david.lindskog-hedstrom@helisoft.se";
-    },
     settings = {
+      user = {
+        name = "goodrod";
+        email = "david.lindskog-hedstrom@helisoft.se";
+      };
       init.defaultBranch = "main";
       core.pager = "less -r";
     };
