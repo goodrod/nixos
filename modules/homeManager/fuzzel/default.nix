@@ -29,11 +29,12 @@ in {
       settings = {
         main = {
           font = "Hack Nerd Font:size=12"; # Monospaced font
-          width = 137; # Width option
-          lines = 38;
+          width = 50; # Width option
+          lines = 20;
           horizontal-pad = 20; # Horizontal padding
           vertical-pad = 8; # Vertical padding
           inner-pad = 5; # Inner padding
+          dpi-aware = "yes";
         };
         border = {
           width = 2; # Border width
