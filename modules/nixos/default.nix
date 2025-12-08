@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./kiro
     ./game-development
     ./steam
     ./greetd

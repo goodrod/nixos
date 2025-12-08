@@ -50,7 +50,7 @@
       "Oracle_VM_VirtualBox_Extension_Pack"
       "postman"
       "obsidian"
-      "vivaldi"
+      "kiro-cli"
     ];
 
   # list packages installed in system profile. to search, run:

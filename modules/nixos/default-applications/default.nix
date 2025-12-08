@@ -71,9 +71,9 @@ in {
       swappy
       grim
       jq
-      vivaldi
       mullvad-browser
       tree
+      inputs.packages.${pkgs.stdenv.system}.nvim
     ];
   };
 }

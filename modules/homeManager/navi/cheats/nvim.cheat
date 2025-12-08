@@ -6,3 +6,6 @@ nvim <home-manager-module-path>/nixvim/default.nix
 
 # (view/lookup)                 Lookup nvim binds
 cat <home-manager-module-path>/nixvim/keymaps/keymaps.nix | fzf
+
+# (run/start)                   Start nvim from my own flake
+nix run "git+ssh://git@github.com/goodrod/nvim"

@@ -24,6 +24,7 @@
   programs.niri.enable = true;
   module.greetd.enable = true;
   module.game-development.enable = true;
+  module.kiro.enable = true;
   module.clamav = {
     enable = true;
     on-access = {
@@ -37,7 +38,6 @@
     };
   };
   programs.firefox.enable = true;
-
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
       "spotify"
@@ -52,12 +52,16 @@
       "steam-unwrapped-1.0.0.81"
       "steam-unwrapped"
       "aseprite"
-      "vivaldi"
+      "kiro"
+      "kiro-cli"
+      "obsidian"
     ];
-
   environment.systemPackages = with pkgs; [ wireguard-tools bluetuith ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib    
+  ];
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.enable = true;
