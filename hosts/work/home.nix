@@ -29,7 +29,6 @@
       "spotify &"
       "nm-applet &"
       "everdo &"
-      "vivaldi &"
     ];
   };
   module.waybar.enable = true;

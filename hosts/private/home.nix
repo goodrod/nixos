@@ -20,7 +20,6 @@
       "spotify &"
       "nm-applet &"
       "everdo &"
-      "vivaldi &"
       "discord &"
     ];
   };
@@ -30,8 +29,10 @@
   module.dunst.enable = true;
   module.wofi.enable = false;
   module.fuzzel.enable = true;
+  module.obsidian.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
+  home.sessionPath = [ ".local/bin" ];
   home.sessionVariables = {
     EDITOR = "nvim";
     LESS = "-r --mouse --wheel-lines=3";

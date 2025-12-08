@@ -181,7 +181,9 @@ in {
         size = 11;
       };
     };
-    home.packages = [ inputs.hyprlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+    home.packages = [
+      inputs.hyprlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
     wayland.windowManager.hyprland = {
       enable = true;
       sourceFirst = true;
@@ -218,12 +220,12 @@ in {
         "$musicRegexp" = ".*Spotify.*";
         "$gamingRegexp" = "steam";
         "$settingsRegexp" = "com.saivert.pwvucontrol";
-        "$programmingRegexp" = "code-url-handler|jetbrains-rider|Godot";
+        "$programmingRegexp" = "code-url-handler|jetbrains-rider|Godot|kiro";
         windowrule = [
-          "tag +jb, match:class ^jetbrains-.+$,float on"
+          "tag +jb, match:class ^jetbrains-.+$,match:float true"
           #"stay_focused on, match:tag jb"
-          #"no_initial_focus on, match:tag jb"
-          #"no_focus on,match:class ^$,match:title ^$,match:xwayland true,float on,match:fullscreen true, match:pin true"
+          "no_initial_focus on, match:tag jb"
+          "no_focus on,match:class ^$,match:title ^$,match:xwayland true,match:float true,match:fullscreen false, match:pin false"
           "suppress_event maximize center, match:class .*"
           "tag +setting,match:class $settingsRegexp"
           "tag +music,match:title $musicRegexp"
@@ -309,9 +311,7 @@ in {
           layout = "master";
         };
 
-        master = {
-          orientation = "left";
-        };
+        master = { orientation = "left"; };
 
         cursor = { no_hardware_cursors = true; };
 
