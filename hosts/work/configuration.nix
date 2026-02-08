@@ -23,11 +23,11 @@
     module-path = ./home.nix;
   };
   module.dotnet.enable = true;
-  module.virtual-box.enable = false;
+  module.virtual-box.enable = true;
   module.clamav = {
-    enable = true;
+    enable = false;
     on-access = {
-      enable = true;
+      enable = false;
       home-directories-to-scan = [
         "Downloads"
         "work/projects/external"
@@ -47,6 +47,7 @@
       "keymapp"
       "everdo"
       "Oracle_VM_VirtualBox_Extension_Pack"
+      "Oracle_VirtualBox_Extension_Pack"
       "postman"
       "obsidian"
       "kiro-cli"
@@ -72,6 +73,7 @@
     obsidian
     rpm
     bruno
+    krb5
   ];
 
   networking.firewall.enable = false;

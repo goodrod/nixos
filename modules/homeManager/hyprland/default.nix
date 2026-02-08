@@ -392,6 +392,7 @@ in {
             $mainMod, H, Toggle window, exec, ${toggleWindowScript} "${parseHotkeysScript} | fzf"''
           ''
             $mainMod, F7, Take screenshot, exec, grim -g "$(slurp)" - | swappy -f -''
+          ''$mainMod, F8, Toggle record region to clipboard, exec, sh -c 'pidf=/tmp/wf-recorder-clip.pid; outdir=$HOME/Videos; mkdir -p "$outdir"; if [ -s "$pidf" ] && kill -0 "$(cat "$pidf")" 2>/dev/null; then kill -INT "$(cat "$pidf")"; exit; fi; f="$outdir/recording-$(date +%F_%H-%M-%S).mp4"; wf-recorder -g "$(slurp)" -f "$f" & pid=$!; echo "$pid" > "$pidf"; wait "$pid"; rm -f "$pidf"; printf "file://%s\n" "$(realpath "$f")" | wl-copy --type text/uri-list' ''
           "$mainMod ALT, D, Execute command, exec, bash -c"
           "$mainMod, P, Toggle pseudo mode, pseudo, # dwindle"
           "$mainMod, A, Toggle fullscreen, fullscreen, 2"

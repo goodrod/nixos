@@ -52,11 +52,8 @@ in {
       extraSpecialArgs = { inherit inputs; };
       users = {
         "${option.username}" = {
-          imports = [
-            "${option.module-path}"
-            inputs.self.outputs.homeModules.default
-            inputs.nixvim.homeModules.nixvim
-          ];
+          imports =
+            [ "${option.module-path}" inputs.self.outputs.homeModules.default ];
           home.username = "${option.username}";
           home.homeDirectory = "/home/${option.username}";
           home.stateVersion = "23.11";
