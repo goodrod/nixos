@@ -73,7 +73,7 @@ in {
       jq
       mullvad-browser
       tree
-      inputs.packages.${pkgs.stdenv.system}.nvim
+      inputs.nvim.packages.${pkgs.stdenv.system}.nvim
     ];
   };
 }

@@ -1,10 +1,11 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ];
+  module.vm.enable = true;
   module.networking.enable = true;
   module.boot-loader.enable = true;
   module.location.enable = true;
@@ -59,11 +60,10 @@
   environment.systemPackages = with pkgs; [ wireguard-tools bluetuith ];
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib    
-  ];
+  programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib ];
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.enable = true;
+  boot.kernelModules = [ "kvm-amd" ];
   system.stateVersion = "23.11";
 }

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   module.navi.enable = true;
@@ -32,7 +32,7 @@
   module.obsidian.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
-  home.sessionPath = [ ".local/bin" ];
+  home.sessionPath = [ "/home/goodrod/.local/bin" ];
   home.sessionVariables = {
     EDITOR = "nvim";
     LESS = "-r --mouse --wheel-lines=3";
