@@ -15,7 +15,6 @@
   module.icon-fonts.enable = true;
   module.nvidia.enable = false;
   module.docker.enable = true;
-  module.ecryptfs.enable = true;
   module.greetd.enable = true;
   module.discord.enable = false;
   module.home-manager = {
@@ -23,7 +22,6 @@
     module-path = ./home.nix;
   };
   module.dotnet.enable = true;
-  module.virtual-box.enable = true;
   module.clamav = {
     enable = false;
     on-access = {
@@ -46,8 +44,6 @@
       "spotify"
       "keymapp"
       "everdo"
-      "Oracle_VM_VirtualBox_Extension_Pack"
-      "Oracle_VirtualBox_Extension_Pack"
       "postman"
       "obsidian"
       "kiro-cli"

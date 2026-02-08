@@ -9,8 +9,6 @@
     ./greetd
     ./helios-development
     ./default-applications
-    ./ecryptfs
-    ./virtual-box
     ./discord
     ./clamav
     ./discord

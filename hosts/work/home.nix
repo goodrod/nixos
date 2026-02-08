@@ -37,6 +37,7 @@
   module.dunst.enable = true;
   module.wofi.enable = true;
   module.fuzzel.enable = true;
+  module.default-applications.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionVariables = {
