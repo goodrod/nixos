@@ -29,6 +29,7 @@
       "spotify &"
       "nm-applet &"
       "everdo &"
+      "waybar &"
     ];
   };
   module.waybar.enable = true;
