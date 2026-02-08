@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./vm
     ./kiro
     ./game-development
     ./steam

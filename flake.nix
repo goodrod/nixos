@@ -9,11 +9,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     nvim = {
-        type = "github";
-        host = "github.com";
-        owner = "goodrod";
-        repo = "nvim";
+      type = "github";
+      host = "github.com";
+      owner = "goodrod";
+      repo = "nvim";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
@@ -25,13 +32,10 @@
 
     hyprlauncher = { url = "github:hyprwm/hyprlauncher"; };
 
+    import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    let libx = import ./lib { inherit inputs; };
-    in {
-      nixosConfigurations = nixpkgs.lib.attrsets.genAttrs [ "work" "private" "private-2" ]
-      (name: libx.mkHost { hostname = name; });
-      homeModules.default = ./modules/homeManager;
-    };
+  outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; }
+    (inputs.import-tree ./flake-modules);
 }
