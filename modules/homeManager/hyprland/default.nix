@@ -181,9 +181,6 @@ in {
         size = 11;
       };
     };
-    home.packages = [
-      inputs.hyprlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
-    ];
     wayland.windowManager.hyprland = {
       enable = true;
       sourceFirst = true;
@@ -191,6 +188,8 @@ in {
       xwayland.enable = true;
       package =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
       settings = {
         exec-once = option.startup-commands;
         monitor = mkMerge [
@@ -480,5 +479,22 @@ in {
       hypridle.enable = false;
       hyprpaper.enable = false;
     };
+    home.packages = with pkgs; [
+      inputs.hyprlauncher.packages.${pkgs.stdenv.hostPlatform.system}.default
+      papirus-icon-theme
+    ];
+
+    programs.waybar.enable = true;
+
+    home.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      HYPERLAND_LOG_WLR = "1";
+    };
+
+    # Optional but usually needed on non-NixOS:
+    # provide a default launcher so "exec Hyprland" does something useful
+    xdg.configFile."hypr/hyprland.conf".text = ''
+      exec-once = waybar
+    '';
   };
 }

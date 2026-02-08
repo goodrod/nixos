@@ -17,7 +17,6 @@
     ./boot-loader
     ./location
     ./silent-boot
-    ./hyprland
     ./nvidia
     ./sound
     ./docker
