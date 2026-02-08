@@ -4,6 +4,7 @@
   home.stateVersion = "23.11";
 
   imports = [
+    ./default-applications
     ./obsidian
     ./fuzzel
     ./wofi

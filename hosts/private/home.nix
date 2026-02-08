@@ -30,6 +30,7 @@
   module.wofi.enable = false;
   module.fuzzel.enable = true;
   module.obsidian.enable = true;
+  module.default-applications.enable = true;
   home.packages = [ pkgs.ripgrep ];
 
   home.sessionPath = [ "/home/goodrod/.local/bin" ];
