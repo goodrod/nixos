@@ -13,7 +13,6 @@
   module.silent-boot.enable = true;
   services.printing.enable = true;
   module.icon-fonts.enable = true;
-  module.hyprland.enable = true;
   module.nvidia.enable = false;
   module.docker.enable = true;
   module.ecryptfs.enable = true;

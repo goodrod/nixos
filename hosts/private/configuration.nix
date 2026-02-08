@@ -14,7 +14,6 @@
   services.printing.enable = true;
   module.icon-fonts.enable = true;
   module.discord.enable = true;
-  module.hyprland.enable = true;
   module.nvidia.enable = true;
   module.steam.enable = true;
   module.home-manager = {
@@ -22,7 +21,6 @@
     module-path = ./home.nix;
   };
   programs.gamescope.enable = true;
-  programs.niri.enable = true;
   module.greetd.enable = true;
   module.game-development.enable = true;
   module.kiro.enable = true;

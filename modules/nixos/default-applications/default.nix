@@ -29,10 +29,10 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
-
+    environment.pathsToLink =
+      [ "/share/applications" "/share/xdg-desktop-portal" ];
     services.spotifyd.enable = false;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
     environment.systemPackages = with pkgs; [
       blueman
       mlocate
