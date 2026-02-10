@@ -32,6 +32,7 @@ in {
     environment.pathsToLink =
       [ "/share/applications" "/share/xdg-desktop-portal" ];
     services.spotifyd.enable = false;
+    programs.dconf.enable = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     environment.systemPackages = with pkgs; [
       blueman
