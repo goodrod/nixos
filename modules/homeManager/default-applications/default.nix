@@ -37,7 +37,7 @@ in {
       wget
       fzf
       wlogout
-      nixfmt-classic
+      nixfmt
       xwallpaper
       spotify
       pavucontrol
