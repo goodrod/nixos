@@ -976,11 +976,11 @@
       },
       "locked": {
         "host": "github.com",
-        "lastModified": 1771020729,
-        "narHash": "sha256-OZXgQhI/pMwp/jXoYA2AoTdT2+SHepTsQHwiJ9Nia24=",
+        "lastModified": 1771023050,
+        "narHash": "sha256-sgs7K9/g/ToFPQsLsj2jeJlOqD5ctZDE33buoNgzpzw=",
         "owner": "goodrod",
         "repo": "nvim",
-        "rev": "99423e63391be80733fc8586534f440556e335e3",
+        "rev": "eab67b3424d3b4b589a0aa0488f8a11b2cb4f486",
         "type": "github"
       },
       "original": {
