@@ -40,5 +40,6 @@ in {
   flake.homeConfigurations = {
     goodrod = mkHomeConfig "goodrod";
     calle = mkHomeConfig "calle";
+    david = mkHomeConfig "david";
   };
 }
