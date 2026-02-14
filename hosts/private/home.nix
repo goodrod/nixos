@@ -1,6 +1,9 @@
-{ pkgs, lib, inputs, ... }:
-
 {
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
   module.navi.enable = true;
   module.hyprland = {
     enable = true;
@@ -21,6 +24,7 @@
       "nm-applet &"
       "everdo &"
       "discord &"
+      "waybar &"
     ];
   };
   module.waybar.enable = true;
@@ -31,14 +35,14 @@
   module.fuzzel.enable = true;
   module.obsidian.enable = true;
   module.default-applications.enable = true;
-  home.packages = [ pkgs.ripgrep ];
+  home.packages = [pkgs.ripgrep];
 
-  home.sessionPath = [ "/home/goodrod/.local/bin" ];
+  home.sessionPath = ["/home/goodrod/.local/bin"];
   home.sessionVariables = {
     EDITOR = "nvim";
     LESS = "-r --mouse --wheel-lines=3";
   };
-  programs.bash = { enable = true; };
+  programs.bash = {enable = true;};
 
   programs.git = {
     enable = true;

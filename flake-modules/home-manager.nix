@@ -1,8 +1,11 @@
-{ inputs, lib, ... }:
-let
-  mkPkgs = system: import inputs.nixpkgs { inherit system; };
+{
+  inputs,
+  lib,
+  ...
+}: let
+  mkPkgs = system: import inputs.nixpkgs {inherit system;};
 
-  goodrodProfile = { ... }: {
+  hyprlandProfile = {...}: {
     module = {
       alacritty.enable = true;
       fuzzel.enable = true;
@@ -15,23 +18,27 @@ let
       obsidian.enable = false;
     };
   };
-in {
-  flake.homeModules.default = import ../modules/homeManager;
 
-  flake.homeConfigurations.goodrod =
+  mkHomeConfig = username:
     inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = mkPkgs "x86_64-linux";
-      extraSpecialArgs = { inherit inputs; };
+      extraSpecialArgs = {inherit inputs;};
       modules = [
         inputs.self.homeModules.default
-        goodrodProfile
+        hyprlandProfile
         inputs.nixvim.homeModules.nixvim
         {
-          home.username = "goodrod";
-          home.homeDirectory = "/home/goodrod";
+          home.username = username;
+          home.homeDirectory = "/home/${username}";
           home.stateVersion = "23.11";
         }
       ];
     };
-}
+in {
+  flake.homeModules.default = import ../modules/homeManager;
 
+  flake.homeConfigurations = {
+    goodrod = mkHomeConfig "goodrod";
+    calle = mkHomeConfig "calle";
+  };
+}
