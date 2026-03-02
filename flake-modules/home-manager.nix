@@ -42,5 +42,6 @@ in {
     calle = mkHomeConfig "calle";
     david = mkHomeConfig "david";
     david3 = mkHomeConfig "david3";
+    test-user = mkHomeConfig "test-user";
   };
 }
