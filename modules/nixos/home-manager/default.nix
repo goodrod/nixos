@@ -53,7 +53,7 @@ in {
       users = {
         "${option.username}" = {
           imports =
-            [ "${option.module-path}" inputs.self.outputs.homeModules.default ];
+            [ "${option.module-path}" inputs.home-flake.homeModules.default ];
           home.username = "${option.username}";
           home.homeDirectory = "/home/${option.username}";
           home.stateVersion = "23.11";
