@@ -34,6 +34,7 @@
   };
   module.waybar.enable = true;
   module.alacritty.enable = true;
+  module.bash.enable = true;
   module.default-home-dirs.enable = true;
   module.dunst.enable = true;
   module.wofi.enable = true;
@@ -45,7 +46,6 @@
     EDITOR = "nvim";
     LESS = "-r --mouse --wheel-lines=3";
   };
-  programs.bash = { enable = true; };
   programs.git = {
     enable = true;
     settings = {
