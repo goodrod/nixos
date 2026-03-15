@@ -35,6 +35,14 @@
   module.waybar.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
+  module.git-repos = {
+    enable = true;
+    repos = [
+      { url = "git@github.com:goodrod/home-flake.git"; path = "git-repos/home-flake"; }
+      { url = "git@github.com:goodrod/home-configs.git"; path = "git-repos/home-configs"; }
+      { url = "git@github.com:goodrod/nixos.git"; path = "git-repos/nixos"; }
+    ];
+  };
   module.default-home-dirs.enable = true;
   module.dunst.enable = true;
   module.wofi.enable = true;
