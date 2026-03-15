@@ -15,7 +15,7 @@
       name = "HDMI-A-1";
     };
     startup-commands = [
-      "dunst &"
+      "swaync &"
       "hyprpaper &"
       "rider &"
       "$terminal &"
@@ -38,7 +38,10 @@
     ];
   };
   module.default-home-dirs.enable = true;
-  module.dunst.enable = true;
+  module.dunst.enable = false;
+  module.swaync.enable = true;
+  module.hyprpaper.enable = true;
+  module.wlogout.enable = true;
   module.wofi.enable = false;
   module.fuzzel.enable = true;
   module.obsidian.enable = true;

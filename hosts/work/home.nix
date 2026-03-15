@@ -19,7 +19,7 @@
       settings = "1920x1080@60,4480x0,1.0";
     };
     startup-commands = [
-      "dunst &"
+      "swaync &"
       "hyprpaper &"
       "slack &"
       "chromium-browser --app=https://teams.microsoft.com/v2/ &"
@@ -44,7 +44,10 @@
     ];
   };
   module.default-home-dirs.enable = true;
-  module.dunst.enable = true;
+  module.dunst.enable = false;
+  module.swaync.enable = true;
+  module.hyprpaper.enable = true;
+  module.wlogout.enable = true;
   module.wofi.enable = true;
   module.fuzzel.enable = true;
   module.default-applications.enable = true;
