@@ -41,6 +41,7 @@ in {
     # usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # options for modules imported in "imports" can be set here.
+    nixpkgs.overlays = [ inputs.home-flake.overlays.default ];
     users.users."${option.username}" = {
       isNormalUser = true;
       description = "${option.name}";
@@ -49,7 +50,6 @@ in {
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = { inherit inputs; };
       users = {
         "${option.username}" = {
           imports =

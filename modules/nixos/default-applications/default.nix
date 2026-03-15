@@ -40,6 +40,7 @@ in {
       cryptsetup
       ntfs3g
       openconnect
+      spotify
     ];
   };
 }
