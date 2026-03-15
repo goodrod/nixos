@@ -38,9 +38,9 @@
   module.git-repos = {
     enable = true;
     repos = [
-      { url = "https://github.com/goodrod/home-flake.git"; path = "personal/projects/internal/home-flake"; link = "home-flake"; }
-      { url = "https://github.com/goodrod/home-configs.git"; path = "personal/projects/internal/home-configs"; link = "home-configs"; }
-      { url = "https://github.com/goodrod/nixos.git"; path = "personal/projects/internal/nixos"; link = "nixos"; }
+      { url = "https://github.com/goodrod/home-flake.git"; pushUrl = "git@github.com:goodrod/home-flake.git"; path = "personal/projects/internal/home-flake"; link = "home-flake"; }
+      { url = "https://github.com/goodrod/home-configs.git"; pushUrl = "git@github.com:goodrod/home-configs.git"; path = "personal/projects/internal/home-configs"; link = "home-configs"; }
+      { url = "https://github.com/goodrod/nixos.git"; pushUrl = "git@github.com:goodrod/nixos.git"; path = "personal/projects/internal/nixos"; link = "nixos"; }
     ];
   };
   module.default-home-dirs.enable = true;
