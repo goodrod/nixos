@@ -12,7 +12,6 @@
   module.sound.enable = true;
   module.silent-boot.enable = true;
   services.printing.enable = true;
-  module.icon-fonts.enable = true;
   module.discord.enable = true;
   module.nvidia.enable = true;
   module.steam.enable = true;
