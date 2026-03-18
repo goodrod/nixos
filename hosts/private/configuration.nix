@@ -12,7 +12,6 @@
   module.sound.enable = true;
   module.silent-boot.enable = true;
   services.printing.enable = true;
-  module.discord.enable = true;
   module.nvidia.enable = true;
   module.steam.enable = true;
   module.home-manager = {
@@ -21,8 +20,6 @@
   };
   programs.gamescope.enable = true;
   module.greetd.enable = true;
-  module.game-development.enable = true;
-  module.kiro.enable = true;
   module.clamav = {
     enable = true;
     on-access = {

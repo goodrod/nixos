@@ -6,14 +6,10 @@
 }: {
   imports = [
     ./vm
-    ./kiro
-    ./game-development
     ./steam
     ./greetd
     ./default-applications
-    ./discord
     ./clamav
-    ./discord
     ./boot-loader
     ./location
     ./silent-boot
@@ -23,6 +19,5 @@
     ./dotnet
     ./home-manager
     ./networking
-    ./icon-fonts
   ];
 }

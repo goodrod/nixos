@@ -35,12 +35,10 @@ in {
     programs.dconf.enable = true;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     environment.systemPackages = with pkgs; [
-      blueman
       mlocate
       cryptsetup
       ntfs3g
       openconnect
-      spotify
     ];
   };
 }

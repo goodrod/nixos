@@ -45,6 +45,13 @@
   module.wofi.enable = false;
   module.fuzzel.enable = true;
   module.obsidian.enable = true;
+  module.discord.enable = true;
+  module.game-development.enable = true;
+  module.kiro.enable = true;
+  module.icon-fonts.enable = true;
+  module.spotify.enable = true;
+  module.bluetooth.enable = true;
+  module.personal-apps.enable = true;
   module.default-applications.enable = true;
   home.packages = [pkgs.ripgrep];
 
