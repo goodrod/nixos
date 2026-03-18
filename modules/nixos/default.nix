@@ -1,13 +1,15 @@
-{ inputs, pkgs, config, ... }:
-
 {
+  inputs,
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./vm
     ./kiro
     ./game-development
     ./steam
     ./greetd
-    ./helios-development
     ./default-applications
     ./discord
     ./clamav
