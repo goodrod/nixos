@@ -16,7 +16,6 @@
     };
     startup-commands = [
       "swaync &"
-      "hyprpaper &"
       "rider &"
       "$terminal &"
       "spotify &"
