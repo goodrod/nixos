@@ -42,7 +42,6 @@
   module.swaync.enable = true;
   module.hyprpaper.enable = true;
   module.wlogout.enable = true;
-  module.wofi.enable = false;
   module.fuzzel.enable = true;
   module.obsidian.enable = true;
   module.discord.enable = true;
