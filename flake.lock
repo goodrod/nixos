@@ -299,17 +299,17 @@
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1773943904,
-        "narHash": "sha256-kMvmxJftj1QdNxnlP6w82Jx9Pz9V0aEAnQ54D2EeEnU=",
-        "owner": "goodrod",
-        "repo": "home-flake",
-        "rev": "e3aa5ccb3948645ba8cda078b006a63dc7b8c5a1",
-        "type": "github"
+        "lastModified": 1774374986,
+        "narHash": "sha256-8V3q+RxWhXE8my5ly/0EBpWExckkmrEogkEfSVCyRu4=",
+        "ref": "refs/heads/main",
+        "rev": "4b8ca94f7327ab67d5fb46895c88449e2a8a3dcc",
+        "revCount": 102,
+        "type": "git",
+        "url": "ssh://git@github.com/goodrod/home-flake"
       },
       "original": {
-        "owner": "goodrod",
-        "repo": "home-flake",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/goodrod/home-flake"
       }
     },
     "home-manager": {
@@ -1464,19 +1464,17 @@
         "nvf": "nvf"
       },
       "locked": {
-        "host": "github.com",
         "lastModified": 1771023050,
         "narHash": "sha256-sgs7K9/g/ToFPQsLsj2jeJlOqD5ctZDE33buoNgzpzw=",
-        "owner": "goodrod",
-        "repo": "nvim",
+        "ref": "refs/heads/main",
         "rev": "eab67b3424d3b4b589a0aa0488f8a11b2cb4f486",
-        "type": "github"
+        "revCount": 4,
+        "type": "git",
+        "url": "ssh://git@github.com/goodrod/nvim"
       },
       "original": {
-        "host": "github.com",
-        "owner": "goodrod",
-        "repo": "nvim",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/goodrod/nvim"
       }
     },
     "pre-commit-hooks": {
