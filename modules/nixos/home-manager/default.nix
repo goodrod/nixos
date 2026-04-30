@@ -56,7 +56,7 @@ in {
             [ "${option.module-path}" inputs.home-flake.homeModules.default ];
           home.username = "${option.username}";
           home.homeDirectory = "/home/${option.username}";
-          home.stateVersion = "23.11";
+          home.stateVersion = "26.05";
         };
       };
     };
