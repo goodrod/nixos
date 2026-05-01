@@ -299,11 +299,11 @@
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1777625535,
-        "narHash": "sha256-C2KJyv7FRYfkxVBVuEjJjjlf4fcEQUL8LtQPhmT09OQ=",
+        "lastModified": 1777625632,
+        "narHash": "sha256-H4xtnDXPBRCL2rvBzCIzkLFjIeUPdEa5JcvKEg4teLc=",
         "ref": "refs/heads/main",
-        "rev": "e796ccbce9e43b2c795b5e30fe81c778b4b18c61",
-        "revCount": 141,
+        "rev": "68cae93970e3a90f015689e22ee1651a8c6882cc",
+        "revCount": 142,
         "type": "git",
         "url": "ssh://git@github.com/goodrod/home-flake"
       },
