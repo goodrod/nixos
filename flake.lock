@@ -246,11 +246,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768135262,
-        "narHash": "sha256-PVvu7OqHBGWN16zSi6tEmPwwHQ4rLPU9Plvs8/1TUBY=",
+        "lastModified": 1769996383,
+        "narHash": "sha256-AnYjnFWgS49RlqX7LrC4uA+sCCDBj0Ry/WOJ5XWAsa0=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "80daad04eddbbf5a4d883996a73f3f542fa437ac",
+        "rev": "57928607ea566b5db3ad13af0e57e921e6b12381",
         "type": "github"
       },
       "original": {
@@ -299,11 +299,11 @@
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1777626704,
-        "narHash": "sha256-BuLAyWkXrl1FOJR8yKAADV+uR6fGRL0XeIy/KOSICCg=",
+        "lastModified": 1777733352,
+        "narHash": "sha256-3bA0CoYG9xcx0cCmYySq8X0mVSzAhFJ3APu4CJvhy/c=",
         "ref": "refs/heads/main",
-        "rev": "9b862439b76b53ed09d765a3f94f537d56bd0ff3",
-        "revCount": 150,
+        "rev": "35ab240fa75dbd78e8329a7a24cd91d253395706",
+        "revCount": 152,
         "type": "git",
         "url": "ssh://git@github.com/goodrod/home-flake"
       },
@@ -1261,11 +1261,11 @@
     },
     "mnw": {
       "locked": {
-        "lastModified": 1769981889,
-        "narHash": "sha256-ndI7AxL/6auelkLHngdUGVImBiHkG8w2N2fOTKZKn4k=",
+        "lastModified": 1770419553,
+        "narHash": "sha256-b1XqsH7AtVf2dXmq2iyRr2NC1yG7skY7Z6N2MpWHlK4=",
         "owner": "Gerg-L",
         "repo": "mnw",
-        "rev": "332fed8f43b77149c582f1782683d6aeee1f07cf",
+        "rev": "2aaffa8030d0b262176146adbb6b0e6374ce2957",
         "type": "github"
       },
       "original": {
@@ -1284,11 +1284,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768214250,
-        "narHash": "sha256-hnBZDQWUxJV3KbtvyGW5BKLO/fAwydrxm5WHCWMQTbw=",
+        "lastModified": 1776882296,
+        "narHash": "sha256-DWZozXwMsgvUqfVlL1mQ8dOxW7GJ/8CdyaDN+1niZRg=",
         "owner": "feel-co",
         "repo": "ndg",
-        "rev": "a6bd3c1ce2668d096e4fdaaa03ad7f03ba1fbca8",
+        "rev": "ab7d78d4884b3a34968cf9fa3d16c0c1246d5c6e",
         "type": "github"
       },
       "original": {
@@ -1378,11 +1378,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1770841267,
-        "narHash": "sha256-9xejG0KoqsoKEGp2kVbXRlEYtFFcDTHjidiuX8hGO44=",
+        "lastModified": 1777268161,
+        "narHash": "sha256-bxrdOn8SCOv8tN4JbTF/TXq7kjo9ag4M+C8yzzIRYbE=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ec7c70d12ce2fc37cb92aff673dcdca89d187bae",
+        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
         "type": "github"
       },
       "original": {
@@ -1445,11 +1445,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1770813256,
-        "narHash": "sha256-G6np3C9Zz0ddUevUOox4mPZqclbV3xSyHuhRR0Dzk4g=",
+        "lastModified": 1777478067,
+        "narHash": "sha256-2vZnUuv8fg2sIE6pXgGxZQQ3ZhQW1XE7Sxieg8gK2p4=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "bd265fee7e9655e2898e6f6b76267eb832b0f3c9",
+        "rev": "13c4ad4b4bb926c22945e2fb8862769fe51f27f1",
         "type": "github"
       },
       "original": {
@@ -1464,11 +1464,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1771023050,
-        "narHash": "sha256-sgs7K9/g/ToFPQsLsj2jeJlOqD5ctZDE33buoNgzpzw=",
+        "lastModified": 1777733340,
+        "narHash": "sha256-D1ojEFskAKA/zdSbHwQmD/17+O/0d68SvkcDnMUgwTI=",
         "ref": "refs/heads/main",
-        "rev": "eab67b3424d3b4b589a0aa0488f8a11b2cb4f486",
-        "revCount": 4,
+        "rev": "fd32fd56f9f848b2bd72682af96db1b27c4f19d0",
+        "revCount": 6,
         "type": "git",
         "url": "ssh://git@github.com/goodrod/nvim"
       },
