@@ -299,11 +299,11 @@
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1777734733,
-        "narHash": "sha256-03+22gi9BAr8O4mt6qe4RZUzUQuJmofbRbGUPP5kkYk=",
+        "lastModified": 1778185683,
+        "narHash": "sha256-77MVe+QCycy4OuNMyqEDilQH/cXYP0HvszLDFVNBdpY=",
         "ref": "refs/heads/main",
-        "rev": "b7fbf8f4e3c54cfa89fb1692cc8847c63d5950b7",
-        "revCount": 156,
+        "rev": "55fed913d7264caccff36a370fd227876b30f857",
+        "revCount": 157,
         "type": "git",
         "url": "ssh://git@github.com/goodrod/home-flake"
       },
@@ -1464,11 +1464,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1777733340,
-        "narHash": "sha256-D1ojEFskAKA/zdSbHwQmD/17+O/0d68SvkcDnMUgwTI=",
+        "lastModified": 1778185666,
+        "narHash": "sha256-KDYn245n1FTUQdGii+ggIVkL1k/rewCRIv9QlBY/j+M=",
         "ref": "refs/heads/main",
-        "rev": "fd32fd56f9f848b2bd72682af96db1b27c4f19d0",
-        "revCount": 6,
+        "rev": "bbe590e3b97ed4136b58ea28c9bdcdacf8591ed5",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/goodrod/nvim"
       },
