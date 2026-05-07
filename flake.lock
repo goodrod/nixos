@@ -299,11 +299,11 @@
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1778185683,
-        "narHash": "sha256-77MVe+QCycy4OuNMyqEDilQH/cXYP0HvszLDFVNBdpY=",
+        "lastModified": 1778187318,
+        "narHash": "sha256-xdkUbuYvrBj4h9dXTla9taD00j8xH3WbQQfKVIYcOyI=",
         "ref": "refs/heads/main",
-        "rev": "55fed913d7264caccff36a370fd227876b30f857",
-        "revCount": 157,
+        "rev": "9aa3d9bd8c7b91189e3d5639920377588e7004e2",
+        "revCount": 158,
         "type": "git",
         "url": "ssh://git@github.com/goodrod/home-flake"
       },
@@ -1261,11 +1261,11 @@
     },
     "mnw": {
       "locked": {
-        "lastModified": 1770419553,
-        "narHash": "sha256-b1XqsH7AtVf2dXmq2iyRr2NC1yG7skY7Z6N2MpWHlK4=",
+        "lastModified": 1777828893,
+        "narHash": "sha256-gVWVnmyNr74BVKfhMMZDWkhx2699dhmZ2g0W8TTHtkk=",
         "owner": "Gerg-L",
         "repo": "mnw",
-        "rev": "2aaffa8030d0b262176146adbb6b0e6374ce2957",
+        "rev": "c1c0b544bfabe6669b5a6a0383ccb475fe60258b",
         "type": "github"
       },
       "original": {
@@ -1378,11 +1378,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1777268161,
-        "narHash": "sha256-bxrdOn8SCOv8tN4JbTF/TXq7kjo9ag4M+C8yzzIRYbE=",
+        "lastModified": 1777954456,
+        "narHash": "sha256-hGdgeU2Nk87RAuZyYjyDjFL6LK7dAZN5RE9+hrDTkDU=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
+        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
         "type": "github"
       },
       "original": {
@@ -1445,11 +1445,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1777478067,
-        "narHash": "sha256-2vZnUuv8fg2sIE6pXgGxZQQ3ZhQW1XE7Sxieg8gK2p4=",
+        "lastModified": 1778049651,
+        "narHash": "sha256-EC5pBiLcP/EVmYWldJRNfkChCqF9rkeTnTs8t9Cs+ZY=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "13c4ad4b4bb926c22945e2fb8862769fe51f27f1",
+        "rev": "88dbbad1f44efe3d2c18903e2c7542452f7bdfd6",
         "type": "github"
       },
       "original": {
@@ -1464,11 +1464,11 @@
         "nvf": "nvf"
       },
       "locked": {
-        "lastModified": 1778185666,
-        "narHash": "sha256-KDYn245n1FTUQdGii+ggIVkL1k/rewCRIv9QlBY/j+M=",
+        "lastModified": 1778187307,
+        "narHash": "sha256-jDWjPYxfEZXiR72HaqXyFvSI5vHL3g+JSay8iH6NcJM=",
         "ref": "refs/heads/main",
-        "rev": "bbe590e3b97ed4136b58ea28c9bdcdacf8591ed5",
-        "revCount": 7,
+        "rev": "f0772df690af4f23f66d59661dc1422ea5302f66",
+        "revCount": 8,
         "type": "git",
         "url": "ssh://git@github.com/goodrod/nvim"
       },
