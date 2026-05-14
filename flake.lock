@@ -260,11 +260,11 @@
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1778780561,
-        "narHash": "sha256-h72xbP2QPLz2bHASg2RAqC8XTI7arf1QrJrBG8MJkzU=",
+        "lastModified": 1778781492,
+        "narHash": "sha256-caGYsOy3T0YTVHVCmQjN7fhtUDpp/HMclWRzPpKpiPI=",
         "owner": "goodrod",
         "repo": "home-flake",
-        "rev": "fe6447096cb387b692d5842a221da61ac653b142",
+        "rev": "230788efb9b0c5a2703faeb07b84ad782dda70b8",
         "type": "github"
       },
       "original": {
@@ -1358,11 +1358,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1778780532,
-        "narHash": "sha256-Dar5TEJ1FLJ/ngYBL50msvctlhl4buk3pxg/EifpEIo=",
+        "lastModified": 1778781484,
+        "narHash": "sha256-k/TFfc7RGnUTbh6hwCHeXwAEhJGG4y3qQL2XORpD47M=",
         "owner": "goodrod",
         "repo": "nvim",
-        "rev": "13d5809966f0c35081a7fea1ee816c5196546334",
+        "rev": "c1bd2e0dd905901d81db0cba0f54ec248d047c0b",
         "type": "github"
       },
       "original": {
