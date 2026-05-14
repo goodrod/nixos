@@ -12,7 +12,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
 
     home-flake = {
-      url = "git+ssh://git@github.com/goodrod/home-flake";
+      url = "github:goodrod/home-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
