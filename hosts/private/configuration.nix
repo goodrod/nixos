@@ -60,6 +60,9 @@
     wireguard-tools
     bluetuith
   ];
+  nix.extraOptions = ''
+    !include /etc/nix/access-tokens.conf
+  '';
   nix.settings = {
     experimental-features = [
       "nix-command"
