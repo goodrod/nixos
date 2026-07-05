@@ -261,11 +261,11 @@
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1783253373,
-        "narHash": "sha256-LJgBOBxaKKGRoTL91fGDB1IxllJj+dxyGg9uvQsXqvs=",
+        "lastModified": 1783254269,
+        "narHash": "sha256-1z6tDqWjhTZuymys9hYeYL9EooIergkG8TMSI8EcX2w=",
         "owner": "goodrod",
         "repo": "home-flake",
-        "rev": "35fb50e73d090b1f210003e7d1f3fb0be3a992a1",
+        "rev": "a9128e3fff2b302c9f6ce3d074e4d852b6145162",
         "type": "github"
       },
       "original": {
