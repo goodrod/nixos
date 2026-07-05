@@ -256,15 +256,16 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "nixpkgs-aseprite": "nixpkgs-aseprite",
         "nixvim": "nixvim",
         "nvim": "nvim"
       },
       "locked": {
-        "lastModified": 1783246791,
-        "narHash": "sha256-lLZWcNkbBUcERQC7rvWuPPSNtmiogLKYkEo2OSV2Sxg=",
+        "lastModified": 1783248439,
+        "narHash": "sha256-ouWcQDWtFRO8rCP6XIZBSrNkzhbF0UyNo2QuBFmtG64=",
         "owner": "goodrod",
         "repo": "home-flake",
-        "rev": "7dbaeea03609dd5480e3bcc2f7fbbd78980313bb",
+        "rev": "5ce22d1c5785bb8890e56e19fb9c65816cc1d845",
         "type": "github"
       },
       "original": {
@@ -1231,6 +1232,22 @@
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-aseprite": {
+      "locked": {
+        "lastModified": 1782959384,
+        "narHash": "sha256-xnJJk+ct+D2+wdRxj1wk36w5zV9RVESwRqcklPdt3fM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "65179426c83bb3f6bc14898b42ea1c6f01d374b0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"

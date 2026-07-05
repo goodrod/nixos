@@ -25,7 +25,7 @@
       "nm-applet &"
       "everdo &"
       "discord &"
-      "waybar &"
+      "sh -c 'while true; do waybar; sleep 1; done' &"
     ];
   };
   module.waybar.enable = true;
