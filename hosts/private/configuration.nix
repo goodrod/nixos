@@ -1,7 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ pkgs, lib, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   imports = [ ./hardware-configuration.nix ];
@@ -20,6 +25,7 @@
   };
   programs.gamescope.enable = true;
   module.greetd.enable = true;
+  module.sunshine.enable = true;
   module.clamav = {
     enable = true;
     on-access = {
@@ -33,11 +39,10 @@
     };
   };
   programs.firefox.enable = true;
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "spotify"
-      "postman"
-      "keymapp"
       "everdo"
       "discord"
       "nvidia-x11"
@@ -49,11 +54,16 @@
       "steam-unwrapped"
       "aseprite"
       "kiro"
-      "kiro-cli"
       "obsidian"
     ];
-  environment.systemPackages = with pkgs; [ wireguard-tools bluetuith ];
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+    bluetuith
+  ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib ];
   # networking.firewall.allowedTCPPorts = [ ... ];
