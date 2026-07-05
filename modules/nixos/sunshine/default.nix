@@ -33,11 +33,11 @@ in
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
     environment.systemPackages = with pkgs; [ ];
-    users.users.${config.module.home-manager.username}.extraGroup = [
+    users.users.${config.module.home-manager.username}.extraGroups = [
       "input"
       "uinput"
     ];
-    network.firewall = {
+    networking.firewall = {
       allowedTCPPorts = [
         47984
         47989
