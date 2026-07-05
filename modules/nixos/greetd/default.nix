@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
 let
   # Shorter name to access final settings a
@@ -6,7 +12,8 @@ let
   # cfg is a typical convention. But notice how
   # option makes much more sense.
   option = config.module.greetd;
-in {
+in
+{
   imports = [
     # Paths to other modules.
     # Compose this module out of smaller ones.

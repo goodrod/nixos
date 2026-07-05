@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
 let
   # Shorter name to access final settings a
@@ -6,7 +12,8 @@ let
   # cfg is a typical convention. But notice how
   # option makes much more sense.
   option = config.module.default-applications;
-in {
+in
+{
   imports = [
     # Paths to other modules.
     # Compose this module out of smaller ones.
@@ -29,11 +36,16 @@ in {
     # Usually these depend on whether a user of this module chose to "enable" it
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
-    environment.pathsToLink =
-      [ "/share/applications" "/share/xdg-desktop-portal" ];
+    environment.pathsToLink = [
+      "/share/applications"
+      "/share/xdg-desktop-portal"
+    ];
     services.spotifyd.enable = false;
     programs.dconf.enable = true;
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     environment.systemPackages = with pkgs; [
       mlocate
       cryptsetup

@@ -11,7 +11,7 @@ let
   # user of hello.nix module HAS ACTUALLY SET.
   # cfg is a typical convention. But notice how
   # option makes much more sense.
-  option = config.module.placeholder;
+  option = config.module.sunshine;
 in
 {
   imports = [
@@ -19,11 +19,11 @@ in
     # Compose this module out of smaller ones.
   ];
 
-  options.module.placeholder = {
+  options.module.sunshine = {
     # Option declarations.
     # Declare what settings a user of this module module can set.
     # Usually this includes a global "enable" option which defaults to false.
-    enable = mkEnableOption "placeholder";
+    enable = mkEnableOption "sunshine";
   };
 
   config = mkIf option.enable {
@@ -33,5 +33,33 @@ in
     # using the "option" above.
     # Options for modules imported in "imports" can be set here.
     environment.systemPackages = with pkgs; [ ];
+    users.users.${config.module.home-manager.username}.extraGroup = [
+      "input"
+      "uinput"
+    ];
+    network.firewall = {
+      allowedTCPPorts = [
+        47984
+        47989
+        47990
+        48010
+      ];
+      allowedUDPPortRanges = [
+        {
+          from = 47998;
+          to = 48000;
+        }
+        {
+          from = 8000;
+          to = 8010;
+        }
+      ];
+    };
+    services.sunshine = {
+      enable = true;
+      autoStart = true;
+      openFirewall = true;
+      capSysAdmin = true;
+    };
   };
 }

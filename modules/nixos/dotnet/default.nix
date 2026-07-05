@@ -1,11 +1,18 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
 let
   # Shorter name to access final settings a
   # user of hello.nix module HAS ACTUALLY SET.
   # cfg is a typical convention.
   cfg = config.module.dotnet;
-in {
+in
+{
   imports = [
     # Paths to other modules.
     # Compose this module out of smaller ones.
@@ -27,6 +34,9 @@ in {
     environment.systemPackages = with pkgs; [ dotnet-sdk_8 ];
 
     programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = with pkgs; [ dotnet-sdk_8 icu ];
+    programs.nix-ld.libraries = with pkgs; [
+      dotnet-sdk_8
+      icu
+    ];
   };
 }

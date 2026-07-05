@@ -3,8 +3,10 @@
   pkgs,
   config,
   ...
-}: {
+}:
+{
   imports = [
+    ./sunshine
     ./vm
     ./steam
     ./greetd

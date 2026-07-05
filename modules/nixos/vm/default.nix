@@ -1,9 +1,20 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
-  inherit (lib) mkEnableOption mkIf mkOption types;
+  inherit (lib)
+    mkEnableOption
+    mkIf
+    mkOption
+    types
+    ;
   option = config.module.vm;
-in {
+in
+{
   options.module.vm = {
     enable = mkEnableOption "KVM/libvirt VM host (virt-manager compatible)";
 
@@ -16,8 +27,7 @@ in {
     installTools = mkOption {
       type = types.bool;
       default = true;
-      description =
-        "Install virt-manager and common userspace tools system-wide.";
+      description = "Install virt-manager and common userspace tools system-wide.";
     };
 
     enableSpiceUsbRedir = mkOption {
@@ -35,18 +45,23 @@ in {
     virtualisation.spiceUSBRedirection.enable = option.enableSpiceUsbRedir;
 
     # Permissions for /dev/kvm and libvirt socket access
-    users.users.${option.username}.extraGroups = [ "kvm" "libvirtd" ];
+    users.users.${option.username}.extraGroups = [
+      "kvm"
+      "libvirtd"
+    ];
 
     # Tools (virt-manager is just a client, but convenient to have system-wide)
-    environment.systemPackages = lib.optionals option.installTools (with pkgs; [
-      virt-manager
-      virt-viewer
-      qemu_kvm
-      libvirt
-      swtpm
-      spice-gtk
-      gtk-vnc
-    ]);
+    environment.systemPackages = lib.optionals option.installTools (
+      with pkgs;
+      [
+        virt-manager
+        virt-viewer
+        qemu_kvm
+        libvirt
+        swtpm
+        spice-gtk
+        gtk-vnc
+      ]
+    );
   };
 }
-

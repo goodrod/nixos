@@ -42,6 +42,7 @@
       "discord"
       "nvidia-x11"
       "nvidia-settings"
+      "nvidia-kernel-modules"
       "steam-original"
       "steam"
       "steam-unwrapped-1.0.0.81"

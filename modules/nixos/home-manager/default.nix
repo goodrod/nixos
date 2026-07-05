@@ -1,4 +1,10 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 with lib;
 let
   # shorter name to access final settings a
@@ -6,7 +12,8 @@ let
   # option is a typical convention.
   option = config.module.home-manager;
   inherit (types) str path;
-in {
+in
+{
   imports = [
     # paths to other modules.
     # compose this module out of smaller ones.
@@ -23,8 +30,7 @@ in {
       default = ./home.nix;
     };
     username = mkOption {
-      description =
-        "username for account, assumes it is a single account system.";
+      description = "username for account, assumes it is a single account system.";
       type = str;
       default = "goodrod";
     };
@@ -45,15 +51,21 @@ in {
     users.users."${option.username}" = {
       isNormalUser = true;
       description = "${option.name}";
-      extraGroups = [ "networkmanager" "wheel" "docker" ];
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "docker"
+      ];
     };
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
       users = {
         "${option.username}" = {
-          imports =
-            [ "${option.module-path}" inputs.home-flake.homeModules.default ];
+          imports = [
+            "${option.module-path}"
+            inputs.home-flake.homeModules.default
+          ];
           home.username = "${option.username}";
           home.homeDirectory = "/home/${option.username}";
           home.stateVersion = "26.05";
