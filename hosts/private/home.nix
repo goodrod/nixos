@@ -29,6 +29,7 @@
     ];
   };
   module.waybar.enable = true;
+  module.quickshell.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
   module.git-repos = {
