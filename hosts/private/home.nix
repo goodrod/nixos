@@ -18,7 +18,6 @@
       focusKey = "F5";
     };
     startup-commands = [
-      "swaync &"
       "rider &"
       "$terminal &"
       "spotify &"
@@ -42,7 +41,11 @@
   };
   module.default-home-dirs.enable = true;
   module.dunst.enable = false;
-  module.swaync.enable = true;
+  # Quickshell's bar now owns notifications directly (Quickshell.Services.
+  # Notifications.NotificationServer, see modules/quickshell/config/
+  # NotificationCenter.qml) - swaync stays off so it doesn't race quickshell
+  # for the org.freedesktop.Notifications DBus name.
+  module.swaync.enable = false;
   module.hyprpaper.enable = true;
   module.wlogout.enable = true;
   module.fuzzel.enable = true;
