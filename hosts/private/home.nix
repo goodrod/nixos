@@ -26,7 +26,6 @@
       "discord &"
     ];
   };
-  module.waybar.enable = false;
   module.quickshell.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
