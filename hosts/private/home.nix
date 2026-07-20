@@ -24,10 +24,9 @@
       "nm-applet &"
       "everdo &"
       "discord &"
-      "sh -c 'while true; do waybar; sleep 1; done' &"
     ];
   };
-  module.waybar.enable = true;
+  module.waybar.enable = false;
   module.quickshell.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
