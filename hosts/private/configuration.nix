@@ -12,6 +12,7 @@
   imports = [ ./hardware-configuration.nix ];
   module.vm.enable = true;
   module.networking.enable = true;
+  module.tailscale.enable = true;
   module.boot-loader.enable = true;
   module.location.enable = true;
   module.sound.enable = true;

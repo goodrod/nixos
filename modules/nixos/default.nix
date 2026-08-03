@@ -21,5 +21,6 @@
     ./dotnet
     ./home-manager
     ./networking
+    ./tailscale
   ];
 }
