@@ -19,6 +19,7 @@
   module.sound.enable = true;
   module.silent-boot.enable = true;
   services.printing.enable = true;
+  services.atd.enable = true;
   module.nvidia.enable = true;
   module.steam.enable = true;
   module.home-manager = {
