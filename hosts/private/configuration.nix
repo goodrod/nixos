@@ -10,6 +10,7 @@
 
 {
   imports = [ ./hardware-configuration.nix ];
+  hardware.keyboard.zsa.enable = true;
   module.vm.enable = true;
   module.networking.enable = true;
   module.tailscale.enable = true;
@@ -56,10 +57,12 @@
       "aseprite"
       "kiro"
       "obsidian"
+      "keymapp"
     ];
   environment.systemPackages = with pkgs; [
     wireguard-tools
     bluetuith
+    keymapp
   ];
   nix.extraOptions = ''
     !include /etc/nix/access-tokens.conf

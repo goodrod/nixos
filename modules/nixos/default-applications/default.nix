@@ -51,6 +51,7 @@ in
       cryptsetup
       ntfs3g
       openconnect
+      gh
     ];
   };
 }
