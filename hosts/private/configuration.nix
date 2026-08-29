@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   pkgs,
   lib,
@@ -9,25 +6,23 @@
 
 {
   imports = [ ./hardware-configuration.nix ];
-  hardware.keyboard.zsa.enable = true;
-  module.vm.enable = true;
+
+  # Modules from modules/nixos.
+  module.boot-loader.enable = true;
+  module.silent-boot.enable = true;
   module.networking.enable = true;
   module.tailscale.enable = true;
-  module.boot-loader.enable = true;
   module.location.enable = true;
   module.sound.enable = true;
-  module.silent-boot.enable = true;
-  services.printing.enable = true;
-  services.atd.enable = true;
   module.nvidia.enable = true;
+  module.vm.enable = true;
+  module.greetd.enable = true;
   module.steam.enable = true;
+  module.sunshine.enable = true;
   module.home-manager = {
     enable = true;
     module-path = ./home.nix;
   };
-  programs.gamescope.enable = true;
-  module.greetd.enable = true;
-  module.sunshine.enable = true;
   module.clamav = {
     enable = true;
     on-access = {
@@ -40,7 +35,24 @@
       ];
     };
   };
+
+  # Everything not covered by a module of its own.
+  hardware.keyboard.zsa.enable = true;
+  services.printing.enable = true;
+  services.atd.enable = true;
   programs.firefox.enable = true;
+  programs.gamescope.enable = true;
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib ];
+  networking.firewall.enable = true;
+  boot.kernelModules = [ "kvm-amd" ];
+
+  environment.systemPackages = with pkgs; [
+    wireguard-tools
+    bluetuith
+    keymapp
+  ];
+
   nixpkgs.config.allowUnfreePredicate =
     pkg:
     builtins.elem (lib.getName pkg) [
@@ -59,11 +71,7 @@
       "obsidian"
       "keymapp"
     ];
-  environment.systemPackages = with pkgs; [
-    wireguard-tools
-    bluetuith
-    keymapp
-  ];
+
   nix.extraOptions = ''
     !include /etc/nix/access-tokens.conf
   '';
@@ -83,11 +91,6 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkogY9T/mvf4w7OxljEK4="
     ];
   };
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib ];
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = true;
-  boot.kernelModules = [ "kvm-amd" ];
+
   system.stateVersion = "23.11";
 }
