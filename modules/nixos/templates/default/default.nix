@@ -1,7 +1,7 @@
 # Starter for a NixOS module. Copy this directory to modules/nixos/<name>/,
 # replace "placeholder" throughout, and add ./<name> to the imports list in
 # modules/nixos/default.nix - nothing loads a module until it is listed there.
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   settings = config.module.placeholder;
@@ -11,7 +11,5 @@ in
     enable = mkEnableOption "placeholder";
   };
 
-  config = mkIf settings.enable {
-    environment.systemPackages = with pkgs; [ ];
-  };
+  config = mkIf settings.enable { };
 }

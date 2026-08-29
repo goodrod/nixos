@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -15,7 +14,6 @@ in
   };
 
   config = mkIf settings.enable {
-    environment.systemPackages = with pkgs; [ ];
     users.users.${config.module.home-manager.username}.extraGroups = [
       "input"
       "uinput"

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
   settings = config.module.steam;
@@ -8,7 +8,6 @@ in {
   };
 
   config = mkIf settings.enable {
-    environment.systemPackages = with pkgs; [ ];
     programs.steam.enable = true;
   };
 }

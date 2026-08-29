@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -15,6 +14,5 @@ in
   };
 
   config = mkIf settings.enable {
-    environment.systemPackages = with pkgs; [ ];
   };
 }

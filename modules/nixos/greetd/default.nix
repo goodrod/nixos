@@ -15,7 +15,6 @@ in
   };
 
   config = mkIf settings.enable {
-    environment.systemPackages = with pkgs; [ ];
 
     services.greetd = {
       enable = true;
