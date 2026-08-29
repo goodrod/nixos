@@ -7,22 +7,11 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf mkOption types;
-  # shorter name to access final settings a
-  # user of hello.nix module has actually set.
-  # option is a typical convention.
   option = config.module.home-manager;
   inherit (types) str path;
 in
 {
-  imports = [
-    # paths to other modules.
-    # compose this module out of smaller ones.
-  ];
-
   options.module.home-manager = {
-    # option declarations.
-    # declare what settings a user of this module module can set.
-    # usually this includes a global "enable" option which defaults to false.
     enable = mkEnableOption "home-manager";
     module-path = mkOption {
       description = "path of home manager module to use.";
@@ -42,11 +31,6 @@ in
   };
 
   config = mkIf option.enable {
-    # option definitions.
-    # define what other settings, services and resources should be active.
-    # usually these depend on whether a user of this module chose to "enable" it
-    # using the "option" above.
-    # options for modules imported in "imports" can be set here.
     nixpkgs.overlays = [ inputs.home-flake.overlays.default ];
     users.users."${option.username}" = {
       isNormalUser = true;
