@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   ...
 }: {
   module.navi.enable = true;

@@ -1,9 +1,4 @@
-{
-  inputs,
-  pkgs,
-  config,
-  ...
-}:
+{ ... }:
 {
   imports = [
     ./sunshine
