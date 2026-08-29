@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.module.tailscale;
+  settings = config.module.tailscale;
 in {
   imports = [
     # Paths to other modules.
@@ -12,7 +12,7 @@ in {
     enable = mkEnableOption "tailscale";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf settings.enable {
     services.tailscale.enable = true;
 
     # Traffic on tailscale0 is already authenticated/encrypted by the mesh VPN

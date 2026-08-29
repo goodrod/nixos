@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  option = config.module.greetd;
+  settings = config.module.greetd;
 in
 {
 
@@ -15,7 +15,7 @@ in
     enable = mkEnableOption "greetd";
   };
 
-  config = mkIf option.enable {
+  config = mkIf settings.enable {
     environment.systemPackages = with pkgs; [ ];
 
     services.greetd = {

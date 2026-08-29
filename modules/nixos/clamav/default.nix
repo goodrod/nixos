@@ -1,13 +1,13 @@
 { config, pkgs, lib, ... }:
 let
   inherit (lib) mkEnableOption mkIf mkOption types attrsets;
-  option = config.module.clamav;
+  settings = config.module.clamav;
   all-normal-users =
     attrsets.filterAttrs (username: config: config.isNormalUser)
     config.users.users;
   all-sus-dirs = builtins.concatMap (dir:
     attrsets.mapAttrsToList (username: config: config.home + "/" + dir)
-    all-normal-users) option.on-access.home-directories-to-scan;
+    all-normal-users) settings.on-access.home-directories-to-scan;
   all-user-folders =
     attrsets.mapAttrsToList (username: config: config.home) all-normal-users;
   all-system-folders = [ "/boot" "/etc" "/nix" "/opt" "/root" "/usr" ];
@@ -34,7 +34,7 @@ in {
     };
   };
 
-  config = mkIf option.enable {
+  config = mkIf settings.enable {
     security.sudo = {
       extraConfig = ''
         clamav ALL = (ALL) NOPASSWD: SETENV: ${pkgs.libnotify}/bin/notify-send
@@ -55,7 +55,7 @@ in {
     };
     services.clamav.updater.enable = true;
 
-    systemd.services.clamav-clamonacc = mkIf option.on-access.enable {
+    systemd.services.clamav-clamonacc = mkIf settings.on-access.enable {
       description = "ClamAV daemon (clamonacc)";
 
       after = [ "clamav-freshclam.service" "clamav-daemon.service" ];

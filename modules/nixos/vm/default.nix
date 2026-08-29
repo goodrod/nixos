@@ -12,7 +12,7 @@ let
     mkOption
     types
     ;
-  option = config.module.vm;
+  settings = config.module.vm;
 in
 {
   options.module.vm = {
@@ -37,21 +37,21 @@ in
     };
   };
 
-  config = mkIf option.enable {
+  config = mkIf settings.enable {
     # Core: provides the daemon + sockets virt-manager connects to (qemu:///system)
     virtualisation.libvirtd.enable = true;
 
     # Optional quality-of-life
-    virtualisation.spiceUSBRedirection.enable = option.enableSpiceUsbRedir;
+    virtualisation.spiceUSBRedirection.enable = settings.enableSpiceUsbRedir;
 
     # Permissions for /dev/kvm and libvirt socket access
-    users.users.${option.username}.extraGroups = [
+    users.users.${settings.username}.extraGroups = [
       "kvm"
       "libvirtd"
     ];
 
     # Tools (virt-manager is just a client, but convenient to have system-wide)
-    environment.systemPackages = lib.optionals option.installTools (
+    environment.systemPackages = lib.optionals settings.installTools (
       with pkgs;
       [
         virt-manager

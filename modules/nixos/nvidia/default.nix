@@ -1,13 +1,13 @@
 { config, pkgs, lib, inputs, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.module.nvidia;
+  settings = config.module.nvidia;
 in {
   options.module.nvidia = {
     enable = mkEnableOption "nvidia";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf settings.enable {
     boot.initrd.kernelModules =
       [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
 

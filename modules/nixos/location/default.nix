@@ -1,13 +1,13 @@
 { config, pkgs, lib, inputs, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.module.location;
+  settings = config.module.location;
 in {
   options.module.location = {
     enable = mkEnableOption "location";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf settings.enable {
     time.timeZone = "Europe/Stockholm";
 
     console.keyMap = "sv-latin1";

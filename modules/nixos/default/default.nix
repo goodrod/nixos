@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  option = config.module.placeholder;
+  settings = config.module.placeholder;
 in
 {
 
@@ -15,7 +15,7 @@ in
     enable = mkEnableOption "placeholder";
   };
 
-  config = mkIf option.enable {
+  config = mkIf settings.enable {
     environment.systemPackages = with pkgs; [ ];
   };
 }

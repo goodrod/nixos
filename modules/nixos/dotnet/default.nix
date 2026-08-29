@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.module.dotnet;
+  settings = config.module.dotnet;
 in
 {
 
@@ -15,7 +15,7 @@ in
     enable = mkEnableOption "dotnet";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf settings.enable {
     environment.systemPackages = with pkgs; [ dotnet-sdk_8 ];
 
     programs.nix-ld.enable = true;

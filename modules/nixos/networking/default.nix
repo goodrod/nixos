@@ -1,13 +1,13 @@
 { config, pkgs, lib, inputs, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.module.networking;
+  settings = config.module.networking;
 in {
   options.module.networking = {
     enable = mkEnableOption "networking";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf settings.enable {
 
     environment.systemPackages = with pkgs; [ networkmanagerapplet ];
 

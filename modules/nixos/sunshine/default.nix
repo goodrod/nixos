@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf;
-  option = config.module.sunshine;
+  settings = config.module.sunshine;
 in
 {
 
@@ -15,7 +15,7 @@ in
     enable = mkEnableOption "sunshine";
   };
 
-  config = mkIf option.enable {
+  config = mkIf settings.enable {
     environment.systemPackages = with pkgs; [ ];
     users.users.${config.module.home-manager.username}.extraGroups = [
       "input"

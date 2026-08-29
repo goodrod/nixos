@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkIf;
-  option = config.module.default-applications;
+  settings = config.module.default-applications;
 in
 {
 
@@ -19,7 +19,7 @@ in
     };
   };
 
-  config = mkIf option.enable {
+  config = mkIf settings.enable {
     environment.pathsToLink = [
       "/share/applications"
       "/share/xdg-desktop-portal"

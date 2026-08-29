@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkEnableOption mkIf mkOption types;
-  option = config.module.home-manager;
+  settings = config.module.home-manager;
   inherit (types) str path;
 in
 {
@@ -30,11 +30,11 @@ in
     };
   };
 
-  config = mkIf option.enable {
+  config = mkIf settings.enable {
     nixpkgs.overlays = [ inputs.home-flake.overlays.default ];
-    users.users."${option.username}" = {
+    users.users."${settings.username}" = {
       isNormalUser = true;
-      description = "${option.name}";
+      description = "${settings.name}";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -45,13 +45,13 @@ in
       useGlobalPkgs = true;
       useUserPackages = true;
       users = {
-        "${option.username}" = {
+        "${settings.username}" = {
           imports = [
-            "${option.module-path}"
+            "${settings.module-path}"
             inputs.home-flake.homeModules.default
           ];
-          home.username = "${option.username}";
-          home.homeDirectory = "/home/${option.username}";
+          home.username = "${settings.username}";
+          home.homeDirectory = "/home/${settings.username}";
           home.stateVersion = "26.05";
         };
       };

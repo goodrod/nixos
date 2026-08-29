@@ -1,13 +1,13 @@
 { config, pkgs, lib, inputs, ... }:
 let
   inherit (lib) mkEnableOption mkIf;
-  cfg = config.module.docker;
+  settings = config.module.docker;
 in {
   options.module.docker = {
     enable = mkEnableOption "docker";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf settings.enable {
 
     environment.systemPackages = with pkgs; [ docker-compose ];
     virtualisation.docker = {
