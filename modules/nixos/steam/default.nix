@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
-with lib;
 let
+  inherit (lib) mkEnableOption mkIf;
   option = config.module.steam;
 in {
   options.module.steam = {

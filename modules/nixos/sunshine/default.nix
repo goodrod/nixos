@@ -5,8 +5,8 @@
   inputs,
   ...
 }:
-with lib;
 let
+  inherit (lib) mkEnableOption mkIf;
   option = config.module.sunshine;
 in
 {

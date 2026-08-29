@@ -5,8 +5,8 @@
   inputs,
   ...
 }:
-with lib;
 let
+  inherit (lib) mkEnableOption mkIf mkOption types;
   # shorter name to access final settings a
   # user of hello.nix module has actually set.
   # option is a typical convention.

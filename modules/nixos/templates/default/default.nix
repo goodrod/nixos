@@ -1,6 +1,6 @@
 { config, pkgs, lib, inputs, ... }:
-with lib;
 let
+  inherit (lib) mkEnableOption mkIf;
   # Shorter name to access final settings a
   # user of hello.nix module HAS ACTUALLY SET.
   # cfg is a typical convention. But notice how

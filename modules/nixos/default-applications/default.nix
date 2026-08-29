@@ -5,8 +5,8 @@
   inputs,
   ...
 }:
-with lib;
 let
+  inherit (lib) mkIf;
   option = config.module.default-applications;
 in
 {

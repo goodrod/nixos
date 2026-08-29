@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
-with lib;
 let
+  inherit (lib) mkEnableOption mkIf mkOption types attrsets;
   option = config.module.clamav;
   all-normal-users =
     attrsets.filterAttrs (username: config: config.isNormalUser)
