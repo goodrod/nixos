@@ -34,13 +34,27 @@
     luaConfig = lib.mkAfter ''
       hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"), { description = "File manager" })
 
-      hl.window_rule({ match = { class = "steam_app_[0-9]+|gamescope" }, maximize = true })
+      local function isSteamGame(pid)
+        if pid == nil or pid <= 0 then return false end
+        local f = io.open("/proc/" .. pid .. "/environ", "rb")
+        if not f then return false end
+        local env = f:read("a")
+        f:close()
+        local id = env:match("SteamGameId=([^\0]*)") or env:match("SteamAppId=([^\0]*)")
+        return id ~= nil and id ~= "" and id ~= "0"
+      end
 
       hl.on("window.open", function(w)
-        if w == nil or w.class == nil then return end
+        if w == nil or w.class == nil or w.class == "steam" then return end
         if w.title and w.title:match("^Battle%.net") then return end
-        if w.class:match("^steam_app_") or w.class == "gamescope" then
-          hl.dispatch(hl.dsp.focus({ window = "address:" .. w.address }))
+        if not (w.class:match("^steam_app_") or w.class == "gamescope" or isSteamGame(w.pid)) then return end
+        local target = "address:" .. w.address
+        if w.workspace == nil or w.workspace.id ~= 10 then
+          hl.dispatch(hl.dsp.window.move({ window = target, workspace = 10 }))
+        end
+        hl.dispatch(hl.dsp.focus({ window = target }))
+        if w.fullscreen == 0 then
+          hl.dispatch(hl.dsp.window.fullscreen({ mode = "fullscreen" }))
         end
       end)
     '';
