@@ -6,6 +6,7 @@
   module.hyprland = {
     enable = true;
     autostart-from-tty = true;
+    screenshot-editor-workspace = 10;
     features = {
       taskWorkspaces.enable = true;
       categoryWorkspaces.enable = true;

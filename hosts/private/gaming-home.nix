@@ -3,6 +3,7 @@
   module.hyprland = {
     enable = true;
     autostart-from-tty = true;
+    screenshot-editor-workspace = 50;
     monitors.middle = {
       name = "DP-1";
       workspace = 20;
@@ -20,6 +21,7 @@
     };
     keys = {
       screenshot = "P";
+      screenshotMonitor = "SHIFT + P";
       record = "R";
       exit = "SHIFT + Delete";
     };
@@ -54,6 +56,10 @@
         class = "steam|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch";
         title = "Battle.net";
       };
+    };
+    tools = {
+      id = 50;
+      icon = "󱁤";
     };
     mail = {
       id = 40;
