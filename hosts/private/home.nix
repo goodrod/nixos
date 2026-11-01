@@ -10,6 +10,7 @@
       taskWorkspaces.enable = true;
       categoryWorkspaces.enable = true;
       workspaceGrid.enable = true;
+      shiftedWorkspaces.enable = true;
       columnTools.enable = true;
     };
     monitors.middle = {
