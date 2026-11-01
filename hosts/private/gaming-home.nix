@@ -34,6 +34,8 @@
     luaConfig = lib.mkAfter ''
       hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"), { description = "File manager" })
 
+      hl.window_rule({ match = { class = "steam_app_[0-9]+|gamescope" }, maximize = true })
+
       hl.on("window.open", function(w)
         if w == nil or w.class == nil then return end
         if w.title and w.title:match("^Battle%.net") then return end
