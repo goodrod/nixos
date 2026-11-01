@@ -5,6 +5,13 @@
   module.navi.enable = true;
   module.hyprland = {
     enable = true;
+    autostart-from-tty = true;
+    features = {
+      taskWorkspaces.enable = true;
+      categoryWorkspaces.enable = true;
+      workspaceGrid.enable = true;
+      columnTools.enable = true;
+    };
     monitors.middle = {
       name = "DP-1";
       workspace = 20;

@@ -14,12 +14,6 @@
   module.gaming.enable = true;
   module.tailscale.enable = true;
   module.sunshine.enable = true;
-  module.greetd = {
-    enable = true;
-    command = "start-hyprland";
-    sessions = true;
-    autologin = "goodrod";
-  };
   module.home-manager = {
     enable = true;
     module-path = ./gaming-home.nix;
