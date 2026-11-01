@@ -9,6 +9,7 @@
       workspace = 20;
       focusKey = "comma";
       pinnedWorkspaces = [ 10 ];
+      exclusiveWorkspace = 10;
     };
     monitors.right = {
       name = "HDMI-A-1";
