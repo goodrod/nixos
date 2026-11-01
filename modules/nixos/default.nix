@@ -4,6 +4,7 @@
     ./sunshine
     ./vm
     ./steam
+    ./gaming
     ./greetd
     ./default-applications
     ./clamav
