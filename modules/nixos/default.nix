@@ -6,6 +6,7 @@
     ./steam
     ./gaming
     ./greetd
+    ./umu-runtime-watch
     ./default-applications
     ./clamav
     ./boot-loader

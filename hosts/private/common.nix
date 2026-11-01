@@ -9,6 +9,7 @@
   module.location.enable = true;
   module.sound.enable = true;
   module.nvidia.enable = true;
+  module.umu-runtime-watch.enable = true;
 
   nixpkgs.config.allowUnfreePredicate =
     pkg:
