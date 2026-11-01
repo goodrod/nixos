@@ -21,6 +21,20 @@ let
       export STORE=battlenet
       export PROTONPATH=${pkgs.proton-ge-bin.steamcompattool}
 
+      # umu's own download of this runtime can fail its digest check and leave
+      # an empty dir it then crashes on; Steam keeps a verified copy.
+      steam_runtime="$HOME/.local/share/Steam/steamapps/common/SteamLinuxRuntime_4"
+      umu_runtime="''${XDG_DATA_HOME:-$HOME/.local/share}/umu/steamrt4"
+      if [ ! -f "$umu_runtime/toolmanifest.vdf" ] && [ -f "$steam_runtime/toolmanifest.vdf" ]; then
+        rm -rf "$umu_runtime"
+        mkdir -p "$(dirname "$umu_runtime")"
+        cp -a "$steam_runtime" "$umu_runtime"
+        touch "$umu_runtime/.copied-from-steam"
+      fi
+      if [ -f "$umu_runtime/.copied-from-steam" ]; then
+        export UMU_RUNTIME_UPDATE=0
+      fi
+
       launcher="$prefix/drive_c/Program Files (x86)/Battle.net/Battle.net Launcher.exe"
       if [ ! -f "$launcher" ]; then
         mkdir -p "$prefix"
