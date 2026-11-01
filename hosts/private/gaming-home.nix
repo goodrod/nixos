@@ -45,7 +45,10 @@
       id = 30;
       icon = "󰊗";
       persistent = true;
-      match.class = "steam|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch";
+      match = {
+        class = "steam|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch";
+        title = "Battle.net";
+      };
     };
     mail = {
       id = 40;
