@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
   module.hyprland = {
     enable = true;
@@ -25,8 +25,13 @@
       record = "R";
       exit = "SHIFT + Delete";
     };
-    startup-commands = [ "steam -silent" ];
+    startup-commands = [
+      "steam -silent"
+      "discord"
+    ];
     luaConfig = lib.mkAfter ''
+      hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"), { description = "File manager" })
+
       hl.on("window.open", function(w)
         if w == nil or w.class == nil then return end
         if w.class:match("^steam_app_") or w.class == "gamescope" then
@@ -109,6 +114,12 @@
   };
   module.bluetooth.enable = true;
   module.icon-fonts.enable = true;
+
+  home.packages = [ pkgs.nautilus ];
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications."inode/directory" = "org.gnome.Nautilus.desktop";
+  };
 
   programs.home-manager.enable = true;
 }

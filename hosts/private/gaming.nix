@@ -24,6 +24,7 @@
 
   programs.hyprland.enable = true;
   programs.firefox.enable = true;
+  services.gvfs.enable = true;
 
   networking.firewall.enable = true;
   boot.kernelModules = [ "kvm-amd" ];
