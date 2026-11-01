@@ -86,7 +86,16 @@
   module.discord.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
-  module.fuzzel.enable = true;
+  module.fuzzel = {
+    enable = true;
+    hidden = [
+      "nixos-manual"
+      "nm-connection-editor"
+      "htop"
+      "qt6ct"
+      "nvidia-settings"
+    ];
+  };
   module.bluetooth.enable = true;
   module.icon-fonts.enable = true;
 

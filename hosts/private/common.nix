@@ -24,7 +24,6 @@
       "steam-unwrapped-1.0.0.81"
       "steam-unwrapped"
       "aseprite"
-      "kiro"
       "obsidian"
       "keymapp"
     ];

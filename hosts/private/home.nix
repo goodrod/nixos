@@ -53,11 +53,24 @@
   module.swaync.enable = false;
   module.hyprpaper.enable = true;
   module.wlogout.enable = true;
-  module.fuzzel.enable = true;
+  module.fuzzel = {
+    enable = true;
+    hidden = [
+      "nixos-manual"
+      "thunar-bulk-rename"
+      "thunar-settings"
+      "cups"
+      "nm-connection-editor"
+      "htop"
+      "nvim"
+      "qt6ct"
+      "nvidia-settings"
+    ];
+  };
+  module.everdo.enable = true;
   module.obsidian.enable = true;
   module.discord.enable = true;
   module.game-development.enable = true;
-  module.kiro.enable = true;
   module.icon-fonts.enable = true;
   module.spotify.enable = true;
   module.bluetooth.enable = true;
