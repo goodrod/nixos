@@ -35,6 +35,16 @@ let
         export UMU_RUNTIME_UPDATE=0
       fi
 
+      # Hyprland has no XEmbed tray, so Wine draws tray icons as stray
+      # windows in the top-left corner instead.
+      if [ ! -f "$prefix/.tray-icons-hidden" ]; then
+        mkdir -p "$prefix"
+        if umu-run reg add 'HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer' /v NoTrayItemsDisplay /t REG_DWORD /d 1 /f \
+          && umu-run reg add 'HKCU\Software\Wine\Explorer' /v ShowSystray /t REG_DWORD /d 0 /f; then
+          touch "$prefix/.tray-icons-hidden"
+        fi
+      fi
+
       launcher="$prefix/drive_c/Program Files (x86)/Battle.net/Battle.net Launcher.exe"
       if [ ! -f "$launcher" ]; then
         mkdir -p "$prefix"
