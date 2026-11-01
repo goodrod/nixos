@@ -11,10 +11,7 @@
 
   boot.loader.grub.configurationName = "Gaming";
 
-  module.gaming = {
-    enable = true;
-    battlenet.enable = true;
-  };
+  module.gaming.enable = true;
   module.tailscale.enable = true;
   module.sunshine.enable = true;
   module.home-manager = {
