@@ -25,6 +25,8 @@
     };
   };
 
+  boot.loader.grub.configurationName = "Programming";
+
   specialisation.gaming = {
     inheritParentConfig = false;
     configuration.imports = [ ./gaming.nix ];

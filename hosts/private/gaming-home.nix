@@ -6,17 +6,22 @@
     monitors.middle = {
       name = "DP-1";
       workspace = 20;
-      focusKey = "F4";
+      focusKey = "comma";
     };
     monitors.right = {
       name = "HDMI-A-1";
       settings = "preferred,2560x0,1.0";
       workspace = 30;
-      focusKey = "F5";
+      focusKey = "period";
     };
     features = {
       categoryWorkspaces.enable = true;
       workspaceGrid.enable = true;
+    };
+    keys = {
+      screenshot = "P";
+      record = "R";
+      exit = "SHIFT + Delete";
     };
     startup-commands = [ "steam -silent" ];
     luaConfig = lib.mkAfter ''
