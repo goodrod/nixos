@@ -36,6 +36,7 @@
 
       hl.on("window.open", function(w)
         if w == nil or w.class == nil then return end
+        if w.title and w.title:match("^Battle%.net") then return end
         if w.class:match("^steam_app_") or w.class == "gamescope" then
           hl.dispatch(hl.dsp.focus({ window = "address:" .. w.address }))
         end
@@ -61,7 +62,7 @@
       persistent = true;
       match = {
         class = "steam|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch";
-        title = "Battle.net";
+        title = "Battle\\.net.*";
       };
     };
     tools = {
