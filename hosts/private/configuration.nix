@@ -8,9 +8,6 @@
 
   # Modules from modules/nixos.
   module.tailscale.enable = true;
-  module.vm.enable = true;
-  module.steam.enable = true;
-  module.sunshine.enable = true;
   module.home-manager = {
     enable = true;
     module-path = ./home.nix;
@@ -38,11 +35,9 @@
   services.printing.enable = true;
   services.atd.enable = true;
   programs.firefox.enable = true;
-  programs.gamescope.enable = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ stdenv.cc.cc.lib ];
   networking.firewall.enable = true;
-  boot.kernelModules = [ "kvm-amd" ];
 
   environment.systemPackages = with pkgs; [
     wireguard-tools
