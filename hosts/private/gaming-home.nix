@@ -8,6 +8,7 @@
       name = "DP-1";
       workspace = 20;
       focusKey = "comma";
+      pinnedWorkspaces = [ 10 ];
     };
     monitors.right = {
       name = "HDMI-A-1";
@@ -100,6 +101,7 @@
   module.wlogout.enable = true;
   module.spotify.enable = true;
   module.discord.enable = true;
+  module.steam-games-menu.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
   module.fuzzel = {

@@ -36,7 +36,10 @@ let
     name = "battlenet";
     desktopName = "Battle.net";
     exec = "battlenet";
-    icon = "applications-games";
+    icon = pkgs.fetchurl {
+      url = "https://lutris.net/games/icon/battlenet.png";
+      sha256 = "1an98sd6kibwlgdgai1ib8afh0n0cfczyqx0ksz1y9srvxmpvp1s";
+    };
     categories = [ "Game" ];
   };
 in
