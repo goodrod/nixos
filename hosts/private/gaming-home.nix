@@ -60,7 +60,7 @@
       icon = "󰊗";
       persistent = true;
       match = {
-        class = "steam|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch|faugus-launcher";
+        class = "steam|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch";
         title = "Battle.net";
       };
     };
@@ -103,7 +103,6 @@
   module.spotify.enable = true;
   module.discord.enable = true;
   module.steam-games-menu.enable = true;
-  module.faugus.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
   module.fuzzel = {

@@ -33,6 +33,8 @@ let
       });
 in
 {
+  imports = [ ./battlenet.nix ];
+
   options.module.gaming = {
     enable = mkEnableOption "gaming (steam under a gamescope session, proton, sched_ext)";
 
