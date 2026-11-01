@@ -9,7 +9,6 @@
   # Modules from modules/nixos.
   module.tailscale.enable = true;
   module.vm.enable = true;
-  module.greetd.enable = true;
   module.steam.enable = true;
   module.sunshine.enable = true;
   module.home-manager = {
