@@ -27,6 +27,8 @@
       "aseprite"
       "obsidian"
       "keymapp"
+      "claude-code"
+      "curseforge-unwrapped"
     ];
 
   nix.extraOptions = ''

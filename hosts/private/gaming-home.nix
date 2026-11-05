@@ -75,7 +75,7 @@
       icon = "󰊗";
       persistent = true;
       match = {
-        class = "steam|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch";
+        class = "steam|CurseForge|curseforge|heroic|net.lutris.Lutris|lutris|org.prismlauncher.PrismLauncher|com.usebottles.bottles|itch";
         title = "Battle\\.net.*";
       };
     };
@@ -133,7 +133,23 @@
   module.bluetooth.enable = true;
   module.icon-fonts.enable = true;
 
-  home.packages = [ pkgs.nautilus ];
+  home.packages = with pkgs; [
+    nautilus
+    claude-code
+    nodejs # needed by claude-code plugin hooks
+  ];
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "goodrod";
+        email = "david.lindskog.hedstrom@pm.me";
+      };
+      init.defaultBranch = "main";
+      core.pager = "less -r";
+    };
+  };
 
   programs.home-manager.enable = true;
 }

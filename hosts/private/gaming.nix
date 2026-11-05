@@ -14,6 +14,7 @@
   module.gaming = {
     enable = true;
     battlenet.enable = true;
+    curseforge.enable = true;
   };
   module.tailscale.enable = true;
   module.sunshine.enable = true;

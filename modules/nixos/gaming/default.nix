@@ -33,7 +33,10 @@ let
       });
 in
 {
-  imports = [ ./battlenet.nix ];
+  imports = [
+    ./battlenet.nix
+    ./curseforge.nix
+  ];
 
   options.module.gaming = {
     enable = mkEnableOption "gaming (steam under a gamescope session, proton, sched_ext)";

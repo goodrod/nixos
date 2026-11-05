@@ -17,6 +17,11 @@
     };
 
     import-tree.url = "github:vic/import-tree";
+
+    curseforge = {
+      url = "file+https://curseforge.overwolf.com/downloads/curseforge-latest-linux.deb";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, flake-parts, ... }:

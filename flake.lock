@@ -146,6 +146,18 @@
         "type": "github"
       }
     },
+    "curseforge": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-0GJ6dJVe0NadAAnR0Rp4I5alvfGT+1WqWAvU5RKPpVc=",
+        "type": "file",
+        "url": "https://curseforge.overwolf.com/downloads/curseforge-latest-linux.deb"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://curseforge.overwolf.com/downloads/curseforge-latest-linux.deb"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -1414,6 +1426,7 @@
     },
     "root": {
       "inputs": {
+        "curseforge": "curseforge",
         "flake-parts": "flake-parts",
         "home-flake": "home-flake",
         "home-manager": "home-manager_2",
