@@ -17,6 +17,7 @@
       "spotify"
       "everdo"
       "discord"
+      "discord-unwrapped"
       "nvidia-x11"
       "nvidia-settings"
       "nvidia-kernel-modules"
