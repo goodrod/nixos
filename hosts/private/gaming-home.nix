@@ -18,10 +18,12 @@
     features = {
       categoryWorkspaces.enable = true;
       workspaceGrid.enable = true;
+      columnTools.enable = true;
     };
     keys = {
       screenshot = "P";
       screenshotMonitor = "SHIFT + P";
+      promote = null;
       record = "R";
       exit = "SHIFT + Delete";
     };
