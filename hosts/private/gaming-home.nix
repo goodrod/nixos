@@ -32,6 +32,8 @@
       "discord"
     ];
     luaConfig = lib.mkAfter ''
+      hl.config({ input = { follow_mouse = 0 } })
+
       hl.bind(mainMod .. " + E", hl.dsp.exec_cmd("nautilus --new-window"), { description = "File manager" })
 
       local function isSteamGame(pid)
@@ -122,6 +124,7 @@
   module.steam-games-menu.enable = true;
   module.alacritty.enable = true;
   module.bash.enable = true;
+  module.navi.enable = true;
   module.fuzzel = {
     enable = true;
     hidden = [
