@@ -17,7 +17,7 @@
     curseforge.enable = true;
   };
   module.tailscale.enable = true;
-  module.sunshine.enable = true;
+  module.sunshine.enable = false;
   module.home-manager = {
     enable = true;
     module-path = ./gaming-home.nix;
